@@ -44,3 +44,7 @@
     var(--badge-gradient) border-box;
     backdrop-filter: blur(10px);
 }
+
+html {
+  touch-action: manipulation;
+}
