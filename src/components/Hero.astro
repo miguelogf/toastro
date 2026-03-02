@@ -1,7 +1,7 @@
 ---
 import Badge from "../components/Badge.astro";
 import ToastContainer from "../components/ToastContainer.astro";
-import "../styles/global.css";
+//import "../styles/theme.css";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
@@ -56,20 +56,25 @@ import Button from "../components/Button.astro";
           {
             message: "Warning: Low disk space",
             type: "warning",
-            variant: "solid",
+            variant: "soft",
           },
           { 
             message: "Authentication error occurred", 
             type: "danger", 
-            variant: "solid", 
+            variant: "filled", 
           },
-          
+          {
+              message: "New message received", 
+              type: "info", 
+              variant: "solid", 
+          },
           { 
             message: "🍞✨ A minimal toast for Astro", 
             type: "accent", 
             icon: "", // Sin icono"",
+            
             variant: "gradient",
-            gradientColors: ["#f97316", "#ec4899"],
+            gradientColors: ["#6366f1", "#ec4899"],
           },
 
         ];
