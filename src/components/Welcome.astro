@@ -8,7 +8,6 @@ import logoDark from "../assets/logo-dark.svg";
 
 <div id="container">
   <main class="text-center">
-    <div class="blur-gradient"></div>
     <section class="hero">
       <Badge
         label="Coming Soon"
@@ -64,6 +63,7 @@ import logoDark from "../assets/logo-dark.svg";
     align-items: center; /* centra horizontalmente */
     justify-content: center; /* centra verticalmente (opcional) */
   }
+  
   .logo-container {
     display: flex;
     flex-direction: row;
@@ -81,7 +81,7 @@ import logoDark from "../assets/logo-dark.svg";
   }
 
   /* 2. Lógica para Modo Oscuro (Nativo del sistema) */
-  @media (prefers-color-scheme: dark) {
+  html.dark  {
     .logo-light {
       display: none !important;
     }
