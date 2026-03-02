@@ -1,0 +1,74 @@
+<div id="tsparticles"></div>
+
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadSlim } from "@tsparticles/slim";
+
+  async function initParticles() {
+    // 1. Cargamos solo lo necesario (slim) para que la web vuele
+    await loadSlim(tsParticles);
+
+    // 2. Cargamos la configuración
+    await tsParticles.load({
+      id: "tsparticles",
+      options: {
+        background: {
+          color: "transparent", // Para que no tape tu fondo actual
+        },
+        fullScreen: {
+          enable: true,
+          zIndex: -1, // Se queda al fondo de todo
+        },
+        particles: {
+          number: {
+            value: 80,
+            density: { enable: true, width: 1920, height: 1080 },
+          },
+          color: { value: "#f97316" }, // El naranja de Toastro
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: { min: 1, max: 3 } },
+          links: {
+            enable: true,
+            distance: 150,
+            color: "#b4b4b4", // Un naranja más intenso para los enlaces
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 2,
+            direction: "none",
+            outModes: { default: "out" },
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "push" },
+          },
+          modes: {
+            grab: { distance: 140, links: { opacity: 1 } },
+            push: { quantity: 4 },
+          },
+        },
+        retina_detect: true,
+      },
+    });
+  }
+
+  // Inicializar al cargar y si usas View Transitions
+  initParticles();
+  document.addEventListener("astro:after-swap", initParticles);
+</script>
+
+<style>
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite hacer clic en botones debajo */
+  }
+</style>
