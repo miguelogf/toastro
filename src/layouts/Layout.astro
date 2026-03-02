@@ -64,6 +64,26 @@ import "@fontsource/fira-code";
       document.documentElement.classList.toggle("dark", theme !== "light");
       localStorage.setItem("theme", theme);
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Toastro",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "A high-performance, minimalist toast notification library specifically designed for Astro and NextJS projects.",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "1"
+        }
+      }
+    </script>
   </head>
   <body>
     <slot />

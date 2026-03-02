@@ -37,59 +37,68 @@ import Button from "../components/Button.astro";
       <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
       </div>
       <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("btn-toast");
-    
-    // 1. Pool de opciones usando TUS clases de global.css
-    const toastOptions = [
-      { 
-        message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
-        type: "warning",
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>`,
-        variant: "glass", 
-      },
-      { 
-        message: "Successfully deployed to Vercel",
-        type: "success",
-        variant: "outline", 
-      },
-      {
-        message: "Warning: Low disk space",
-        type: "warning",
-        variant: "solid",
-      },
-      { 
-        message: "Authentication error occurred", 
-        type: "danger", 
-        variant: "solid", 
-      },
-      
-      { 
-        message: "🍞✨ A minimal toast for Astro", 
-        type: "accent", 
-        icon: "", // Sin icono"",
-        variant: "gradient",
-        gradientColors: ["#f97316", "#ec4899"],
-      },
-
-    ];
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        // 2. Selección aleatoria
-        const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("btn-toast");
         
-        // 3. Llamada a la función global (asegurando que existe)
-        if (window.showToast) {
-          window.showToast(randomConfig as any);
+        // 1. Pool de opciones usando TUS clases de global.css
+        const toastOptions = [
+          { 
+            message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+            type: "warning",
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>`,
+            variant: "glass", 
+          },
+          { 
+            message: "Successfully deployed to Vercel",
+            type: "success",
+            variant: "outline", 
+          },
+          {
+            message: "Warning: Low disk space",
+            type: "warning",
+            variant: "solid",
+          },
+          { 
+            message: "Authentication error occurred", 
+            type: "danger", 
+            variant: "solid", 
+          },
+          
+          { 
+            message: "🍞✨ A minimal toast for Astro", 
+            type: "accent", 
+            icon: "", // Sin icono"",
+            variant: "gradient",
+            gradientColors: ["#f97316", "#ec4899"],
+          },
+
+        ];
+        if (btn) {
+          btn.addEventListener("click", () => {
+            // 2. Selección aleatoria
+            const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
+            
+            // 3. Llamada a la función global (asegurando que existe)
+            if (window.showToast) {
+              window.showToast(randomConfig as any);
+            }
+          });
         }
       });
-    }
-  });
-</script>
-    </section>
-  </main>
-</div>
+        </script>
+      </section>
+      <!-- <section id="install">
+        <h2>Quick Start: Install Toastro in 30 seconds</h2>
+        <p>The most lightweight <strong>Astro toast library</strong> for your next project.</p>
+        
+        <div class="code-block">
+          <pre><code>npm install toastro</code></pre>
+          <button onclick="copyToClipboard('npm install toastro')">Copy</button>
+        </div>
+      </section> -->
+    </main>
+  </div>
+
 <ToastContainer />
 
 
