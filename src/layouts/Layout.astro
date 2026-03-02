@@ -7,21 +7,49 @@ import "@fontsource/fira-code";
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- <script is:inline>
-      // Este script evita el "flash" blanco al cargar
-      const theme = (() => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      })();
-      document.documentElement.setAttribute("data-theme", theme);
-    </script> -->
+    <!-- Base -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>toastro — Minimal toast for Astro</title>
+    <meta
+      name="description"
+      content="Minimal, agnostic and elegant toast component for Astro."
+    />
+    <meta name="author" content="mogf.dev" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href="https://toastro.vercel.app" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="toastro — Minimal toast for Astro" />
+    <meta
+      property="og:description"
+      content="Minimal, agnostic and elegant toast component for Astro."
+    />
+    <meta property="og:url" content="https://toastro.vercel.app" />
+    <meta
+      property="og:image"
+      content="https://toastro.vercel.app/og-image.png"
+    />
+    <meta property="og:site_name" content="toastro" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="toastro — Minimal toast for Astro" />
+    <meta
+      name="twitter:description"
+      content="Minimal, agnostic and elegant toast component for Astro."
+    />
+    <meta
+      name="twitter:image"
+      content="https://toastro.vercel.app/og-image.png"
+    />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Theme init (evita flicker) -->
     <script is:inline>
       const theme = (() => {
         if (
@@ -30,23 +58,12 @@ import "@fontsource/fira-code";
         ) {
           return localStorage.getItem("theme");
         }
-        // Por defecto, forzamos DARK
         return "dark";
       })();
 
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-      window.localStorage.setItem("theme", theme);
+      document.documentElement.classList.toggle("dark", theme !== "light");
+      localStorage.setItem("theme", theme);
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>toastro - Minimal toast for Astro</title>
   </head>
   <body>
     <slot />
