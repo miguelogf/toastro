@@ -162,4 +162,22 @@ import { TOAST_ICONS } from "../utils/icons";
       transform: translateY(10px) scale(0.95);
     }
   }
+
+  @media (max-width: 640px) {
+    .toast-container {
+      right: 0;
+      left: 0;
+      bottom: 1.5rem;
+      align-items: center; /* Centramos los toasts en móvil */
+      padding: 0 1rem; /* Espaciado lateral para que no toquen los bordes */
+    }
+
+    .toast {
+      max-width: 280px; /* Aún más compacto en pantallas pequeñas */
+      padding: 0.5rem 0.85rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      /* Opcional: Centrar el contenido si es muy corto */
+      justify-content: center;
+    }
+  }
 </style>

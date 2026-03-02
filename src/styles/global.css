@@ -37,14 +37,16 @@
 /* GRADIENT */
 .variant--gradient {
   border: 1px solid transparent; 
-  color: var(--text-color);
+  /* Usamos el color de texto que prefieras para gradientes */
+  color: var(--text-color); 
   
-  /* Usar un fondo con dos capas: una para el fondo interno y otra para el borde */
   background: 
-    linear-gradient(var(--bg-color), var(--bg-color)) padding-box, /* Fondo interno */
-    var(--badge-gradient, linear-gradient(90deg, #f97316, #e50a64)) border-box; /* Fondo del borde */
+    /* Fondo interno (Cámbialo al color de fondo de mogf.dev si es oscuro) */
+    linear-gradient(var(--bg-color, #121212), var(--bg-color, #121212)) padding-box, 
+    /* AQUÍ ESTABA EL ERROR: Cambiamos --badge-gradient por --toast-gradient */
+    var(--toast-gradient, linear-gradient(90deg, #f97316, #e50a64)) border-box; 
+    
   backdrop-filter: blur(10px);
-  /* Asegurar que el fondo no se repita y cubra todo */
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
