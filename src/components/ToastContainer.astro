@@ -1,66 +1,92 @@
 <div id="toast-container" class="toast-container"></div>
 
-<script>
-  // Contenedor fijo
-  const container = document.getElementById("toast-container");
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
 
-  // Función global para mostrar toast
-  window.showToast = function ({
-    message,
-    variant = "default",
-    theme = "solid",
-    color,
-    gradientColors = ["#6366f1", "#ec4899"],
-    duration = 3000,
-  }) {
-    const toast = document.createElement("div");
-    toast.className = `toast variant variant--${variant} theme--${theme}`;
+    window.showToast = function ({
+      message,
+      variant = "default",
+      theme = "solid",
+      color,
+      gradientColors,
+      duration = 4000,
+    }) {
+      const toast = document.createElement("div");
 
-    // Variables CSS
-    if (color) toast.style.setProperty("--variant-color", color);
-    if (gradientColors)
-      toast.style.setProperty(
-        "--badge-gradient",
-        `linear-gradient(90deg, ${gradientColors.join(",")})`,
-      );
+      toast.className = `toast variant--${variant} theme--${theme}`;
 
-    toast.textContent = message;
-    container.appendChild(toast);
+      // Variables CSS dinámicas
+      if (color) {
+        toast.style.setProperty("--variant-color", color);
+      }
 
-    // Animación de entrada
-    toast.style.animation = `slide-in 0.3s forwards`;
+      if (gradientColors?.length) {
+        toast.style.setProperty(
+          "--toast-gradient",
+          `linear-gradient(90deg, ${gradientColors.join(",")})`,
+        );
+      }
 
-    // Animación de salida
-    setTimeout(() => {
-      toast.style.animation = `slide-out 0.3s forwards`;
-      toast.addEventListener("animationend", () => toast.remove());
-    }, duration);
-  };
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      // Forzar reflow para que la animación funcione siempre
+      void toast.offsetWidth;
+
+      toast.style.animation = "slide-in 0.3s forwards";
+
+      setTimeout(() => {
+        toast.style.animation = "slide-out 0.3s forwards";
+        toast.addEventListener(
+          "animationend",
+          () => {
+            toast.remove();
+          },
+          { once: true },
+        );
+      }, duration);
+    };
+  });
 </script>
 
-<style>
+<style is:global>
   .toast-container {
     position: fixed;
-    top: 1rem;
+    bottom: 1rem;
     right: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
     z-index: 9999;
+    pointer-events: none;
   }
 
   .toast {
+    pointer-events: auto;
+
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid transparent;
+    gap: 0.75rem;
+
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+
+    background: var(--bg-color);
+    color: var(--text-color);
+
+    border: 1px solid var(--text-color);
+
     font-size: 0.875rem;
-    line-height: 1.2;
-    min-width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    width: auto;
+    max-width: 90vw;
+
+    box-shadow: 0 10px 25px rgba(69, 69, 69, 0.15);
+
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateY(20px);
   }
 
   @keyframes slide-in {

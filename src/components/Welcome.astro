@@ -4,6 +4,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 import "../styles/global.css";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
+import Button from "../components/Button.astro";
 ---
 
 <div id="container">
@@ -33,27 +34,26 @@ import logoDark from "../assets/logo-dark.svg";
         <span class="text-gradient-orange">toast</span> for
         <span class="text-gradient-pink">Astro.</span>
       </h2>
-      <!-- <ToastContainer />
-        <button id="btn-success">Mostrar Toast Success</button>
-        <button id="btn-gradient">Mostrar Toast Gradient</button>
-
-        <script>
-          document.getElementById("btn-success").addEventListener("click", () => {
-            window.showToast({ message: "¡Éxito!", variant: "success" });
-          });
-
-          document
-            .getElementById("btn-gradient")
-            .addEventListener("click", () => {
-              window.showToast({
-                message: "Gradient!",
-                theme: "gradient",
-                gradientColors: ["#22c55e", "#16a34a"],
-              });
+      <div class="buttons">
+      <Button id="btn-toast" >Show toast</Button>
+      <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const btn = document.getElementById("btn-toast");
+          if (btn) {
+            btn.addEventListener("click", () => {
+              window.showToast({ message: "Coming Soon!" });
             });
-        </script> -->
+          }
+        });
+      </script>
     </section>
   </main>
+</div>
+<ToastContainer />
+<div class="toast-test">
+  Test
 </div>
 
 <style>
@@ -125,6 +125,11 @@ import logoDark from "../assets/logo-dark.svg";
     font-weight: 700;
   }
 
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
     /* Responsive - Tablet (768px y menores) */
   @media (max-width: 768px) {
     .hero {
@@ -133,7 +138,7 @@ import logoDark from "../assets/logo-dark.svg";
     }
 
     .description {
-      font-size: 15rem;
+      font-size: 2.5rem;
       padding: 0 0.75rem;
     }
   }
