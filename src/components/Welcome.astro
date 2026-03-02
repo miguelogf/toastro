@@ -11,25 +11,17 @@ import logoDark from "../assets/logo-dark.svg";
     <div class="blur-gradient"></div>
     <section class="hero">
       <Badge
-        label="Comming Soon"
+        label="Coming Soon"
         theme="gradient"
         color="var(--accent-toast)"
         gradientColors={["#f97316", "#e50a64"]}
       />
       <!-- <img src={logoLight} alt="Logo claro" class="block dark:hidden" />
-      <img src={logoDark} alt="Logo oscuro" class="hidden dark:block" /> -->
+        <img src={logoDark} alt="Logo oscuro" class="hidden dark:block" /> -->
       <div class="logo-container">
         <h1 class="logo-text">
-          <img
-            src={logoDark.src}
-            alt="Logo"
-            class="logo-dark block dark:hidden"
-          />
-          <img
-            src={logoLight.src}
-            alt="Logo"
-            class="logo-light hidden dark:block"
-          />
+          <img src={logoDark.src} alt="Logo" class="logo-dark" />
+          <img src={logoLight.src} alt="Logo" class="logo-light" />
           toas<span class="text-gradient-toastro">tro</span>
         </h1>
       </div>
@@ -39,43 +31,29 @@ import logoDark from "../assets/logo-dark.svg";
         <span class="text-gradient-pink">Astro.</span>
       </h2>
       <!-- <ToastContainer />
-      <button id="btn-success">Mostrar Toast Success</button>
-      <button id="btn-gradient">Mostrar Toast Gradient</button>
+        <button id="btn-success">Mostrar Toast Success</button>
+        <button id="btn-gradient">Mostrar Toast Gradient</button>
 
-      <script>
-        document.getElementById("btn-success").addEventListener("click", () => {
-          window.showToast({ message: "¡Éxito!", variant: "success" });
-        });
-
-        document
-          .getElementById("btn-gradient")
-          .addEventListener("click", () => {
-            window.showToast({
-              message: "Gradient!",
-              theme: "gradient",
-              gradientColors: ["#22c55e", "#16a34a"],
-            });
+        <script>
+          document.getElementById("btn-success").addEventListener("click", () => {
+            window.showToast({ message: "¡Éxito!", variant: "success" });
           });
-      </script> -->
+
+          document
+            .getElementById("btn-gradient")
+            .addEventListener("click", () => {
+              window.showToast({
+                message: "Gradient!",
+                theme: "gradient",
+                gradientColors: ["#22c55e", "#16a34a"],
+              });
+            });
+        </script> -->
     </section>
   </main>
 </div>
 
 <style>
-  /* Por defecto (light mode) */
-  .logo-dark {
-    display: block;
-  }
-  .logo-light {
-    display: none;
-  }
-  /* Cuando el dark mode está activo */
-  :root[data-theme="dark"] .logo-light {
-    display: none;
-  }
-  :root[data-theme="dark"] .logo-dark {
-    display: block;
-  }
   .hero {
     display: flex;
     flex-direction: column;
@@ -84,8 +62,23 @@ import logoDark from "../assets/logo-dark.svg";
   }
   .logo-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+  }
+  /* 1. Lógica de visibilidad por defecto (Modo Claro) */
+  .logo-dark {
+    display: none !important;
+  }
+  .logo-light {
+    display: block !important;
+  }
+
+  /* 2. Lógica para Modo Oscuro (Nativo del sistema) */
+  @media (prefers-color-scheme: dark) {
+    .logo-light {
+      display: none !important;
+    }
+    .logo-dark {
+      display: block !important;
+    }
   }
   .logo-text {
     display: inline-flex;
@@ -100,10 +93,11 @@ import logoDark from "../assets/logo-dark.svg";
     margin-right: 0.5rem;
   }
   .description {
-    font-size: 1.75rem;
-    font-weight: 300;
+    font-size: 3rem;
+    font-weight: 200;
     margin: 0;
     text-align: center; /* centra el texto */
+    opacity: 0.9;
   }
 
   .text-gradient-toastro {
@@ -123,4 +117,37 @@ import logoDark from "../assets/logo-dark.svg";
     -webkit-text-fill-color: transparent;
     font-weight: 700;
   }
+
+    /* Responsive - Tablet (768px y menores) */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 0 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .description {
+      font-size: 2rem;
+      padding: 0 0.75rem;
+    }
+  }
+
+  /* Responsive - Móvil (480px y menores) */
+  @media (max-width: 480px) {
+    .hero {
+      padding: 0 1rem;
+      gap: 0.5rem;
+    }
+
+    .logo-text {
+      font-size: 2.5rem;
+    }
+
+    .logo-text img {
+      width: 2rem;
+    }
+
+    .description {
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+    }
 </style>

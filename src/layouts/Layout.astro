@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "@fontsource-variable/montserrat";
 ---
 
 <!doctype html>
@@ -37,8 +38,8 @@ import "../styles/global.css";
   /* Usamos is:global para que afecte a toda la web */
   :root {
     /* Valores por defecto (Light Mode) */
-    --bg-color: #ffffff;
-    --text-color: #000000;
+    --bg-color: #ededed;
+    --text-color: #060606;
     --accent-toast: #f97316;
   }
 
@@ -46,7 +47,7 @@ import "../styles/global.css";
     :root {
       /* Valores para Dark Mode */
       --bg-color: #000000;
-      --text-color: #ffffff;
+      --text-color: #ededed;
     }
   }
 
@@ -59,7 +60,7 @@ import "../styles/global.css";
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 1s ease; /* Transición suave */
-    font-family: "Montserrat", system-ui, sans-serif; /* Tipografía limpia */
+    font-family: "Montserrat Variable", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
