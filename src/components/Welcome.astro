@@ -19,9 +19,13 @@ import logoDark from "../assets/logo-dark.svg";
       <!-- <img src={logoLight} alt="Logo claro" class="block dark:hidden" />
         <img src={logoDark} alt="Logo oscuro" class="hidden dark:block" /> -->
       <div class="logo-container">
-        <h1 class="logo-text">
+        <div class="logo-wrapper">
           <img src={logoDark.src} alt="Logo" class="logo-dark" />
           <img src={logoLight.src} alt="Logo" class="logo-light" />
+        </div>
+          
+        <h1 class="logo-text">
+          
           toas<span class="text-gradient-toastro">tro</span>
         </h1>
       </div>
@@ -62,6 +66,11 @@ import logoDark from "../assets/logo-dark.svg";
   }
   .logo-container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem; /* espacio entre el logo y el texto */
+    
+    
   }
   /* 1. Lógica de visibilidad por defecto (Modo Claro) */
   .logo-dark {
@@ -87,17 +96,15 @@ import logoDark from "../assets/logo-dark.svg";
     letter-spacing: -1px;
     margin: 1rem 0;
   }
-  .logo-text img {
+  .logo-wrapper {
     width: 2rem; /* ajusta el tamaño del icono */
     height: auto;
-    margin-right: 0.5rem;
   }
   .description {
     font-size: 3rem;
     font-weight: 200;
     margin: 0;
     text-align: center; /* centra el texto */
-    opacity: 0.9;
   }
 
   .text-gradient-toastro {
@@ -147,7 +154,7 @@ import logoDark from "../assets/logo-dark.svg";
     }
 
     .description {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       padding: 0 0.5rem;
     }
 </style>
