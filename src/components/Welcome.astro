@@ -43,13 +43,30 @@ import Button from "../components/Button.astro";
     // 1. Pool de opciones usando TUS clases de global.css
     const toastOptions = [
       { 
-        message: "🍞 ¡Éxito! Tostada perfectamente dorada.", 
-        type: "default", 
+        message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+        type: "default",
         variant: "glass", 
       },
       { 
-        message: "✨ Toastro es el futuro de Astro.", 
+        message: "Successfully deployed to Vercel",
+        type: "success",
+        variant: "outline", 
+      },
+      {
+        message: "Warning: Low disk space",
+        type: "warning",
+        variant: "solid",
+      },
+      { 
+        message: "Authentication error occurred", 
+        type: "danger", 
+        variant: "solid", 
+      },
+      
+      { 
+        message: "✨ Toastro - a minimal toast for Astro", 
         type: "accent", 
+        icon: "", // Sin icono"",
         variant: "gradient",
         gradientColors: ["#f97316", "#e50a64"] // Para tu --badge-gradient
       },
@@ -63,7 +80,7 @@ import Button from "../components/Button.astro";
         
         // 3. Llamada a la función global (asegurando que existe)
         if (window.showToast) {
-          window.showToast(randomConfig);
+          window.showToast(randomConfig as any);
         }
       });
     }

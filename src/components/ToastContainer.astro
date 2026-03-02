@@ -1,6 +1,10 @@
+---
+import { TOAST_ICONS } from "../utils/icons";
+---
+
 <div id="toast-container" class="toast-container"></div>
 
-<script is:inline>
+<script is:inline define:vars={{ TOAST_ICONS }}>
   document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("toast-container");
     if (!container) return;
@@ -9,13 +13,15 @@
       message,
       type = "default",
       variant = "solid",
+      icon = undefined, // Puede ser string (SVG), null o undefined
       color,
       gradientColors,
       duration = 4000,
     }) {
       const toast = document.createElement("div");
 
-      toast.className = `toast type--${type} variant--${variant}`;
+      // Mantenemos tus clases exactas
+      toast.className = `toast type type--${type} variant--${variant}`;
 
       // Variables CSS dinámicas
       if (color) {
@@ -29,12 +35,24 @@
         );
       }
 
-      toast.textContent = message;
+      // --- Lógica de Icono (Mejorada) ---
+      let iconHTML = "";
+      if (icon !== null) {
+        // 1. Icono personalizado (string) | 2. Icono por type de la carpeta utils | 3. Default
+        iconHTML =
+          typeof icon === "string"
+            ? icon
+            : TOAST_ICONS[type] || TOAST_ICONS.default;
+      }
+
+      toast.innerHTML = `
+        ${iconHTML ? `<div class="toast-icon">${iconHTML}</div>` : ""}
+        <div class="toast-content">${message}</div>
+      `;
+
       container.appendChild(toast);
 
-      // Forzar reflow para que la animación funcione siempre
       void toast.offsetWidth;
-
       toast.style.animation = "slide-in 0.3s forwards";
 
       setTimeout(() => {
@@ -55,40 +73,53 @@
   .toast-container {
     position: fixed;
     bottom: 2rem;
-    right: 2rem; /* Lo anclamos a la derecha */
+    right: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.75rem;
     z-index: 9999;
     pointer-events: none;
-    width: auto;
-    max-width: 400px;
   }
 
   .toast {
     pointer-events: auto;
-
     display: flex;
     align-items: center;
     gap: 0.75rem;
-
-    padding: 1rem 1.25rem;
-    border-radius: 16px;
-
+    padding: 0.75rem 1.25rem; /* Ajustado para que se vea más pro */
+    border-radius: 12px;
     font-size: 0.875rem;
-
-    width: auto;
-    max-width: 90vw;
-
+    font-weight: 500;
+    width: fit-content;
+    max-width: 350px;
     box-shadow: 0 10px 25px rgba(100, 100, 100, 0.25);
-
     opacity: 0;
-    transform: translateY(20px);
-    text-align: center;
+    /* Eliminamos el text-align center para que con icono se vea ordenado */
   }
 
-  @keyframes slide-in {
+  .toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: currentColor; /* Importante: hereda el color del texto */
+  }
+
+  .toast-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5px;
+  }
+
+  .toast-content {
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  /* @keyframes slide-in {
     from {
       opacity: 0;
       transform: translateX(100%);
@@ -107,6 +138,28 @@
     to {
       opacity: 0;
       transform: translateX(100%);
+    }
+  } */
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(10px) scale(0.95);
     }
   }
 </style>

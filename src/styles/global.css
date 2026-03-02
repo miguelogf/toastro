@@ -4,7 +4,7 @@
   --type-danger:  #dc3545;
   --type-info:    #0d6efd;
   --type-accent:  #e50a64;
-  --type-default: var(--bg-color);
+  --type-default: #c4c44c4;
 }
 
 /* TYPES */
@@ -21,7 +21,7 @@
 
 /* SOLID */
 .variant--solid {
-  color: var(--text-color);
+  color: var(--type-color);
   background: color-mix(in srgb, var(--type-color) 20%, transparent);
   border: 1px solid transparent;
 }
@@ -33,7 +33,6 @@
   outline: 1px solid var(--type-color);
   outline-offset: -1px;
 }
-
 
 /* GRADIENT */
 .variant--gradient {
