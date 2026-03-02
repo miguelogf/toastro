@@ -7,19 +7,19 @@
 
     window.showToast = function ({
       message,
-      variant = "default",
-      theme = "solid",
+      type = "default",
+      variant = "solid",
       color,
       gradientColors,
       duration = 4000,
     }) {
       const toast = document.createElement("div");
 
-      toast.className = `toast variant--${variant} theme--${theme}`;
+      toast.className = `toast type--${type} variant--${variant}`;
 
       // Variables CSS dinámicas
       if (color) {
-        toast.style.setProperty("--variant-color", color);
+        toast.style.setProperty("--type-color", color);
       }
 
       if (gradientColors?.length) {
@@ -54,13 +54,16 @@
 <style is:global>
   .toast-container {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2rem;
+    right: 2rem; /* Lo anclamos a la derecha */
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 0.75rem;
     z-index: 9999;
     pointer-events: none;
+    width: auto;
+    max-width: 400px;
   }
 
   .toast {
@@ -73,20 +76,16 @@
     padding: 1rem 1.25rem;
     border-radius: 16px;
 
-    background: var(--bg-color);
-    color: var(--text-color);
-
-    border: 1px solid var(--text-color);
-
     font-size: 0.875rem;
 
     width: auto;
     max-width: 90vw;
 
-    box-shadow: 0 10px 25px rgba(69, 69, 69, 0.15);
+    box-shadow: 0 10px 25px rgba(100, 100, 100, 0.25);
 
     opacity: 0;
     transform: translateY(20px);
+    text-align: center;
   }
 
   @keyframes slide-in {

@@ -12,12 +12,10 @@ import Button from "../components/Button.astro";
     <section class="hero">
       <Badge
         label="Coming Soon"
-        theme="gradient"
+        variant="gradient"
         color="var(--accent-toast)"
         gradientColors={["#f97316", "#e50a64"]}
       />
-      <!-- <img src={logoLight} alt="Logo claro" class="block dark:hidden" />
-        <img src={logoDark} alt="Logo oscuro" class="hidden dark:block" /> -->
       <div class="logo-container">
         <div class="logo-wrapper">
           <img src={logoDark.src} alt="Logo" class="logo-dark" />
@@ -26,7 +24,7 @@ import Button from "../components/Button.astro";
           
         <h1 class="logo-text">
           
-          toas<span class="text-gradient-toastro">tro</span>
+          toast<span class="text-gradient-toastro">ro</span>
         </h1>
       </div>
       <h2 class="description">
@@ -39,19 +37,44 @@ import Button from "../components/Button.astro";
       <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
       </div>
       <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const btn = document.getElementById("btn-toast");
-          if (btn) {
-            btn.addEventListener("click", () => {
-              window.showToast({ message: "Coming Soon!" });
-            });
-          }
-        });
-      </script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btn-toast");
+    
+    // 1. Pool de opciones usando TUS clases de global.css
+    const toastOptions = [
+      { 
+        message: "🍞 ¡Éxito! Tostada perfectamente dorada.", 
+        type: "default", 
+        variant: "glass", 
+      },
+      { 
+        message: "✨ Toastro es el futuro de Astro.", 
+        type: "accent", 
+        variant: "gradient",
+        gradientColors: ["#f97316", "#e50a64"] // Para tu --badge-gradient
+      },
+
+    ];
+
+    if (btn) {
+      btn.addEventListener("click", () => {
+        // 2. Selección aleatoria
+        const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
+        
+        // 3. Llamada a la función global (asegurando que existe)
+        if (window.showToast) {
+          window.showToast(randomConfig);
+        }
+      });
+    }
+  });
+</script>
     </section>
   </main>
 </div>
 <ToastContainer />
+
+
 
 <style>
   .hero {
@@ -116,7 +139,7 @@ import Button from "../components/Button.astro";
     font-weight: 700;
   }
   .text-gradient-pink {
-    background: linear-gradient(to right, #ec4899, #bf0055);
+    background: linear-gradient(to right, #ff000e, #bf0055);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;

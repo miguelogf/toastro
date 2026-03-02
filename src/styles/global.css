@@ -1,48 +1,86 @@
 :root {
-  --variant-success: #198754;
-  --variant-warning: #ed931b;
-  --variant-danger:  #dc3545;
-  --variant-info:    #0d6efd;
-  --variant-accent:  #e50a64;
-  --variant-default: #848484;
+  --type-success: #198754;
+  --type-warning: #ed931b;
+  --type-danger:  #dc3545;
+  --type-info:    #0d6efd;
+  --type-accent:  #e50a64;
+  --type-default: var(--bg-color);
 }
 
-/* VARIANTS */
-.variant {
-  --variant-color: var(--variant-default);
+/* TYPES */
+.type {
+  --type-color: var(--type-default);
 }
 
-.variant--success { --variant-color: var(--variant-success); }
-.variant--warning { --variant-color: var(--variant-warning); }
-.variant--danger  { --variant-color: var(--variant-danger); }
-.variant--info    { --variant-color: var(--variant-info); }
-.variant--accent  { --variant-color: var(--variant-accent); }
-.variant--default { --variant-color: var(--variant-default); }
+.type--success { --type-color: var(--type-success); }
+.type--warning { --type-color: var(--type-warning); }
+.type--danger  { --type-color: var(--type-danger); }
+.type--info    { --type-color: var(--type-info); }
+.type--accent  { --type-color: var(--type-accent); }
+.type--default { --type-color: var(--type-default); }
 
 /* SOLID */
-.theme--solid {
-  color: var(--variant-color);
-  background: color-mix(in srgb, var(--variant-color) 20%, transparent);
+.variant--solid {
+  color: var(--text-color);
+  background: color-mix(in srgb, var(--type-color) 20%, transparent);
   border: 1px solid transparent;
 }
 
 /* OUTLINE */
-.theme--outline {
-  color: var(--variant-color);
+.variant--outline {
+  color: var(--type-color);
   background: transparent;
-  outline: 1px solid var(--variant-color);
+  outline: 1px solid var(--type-color);
   outline-offset: -1px;
 }
 
+
 /* GRADIENT */
-.theme--gradient {
+.variant--gradient {
+  border: 1px solid transparent; 
+  color: var(--text-color);
+  
+  /* Usar un fondo con dos capas: una para el fondo interno y otra para el borde */
+  background: 
+    linear-gradient(var(--bg-color), var(--bg-color)) padding-box, /* Fondo interno */
+    var(--badge-gradient, linear-gradient(90deg, #f97316, #e50a64)) border-box; /* Fondo del borde */
+  backdrop-filter: blur(10px);
+  /* Asegurar que el fondo no se repita y cubra todo */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* GLASS */
+.variant--glass {
+  /* Fondo muy sutil basado en el color del tipo */
+  background: color-mix(in srgb, var(--toast-color) 8%, transparent);
+  
+  /* El efecto de desenfoque de fondo */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Soporte para Safari/iOS */
+  
+  /* Borde sutil que brilla */
+  border: 1px solid color-mix(in srgb, var(--toast-color) 20%, transparent);
+  
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+  
+  /* El texto debe ser legible: o el color del tipo o el color de texto general */
+  color: var(--text-color); 
+}
+
+/* GHOST */
+.variant--ghost {
+  background: transparent;
   border: 1px solid transparent;
-  color: var(--text-color) /* !important */;
-  background:
-    linear-gradient(var(--bg-color), var(--bg-color))
-      padding-box,
-    var(--badge-gradient) border-box;
-    backdrop-filter: blur(10px);
+  color: var(--toast-color);
+  /* Un toque de suavidad */
+  padding: 0.5rem 1rem;
+  transition: background 0.2s ease;
+}
+/* Opcional: un ligero tinte al pasar el mouse */
+.variant--ghost:hover {
+  background: color-mix(in srgb, var(--toast-color) 10%, transparent);
 }
 
 html {

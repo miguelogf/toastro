@@ -1,8 +1,8 @@
 ---
 interface Props {
   label: string;
-  variant?: "default" | "success" | "warning" | "danger" | "info" | "accent";
-  theme?: "solid" | "outline" | "gradient";
+  type?: "default" | "success" | "warning" | "danger" | "info" | "accent";
+  variant?: "solid" | "outline" | "gradient" | "glass";
   color?: string;
   gradientColors?: string[];
   textColor?: string;
@@ -10,8 +10,8 @@ interface Props {
 
 const {
   label,
-  variant = "default",
-  theme = "solid",
+  type = "default",
+  variant = "solid",
   color,
   gradientColors = ["#6366f1", "#ec4899"],
   textColor,
@@ -20,13 +20,13 @@ const {
 const gradient = `linear-gradient(90deg, ${gradientColors.join(",")})`;
 
 const style = `
-  ${color ? `--variant-color: ${color};` : ""}
+  ${color ? `--type-color: ${color};` : ""}
   ${textColor ? `--badge-text: ${textColor};` : ""}
   --badge-gradient: ${gradient};
 `;
 ---
 
-<span class={`badge variant variant--${variant} theme--${theme}`} style={style}>
+<span class={`badge type--${type} variant--${variant}`} style={style}>
   {label}
 </span>
 
@@ -40,7 +40,7 @@ const style = `
     border-radius: 999px;
     line-height: 1;
     border: 1px solid transparent;
-    color: var(--variant-color);
+    color: var(--type-color);
     font-family: "Fira Code", monospace;
   }
 </style>
