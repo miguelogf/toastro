@@ -1,0 +1,87 @@
+<div id="toast-container" class="toast-container"></div>
+
+<script>
+  // Contenedor fijo
+  const container = document.getElementById("toast-container");
+
+  // Función global para mostrar toast
+  window.showToast = function ({
+    message,
+    variant = "default",
+    theme = "solid",
+    color,
+    gradientColors = ["#6366f1", "#ec4899"],
+    duration = 3000,
+  }) {
+    const toast = document.createElement("div");
+    toast.className = `toast variant variant--${variant} theme--${theme}`;
+
+    // Variables CSS
+    if (color) toast.style.setProperty("--variant-color", color);
+    if (gradientColors)
+      toast.style.setProperty(
+        "--badge-gradient",
+        `linear-gradient(90deg, ${gradientColors.join(",")})`,
+      );
+
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    // Animación de entrada
+    toast.style.animation = `slide-in 0.3s forwards`;
+
+    // Animación de salida
+    setTimeout(() => {
+      toast.style.animation = `slide-out 0.3s forwards`;
+      toast.addEventListener("animationend", () => toast.remove());
+    }, duration);
+  };
+</script>
+
+<style>
+  .toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 9999;
+  }
+
+  .toast {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    min-width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+</style>

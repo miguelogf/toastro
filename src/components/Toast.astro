@@ -1,0 +1,72 @@
+---
+interface Props {
+  message: string;
+  variant?: "default" | "success" | "warning" | "danger" | "info" | "accent";
+  theme?: "solid" | "outline" | "gradient";
+  color?: string;
+  gradientColors?: string[];
+  duration?: number; // ms antes de desaparecer
+}
+
+const {
+  message,
+  variant = "default",
+  theme = "solid",
+  color,
+  gradientColors = ["#6366f1", "#ec4899"],
+  duration = 3000,
+} = Astro.props;
+
+// Variables CSS
+const gradient = `linear-gradient(90deg, ${gradientColors.join(",")})`;
+const style = `
+  ${color ? `--variant-color: ${color};` : ""}
+  --badge-gradient: ${gradient};
+  animation-duration: ${duration}ms;
+`;
+---
+
+<div class={`toast variant variant--${variant} theme--${theme}`} style={style}>
+  {message}
+</div>
+
+<style>
+  .toast {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    min-width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateX(100%);
+    animation-name: slide-in;
+    animation-fill-mode: forwards;
+  }
+
+  /* Animación */
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+:root {
+  --variant-success: #198754;
+  --variant-warning: #ed931b;
+  --variant-danger:  #dc3545;
+  --variant-info:    #0d6efd;
+  --variant-accent:  #e50a64;
+  --variant-default: #848484;
+}
+
+/* VARIANTS */
+.variant {
+  --variant-color: var(--variant-default);
+}
+
+.variant--success { --variant-color: var(--variant-success); }
+.variant--warning { --variant-color: var(--variant-warning); }
+.variant--danger  { --variant-color: var(--variant-danger); }
+.variant--info    { --variant-color: var(--variant-info); }
+.variant--accent  { --variant-color: var(--variant-accent); }
+.variant--default { --variant-color: var(--variant-default); }
+
+/* SOLID */
+.theme--solid {
+  color: var(--variant-color);
+  background: color-mix(in srgb, var(--variant-color) 20%, transparent);
+  border: 1px solid transparent;
+}
+
+/* OUTLINE */
+.theme--outline {
+  color: var(--variant-color);
+  background: transparent;
+  outline: 1px solid var(--variant-color);
+  outline-offset: -1px;
+}
+
+/* GRADIENT */
+.theme--gradient {
+  border: 1px solid transparent;
+  color: var(--text-color) /* !important */;
+  background:
+    linear-gradient(var(--bg-color), var(--bg-color))
+      padding-box,
+    var(--badge-gradient) border-box;
+    backdrop-filter: blur(10px);
+}
