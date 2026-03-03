@@ -4,7 +4,9 @@ import ToastContainer from "../components/ToastContainer.astro";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
-import { ICONS } from "../utils/icons";
+
+// Nota: El import de ICONS dentro del frontmatter sirve si pasas datos a componentes,
+// pero para el <script> del cliente lo importaremos dentro del script.
 ---
 
 <section class="hero">
@@ -15,141 +17,143 @@ import { ICONS } from "../utils/icons";
       color="var(--accent-color)"
       gradientColors={["#f97316", "#f31b75"]}
     />
-    <div class="logo-container">
+
+    <div class="logo-container" aria-hidden="true">
       <div class="logo-wrapper">
-        <img src={logoDark.src} alt="Logo" class="logo-dark" />
-        <img src={logoLight.src} alt="Logo" class="logo-light" />
+        <img src={logoDark.src} alt="" class="logo-dark" />
+        <img src={logoLight.src} alt="" class="logo-light" />
       </div>
-        
-      <h1 class="logo-text">
-        
-        toast<span class="text-gradient-toastro">ro</span>
-      </h1>
+      <span class="logo-text"
+        >toast<span class="text-gradient-toastro">ro</span></span
+      >
     </div>
-    <h2 class="description">
+
+    <h1 class="hero-title">
       A beautiful and minimal<br />
       <span class="text-gradient-orange">toast</span> for
       <span class="text-gradient-pink">Astro.</span>
-    </h2>
+    </h1>
+
     <div class="buttons">
-    <Button id="btn-toast" >Toast me! ✨</Button>
-    <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
+      <Button id="btn-toast">Toast me! ✨</Button>
+      <Button
+        href="https://github.com/miguelogf/toastro"
+        variant="outline"
+        newTab
+      >
+        Documentation
+      </Button>
     </div>
-    <script>
-import { ICONS } from "../utils/icons";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("btn-toast");
-      
-      // 1. Pool de opciones usando TUS clases de global.css
-      const toastOptions = [
-        { 
-          message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
-          type: "warning",
-          icon: ICONS.sparkles,
-          variant: "glass", 
-        },
-        { 
-          message: "Successfully deployed to Vercel", 
-          type: "success", 
-          variant: "solid", 
-        },
-        {
-          message: "Warning: Low disk space",
-          type: "warning",
-          variant: "soft",
-        },
-        
-        { 
-          message: "Thanks for the support!",
-          type: "support",
-          variant: "outline", 
-        },
-        {
-            message: "New update available",
-            type: "loading", 
-            variant: "solid", 
-        },
-        { 
-          message: "🍞✨ A minimal toast for Astro", 
-          icon: "", // Sin icono"",
-          
-          variant: "gradient",
-          gradientColors: ["#6366f1", "#f31b75"],
-        },
-
-      ];
-      if (btn) {
-        btn.addEventListener("click", () => {
-          // 2. Selección aleatoria
-          const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
-          
-          // 3. Llamada a la función global (asegurando que existe)
-          if (window.showToast) {
-            window.showToast(randomConfig as any);
-          }
-        });
-      }
-    });
-    </script>
   </div>
 </section>
 
 <ToastContainer />
+
+<script>
+  import { ICONS } from "../utils/icons";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btn-toast");
+
+    const toastOptions = [
+      {
+        message: "Successfully deployed to Vercel",
+        type: "success",
+        variant: "solid",
+        icon: ICONS.success,
+      },
+      {
+        message: "Warning: Low disk space",
+        type: "warning",
+        variant: "soft",
+        icon: ICONS.warning,
+      },
+      {
+        message: "Thanks for the support!",
+        type: "support",
+        variant: "outline",
+        icon: ICONS.heart,
+      },
+      {
+        message: "New update available",
+        type: "loading",
+        variant: "solid",
+        icon: ICONS.loading,
+      },
+      {
+        message: "🍞✨ A minimal toast for Astro",
+        variant: "gradient",
+        gradientColors: ["#6366f1", "#f31b75"],
+      },
+    ];
+
+    btn?.addEventListener("click", () => {
+      const randomConfig =
+        toastOptions[Math.floor(Math.random() * toastOptions.length)];
+      window.showToast?.(randomConfig as any);
+    });
+  });
+</script>
 
 <style>
   .hero {
     min-height: 100vh;
     display: grid;
     place-items: center;
+    padding: 0 1rem;
   }
 
   .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-  }  
-  .logo-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem; /* espacio entre el logo y el texto */
-    margin-top: -1.25rem;
-  }
-  /* 1. Lógica de visibilidad por defecto (Modo Claro) */
-  .logo-dark {
-    display: none !important;
-  }
-  .logo-light {
-    display: block !important;
+    text-align: center;
+    width: 100%;
+    max-width: 800px; /* Evita que el texto se vea muy largo en monitores grandes */
+    margin: 0 auto;
+    gap: 1.5rem;
   }
 
-  /* 2. Lógica para Modo Oscuro (Nativo del sistema) */
-  html.dark .logo-light {
-    display: none !important;
+  /* LOGO */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-top: -0.75rem;
   }
-  html.dark .logo-dark {
-    display: block !important;
+
+  .logo-wrapper {
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
   }
+
   .logo-text {
-    display: inline-flex;
     font-size: 3rem;
     font-weight: 800;
     letter-spacing: -1px;
-    margin: 1rem 0;
-  }
-  .logo-wrapper {
-    width: 2rem; /* ajusta el tamaño del icono */
-    height: auto;
-  }
-  .description {
-    font-size: 3rem;
-    font-weight: 200;
-    margin: 0;
-    text-align: center; /* centra el texto */
   }
 
+  .logo-dark {
+    display: none;
+  }
+  html.dark .logo-dark {
+    display: block;
+  }
+  html.dark .logo-light {
+    display: none;
+  }
+
+  /* TÍTULO PRINCIPAL (H1) */
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Tamaño fluido según pantalla */
+    font-weight: 200;
+    margin: 0;
+    line-height: 1.1;
+    text-wrap: nowrap;
+  }
+
+  /* GRADIENTES */
   .text-gradient-toastro {
     background: linear-gradient(to right, #f97316, #ff000e, #bf0055);
     -webkit-background-clip: text;
@@ -172,37 +176,25 @@ import { ICONS } from "../utils/icons";
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
+    justify-content: center; /* Asegura que estén centrados en desktop */
+    width: 100%;
   }
-    /* Responsive - Tablet (768px y menores) */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 0 1.5rem;
-      gap: 0.75rem;
+  /* --- RESPONSIVE ADJUSTMENTS --- */
+
+  @media (max-width: 640px) {
+    .hero-title {
+      text-wrap: balance;
     }
 
-    .description {
-      font-size: 2.5rem;
-      padding: 0 0.75rem;
-    }
-  }
-
-  /* Responsive - Móvil (480px y menores) */
-  @media (max-width: 480px) {
-    .hero {
-      padding: 0 1rem;
-      gap: 0.5rem;
+    .buttons {
+      flex-direction: column;
+      align-items: stretch; /*Estira los botones al mismo ancho*/
+      gap: 0.8rem;
+      padding: 0 1rem; /* Margen interno para que no toquen los bordes */
     }
 
     .logo-text {
-      font-size: 2.5rem;
+      font-size: 2.5rem; /* Un poco más pequeño en móvil */
     }
-
-    .logo-text img {
-      width: 2rem;
-    }
-
-    .description {
-      font-size: 1.75rem;
-      padding: 0 0.5rem;
-    }
+  }
 </style>

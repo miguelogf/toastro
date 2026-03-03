@@ -3,8 +3,8 @@
   --type-warning: #ed931b;
   --type-danger:  #d32f2f;
   --type-info:    #2563eb;
-  --type-loading: #808ea2;
-  --type-support: #f31b75;
+  --type-neutral: #808ea2; /*808ea2*/
+  --type-vibrant: #f31b75;
   --type-default: #b4b4b4;
 }
 
@@ -17,8 +17,8 @@
 .type--warning { --type-color: var(--type-warning); }
 .type--danger  { --type-color: var(--type-danger); }
 .type--info    { --type-color: var(--type-info); }
-.type--loading { --type-color: var(--type-loading); }
-.type--support { --type-color: var(--type-support); }
+.type--neutral { --type-color: var(--type-neutral); }
+.type--vibrant { --type-color: var(--type-vibrant); }
 .type--default { --type-color: var(--type-default); }
 
 /* DEFAULT */

@@ -36,61 +36,66 @@ const {
 
 <style>
   .btn {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    min-width: 150px;
     padding: 0.5rem 0.25rem;
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 0.5rem;
-    transition: all 0.2s ease;
     cursor: pointer;
-    border: none;
     text-decoration: none;
-    color: inherit;
-    font-family: inherit;
-    border: none;
+    /* Usamos tu variable global de tipografía */
+    font-family: var(--font-main);
+
+    /* Transición suave alineada con tu global.css */
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .btn:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--text-color) 20%, transparent);
   }
 
+  /* --- VARIANTE PRIMARY --- */
   .btn-primary {
-    background: black;
-    color: white;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: 1px solid var(--text-color);
   }
 
   .btn-primary:hover {
-    background: #1f1f1f;
+    /* Suavizamos el color un 15% al pasar el ratón usando tu variable base */
+    background-color: color-mix(
+      in srgb,
+      var(--text-color) 85%,
+      var(--bg-color)
+    );
+    border-color: color-mix(in srgb, var(--text-color) 85%, var(--bg-color));
   }
 
+  /* --- VARIANTE OUTLINE --- */
   .btn-outline {
-    background: transparent;
-    border: 1px solid #d4d4d4;
-    color: inherit;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
   }
 
   .btn-outline:hover {
-    background: #f5f5f5;
+    /* Mezclamos el fondo actual con blanco para que "brille" o se aclare */
+    background-color: color-mix(in srgb, var(--bg-color), white 20%);
+
+    /* Hacemos el borde un poco más visible al hacer hover */
+    border-color: color-mix(in srgb, var(--text-color) 25%, transparent);
   }
 
-  :global(.dark) .btn-primary {
-    background: white;
-    color: black;
-  }
-
-  :global(.dark) .btn-primary:hover {
-    background: #e5e5e5;
-  }
-
-  :global(.dark) .btn-outline {
-    border-color: #404040;
-  }
-
+  /* Opcional: Si quieres que el efecto sea más fuerte en modo oscuro */
   :global(.dark) .btn-outline:hover {
-    background: #1f1f1f;
+    background-color: color-mix(in srgb, var(--bg-color), white 10%);
   }
 </style>
