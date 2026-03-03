@@ -1,7 +1,14 @@
 ---
 interface Props {
   label: string;
-  type?: "default" | "success" | "warning" | "danger" | "info" | "accent";
+  type?:
+    | "default"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info"
+    | "loading"
+    | "accent";
   variant?: "filled" | "soft" | "outline" | "gradient" | "glass";
   color?: string;
   gradientColors?: string[];

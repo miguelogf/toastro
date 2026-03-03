@@ -3,8 +3,8 @@
   --type-warning: #ed931b;
   --type-danger:  #d32f2f;
   --type-info:    #2563eb;
-  --type-loading: #64748b;
-  --type-accent:  #e50a64;
+  --type-loading: #808ea2;
+  --type-accent:  #f31b75;
   --type-default: #b4b4b4;
 }
 
@@ -17,6 +17,7 @@
 .type--warning { --type-color: var(--type-warning); }
 .type--danger  { --type-color: var(--type-danger); }
 .type--info    { --type-color: var(--type-info); }
+.type--loading { --type-color: var(--type-loading); }
 .type--accent  { --type-color: var(--type-accent); }
 .type--default { --type-color: var(--type-default); }
 

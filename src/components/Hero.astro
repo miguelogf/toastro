@@ -14,7 +14,7 @@ import Button from "../components/Button.astro";
         label="Coming Soon"
         variant="gradient"
         color="var(--accent-toast)"
-        gradientColors={["#f97316", "#e50a64"]}
+        gradientColors={["#f97316", "#f31b75"]}
       />
       <div class="logo-container">
         <div class="logo-wrapper">
@@ -49,23 +49,24 @@ import Button from "../components/Button.astro";
             variant: "glass", 
           },
           { 
-            message: "Successfully deployed to Vercel",
-            type: "success",
-            variant: "outline", 
+            message: "Successfully deployed to Vercel", 
+            type: "success", 
+            variant: "solid", 
           },
           {
             message: "Warning: Low disk space",
             type: "warning",
             variant: "soft",
           },
+          
           { 
-            message: "Authentication error occurred", 
-            type: "danger", 
-            variant: "solid", 
+            message: "Thanks for the support!",
+            type: "accent",
+            variant: "outline", 
           },
           {
-              message: "New message received", 
-              type: "info", 
+              message: "New update available",
+              type: "loading", 
               variant: "filled", 
           },
           { 
@@ -74,7 +75,7 @@ import Button from "../components/Button.astro";
             icon: "", // Sin icono"",
             
             variant: "gradient",
-            gradientColors: ["#6366f1", "#ec4899"],
+            gradientColors: ["#6366f1", "#f31b75"],
           },
 
         ];
