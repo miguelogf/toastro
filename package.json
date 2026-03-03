@@ -5,12 +5,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.1.0",
     "@fontsource/fira-code": "^5.1.0",
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/slim": "^3.9.1",
     "astro": "^4.16.18"
+  },
+  "engines": {
+    "node": ">=18.17.1"
   }
 }
