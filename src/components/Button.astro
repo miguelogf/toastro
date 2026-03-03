@@ -47,6 +47,7 @@ const {
     border-radius: 0.5rem;
     cursor: pointer;
     text-decoration: none;
+
     font-family: var(--font-main);
     transition:
       background-color 0.3s ease,
@@ -70,7 +71,7 @@ const {
     /* Suavizamos el color un 15% al pasar el ratón usando tu variable base */
     background-color: color-mix(
       in srgb,
-      var(--text-color) 85%,
+      var(--text-color) 90%,
       var(--bg-color)
     );
     border-color: color-mix(in srgb, var(--text-color) 85%, var(--bg-color));
@@ -84,7 +85,7 @@ const {
   }
 
   .btn-outline:hover {
-    background-color: color-mix(in srgb, var(--bg-color), white 20%);
+    background-color: color-mix(in srgb, var(--bg-color), white 25%);
     border-color: color-mix(in srgb, var(--text-color) 25%, transparent);
   }
 
