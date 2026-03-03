@@ -2,7 +2,8 @@
   --type-success: #198754;
   --type-warning: #ed931b;
   --type-danger:  #d32f2f;
-  --type-info:    #0d6efd;
+  --type-info:    #2563eb;
+  --type-loading: #64748b;
   --type-accent:  #e50a64;
   --type-default: #b4b4b4;
 }
@@ -29,7 +30,7 @@
 /* OUTLINE */
 .variant--outline {
   color: var(--type-color);
-  background: var(--bg-color);
+  background: transparent;
   outline: 1px solid var(--type-color);
   outline-offset: -1px;
 }

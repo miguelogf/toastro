@@ -33,7 +33,7 @@ import Button from "../components/Button.astro";
         <span class="text-gradient-pink">Astro.</span>
       </h2>
       <div class="buttons">
-      <Button id="btn-toast" >Show demo</Button>
+      <Button id="btn-toast" >Toast me! ✨</Button>
       <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
       </div>
       <script>
@@ -61,12 +61,12 @@ import Button from "../components/Button.astro";
           { 
             message: "Authentication error occurred", 
             type: "danger", 
-            variant: "filled", 
+            variant: "solid", 
           },
           {
               message: "New message received", 
               type: "info", 
-              variant: "solid", 
+              variant: "filled", 
           },
           { 
             message: "🍞✨ A minimal toast for Astro", 
