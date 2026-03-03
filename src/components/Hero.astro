@@ -1,128 +1,121 @@
 ---
 import Badge from "../components/Badge.astro";
 import ToastContainer from "../components/ToastContainer.astro";
-import "../styles/theme.css";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
+import { ICONS } from "../utils/icons";
 ---
 
-<div id="container">
-  <main class="text-center">
-    <section class="hero">
-      <Badge
-        label="Coming Soon"
-        variant="gradient"
-        color="var(--accent-color)"
-        gradientColors={["#f97316", "#f31b75"]}
-      />
-      <div class="logo-container">
-        <div class="logo-wrapper">
-          <img src={logoDark.src} alt="Logo" class="logo-dark" />
-          <img src={logoLight.src} alt="Logo" class="logo-light" />
-        </div>
-          
-        <h1 class="logo-text">
-          
-          toast<span class="text-gradient-toastro">ro</span>
-        </h1>
+<section class="hero">
+  <div class="hero-content">
+    <Badge
+      label="Coming Soon"
+      variant="gradient"
+      color="var(--accent-color)"
+      gradientColors={["#f97316", "#f31b75"]}
+    />
+    <div class="logo-container">
+      <div class="logo-wrapper">
+        <img src={logoDark.src} alt="Logo" class="logo-dark" />
+        <img src={logoLight.src} alt="Logo" class="logo-light" />
       </div>
-      <h2 class="description">
-        A beautiful and minimal<br />
-        <span class="text-gradient-orange">toast</span> for
-        <span class="text-gradient-pink">Astro.</span>
-      </h2>
-      <div class="buttons">
-      <Button id="btn-toast" >Toast me! ✨</Button>
-      <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
-      </div>
-      <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const btn = document.getElementById("btn-toast");
         
-        // 1. Pool de opciones usando TUS clases de global.css
-        const toastOptions = [
-          { 
-            message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
-            type: "warning",
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>`,
-            variant: "glass", 
-          },
-          { 
-            message: "Successfully deployed to Vercel", 
-            type: "success", 
-            variant: "solid", 
-          },
-          {
-            message: "Warning: Low disk space",
-            type: "warning",
-            variant: "soft",
-          },
-          
-          { 
-            message: "Thanks for the support!",
-            type: "support",
-            variant: "outline", 
-          },
-          {
-              message: "New update available",
-              type: "loading", 
-              variant: "filled", 
-          },
-          { 
-            message: "🍞✨ A minimal toast for Astro", 
-            icon: "", // Sin icono"",
-            
-            variant: "gradient",
-            gradientColors: ["#6366f1", "#f31b75"],
-          },
+      <h1 class="logo-text">
+        
+        toast<span class="text-gradient-toastro">ro</span>
+      </h1>
+    </div>
+    <h2 class="description">
+      A beautiful and minimal<br />
+      <span class="text-gradient-orange">toast</span> for
+      <span class="text-gradient-pink">Astro.</span>
+    </h2>
+    <div class="buttons">
+    <Button id="btn-toast" >Toast me! ✨</Button>
+    <Button href="https://github.com/miguelogf/toastro/tree/main" variant="outline" newTab>Documentation</Button>
+    </div>
+    <script>
+import { ICONS } from "../utils/icons";
 
-        ];
-        if (btn) {
-          btn.addEventListener("click", () => {
-            // 2. Selección aleatoria
-            const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
-            
-            // 3. Llamada a la función global (asegurando que existe)
-            if (window.showToast) {
-              window.showToast(randomConfig as any);
-            }
-          });
-        }
-      });
-        </script>
-      </section>
-      <!-- <section id="install">
-        <h2>Quick Start: Install Toastro in 30 seconds</h2>
-        <p>The most lightweight <strong>Astro toast library</strong> for your next project.</p>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("btn-toast");
+      
+      // 1. Pool de opciones usando TUS clases de global.css
+      const toastOptions = [
+        { 
+          message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 
+          type: "warning",
+          icon: ICONS.sparkles,
+          variant: "glass", 
+        },
+        { 
+          message: "Successfully deployed to Vercel", 
+          type: "success", 
+          variant: "solid", 
+        },
+        {
+          message: "Warning: Low disk space",
+          type: "warning",
+          variant: "soft",
+        },
         
-        <div class="code-block">
-          <pre><code>npm install toastro</code></pre>
-          <button onclick="copyToClipboard('npm install toastro')">Copy</button>
-        </div>
-      </section> -->
-    </main>
+        { 
+          message: "Thanks for the support!",
+          type: "support",
+          variant: "outline", 
+        },
+        {
+            message: "New update available",
+            type: "loading", 
+            variant: "solid", 
+        },
+        { 
+          message: "🍞✨ A minimal toast for Astro", 
+          icon: "", // Sin icono"",
+          
+          variant: "gradient",
+          gradientColors: ["#6366f1", "#f31b75"],
+        },
+
+      ];
+      if (btn) {
+        btn.addEventListener("click", () => {
+          // 2. Selección aleatoria
+          const randomConfig = toastOptions[Math.floor(Math.random() * toastOptions.length)];
+          
+          // 3. Llamada a la función global (asegurando que existe)
+          if (window.showToast) {
+            window.showToast(randomConfig as any);
+          }
+        });
+      }
+    });
+    </script>
   </div>
+</section>
 
 <ToastContainer />
 
-
-
 <style>
   .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .hero-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* centra horizontalmente */
-    justify-content: center; /* centra verticalmente (opcional) */
-  }
-  
+    align-items: center;
+    gap: 0.5rem;
+  }  
   .logo-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: .5rem; /* espacio entre el logo y el texto */
-    
-    
+    gap: 0.5rem; /* espacio entre el logo y el texto */
+    margin-top: -1.25rem;
   }
   /* 1. Lógica de visibilidad por defecto (Modo Claro) */
   .logo-dark {
@@ -133,13 +126,11 @@ import Button from "../components/Button.astro";
   }
 
   /* 2. Lógica para Modo Oscuro (Nativo del sistema) */
-  html.dark  {
-    .logo-light {
-      display: none !important;
-    }
-    .logo-dark {
-      display: block !important;
-    }
+  html.dark .logo-light {
+    display: none !important;
+  }
+  html.dark .logo-dark {
+    display: block !important;
   }
   .logo-text {
     display: inline-flex;

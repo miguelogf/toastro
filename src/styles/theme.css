@@ -21,19 +21,19 @@
 .type--support { --type-color: var(--type-support); }
 .type--default { --type-color: var(--type-default); }
 
-/* SOLID */
-.variant--solid {
+/* DEFAULT */
+.variant--default {
   color: var(--type-color);
   background: color-mix(in srgb, var(--bg-color), white 2.5%);
   border: 1px solid color-mix(in srgb, var(--bg-color), white 20%);
 }
 
-/* OUTLINE */
-.variant--outline {
-  color: var(--type-color);
-  background: transparent;
-  outline: 1px solid var(--type-color);
-  outline-offset: -1px;
+/* SOLID */
+.variant--solid {
+  /* Intentamos heredar un color de texto dinámico */
+  color: var(--badge-text, white) !important; 
+  background: var(--type-color);
+  border: 1px solid var(--type-color);
 }
 
 /* SOFT */
@@ -43,11 +43,27 @@
   border: 1px solid transparent;
 } 
 
-/* FILLED */
-.variant--filled {
-  color: white !important;
-  background: var(--type-color);
-  border: 1px solid var(--type-color);
+/* OUTLINE */
+.variant--outline {
+  color: var(--type-color);
+  background: transparent;
+  outline: 1px solid var(--type-color);
+  outline-offset: -1px;
+}
+
+/* GLASS */
+.variant--glass {
+  /* Fondo muy sutil basado en el color del tipo */
+  background: color-mix(in srgb, var(--toast-color) 8%, transparent);
+  /* El efecto de desenfoque de fondo */
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%); /* Soporte para Safari/iOS */
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid color-mix(in srgb, white 7.5%, transparent);
+  
+  /* El texto debe ser legible: o el color del tipo o el color de texto general */
+  color: var(--text-color); 
 }
 
 /* GRADIENT */
@@ -65,23 +81,6 @@
   backdrop-filter: blur(10px);
   background-origin: border-box;
   background-clip: padding-box, border-box;
-}
-
-/* GLASS */
-.variant--glass {
-  /* Fondo muy sutil basado en el color del tipo */
-  background: color-mix(in srgb, var(--toast-color) 8%, transparent);
-  
-  /* El efecto de desenfoque de fondo */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* Soporte para Safari/iOS */
-    
-  /* Sombra suave para dar profundidad */
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid color-mix(in srgb, var(--bg-color), white 5%);
-  
-  /* El texto debe ser legible: o el color del tipo o el color de texto general */
-  color: var(--text-color); 
 }
 
 html {
