@@ -4,7 +4,7 @@
   --type-danger:  #d32f2f;
   --type-info:    #2563eb;
   --type-loading: #808ea2;
-  --type-accent:  #f31b75;
+  --type-support: #f31b75;
   --type-default: #b4b4b4;
 }
 
@@ -18,7 +18,7 @@
 .type--danger  { --type-color: var(--type-danger); }
 .type--info    { --type-color: var(--type-info); }
 .type--loading { --type-color: var(--type-loading); }
-.type--accent  { --type-color: var(--type-accent); }
+.type--support { --type-color: var(--type-support); }
 .type--default { --type-color: var(--type-default); }
 
 /* SOLID */

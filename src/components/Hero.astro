@@ -13,7 +13,7 @@ import Button from "../components/Button.astro";
       <Badge
         label="Coming Soon"
         variant="gradient"
-        color="var(--accent-toast)"
+        color="var(--accent-color)"
         gradientColors={["#f97316", "#f31b75"]}
       />
       <div class="logo-container">
@@ -61,7 +61,7 @@ import Button from "../components/Button.astro";
           
           { 
             message: "Thanks for the support!",
-            type: "accent",
+            type: "support",
             variant: "outline", 
           },
           {
@@ -71,7 +71,6 @@ import Button from "../components/Button.astro";
           },
           { 
             message: "🍞✨ A minimal toast for Astro", 
-            type: "accent", 
             icon: "", // Sin icono"",
             
             variant: "gradient",
