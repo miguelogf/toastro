@@ -60,7 +60,6 @@ function getContrastColor(hexcolor: string | undefined, currentType: string) {
 const gradient = `linear-gradient(90deg, ${gradientColors.join(",")})`;
 const autoTextColor = getContrastColor(color, type);
 
-// Solo aplicamos --badge-text si tenemos un color claro/oscuro definido o un textColor manual
 const style = `
   ${color ? `--type-color: ${color};` : ""}
   ${textColor || autoTextColor ? `--badge-text: ${textColor || autoTextColor};` : ""}

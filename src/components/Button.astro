@@ -47,10 +47,7 @@ const {
     border-radius: 0.5rem;
     cursor: pointer;
     text-decoration: none;
-    /* Usamos tu variable global de tipografía */
     font-family: var(--font-main);
-
-    /* Transición suave alineada con tu global.css */
     transition:
       background-color 0.3s ease,
       color 0.3s ease,
@@ -87,14 +84,10 @@ const {
   }
 
   .btn-outline:hover {
-    /* Mezclamos el fondo actual con blanco para que "brille" o se aclare */
     background-color: color-mix(in srgb, var(--bg-color), white 20%);
-
-    /* Hacemos el borde un poco más visible al hacer hover */
     border-color: color-mix(in srgb, var(--text-color) 25%, transparent);
   }
 
-  /* Opcional: Si quieres que el efecto sea más fuerte en modo oscuro */
   :global(.dark) .btn-outline:hover {
     background-color: color-mix(in srgb, var(--bg-color), white 10%);
   }
