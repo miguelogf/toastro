@@ -20,7 +20,7 @@
         },
         particles: {
           number: {
-            value: 80,
+            value: 40,
             density: { enable: true, width: 1920, height: 1080 },
           },
           color: { value: "#f97316" }, // El naranja de Toastro
@@ -34,16 +34,16 @@
           },
           opacity: { value: 0.2 },
           size: { value: { min: 2, max: 4.5 } },
-          links: {
-            enable: true,
-            distance: 150,
-            color: "#b4b4b4", // Un naranja más intenso para los enlaces
-            opacity: 0,
-            width: 1,
-          },
+          // links: {
+          //   enable: true,
+          //   distance: 150,
+          //   color: "#b4b4b4",
+          //   opacity: 0,
+          //   width: 1,
+          // },
           move: {
             enable: true,
-            speed: 2,
+            speed: 1,
             direction: "none",
             outModes: { default: "out" },
           },
@@ -60,7 +60,7 @@
           },
         },
 
-        retina_detect: true,
+        retina_detect: false,
       },
     });
   }
