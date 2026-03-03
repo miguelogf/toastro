@@ -49,7 +49,6 @@ import "@fontsource/fira-code";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Theme init (evita flicker) -->
     <script is:inline>
       const theme = (() => {
         if (
@@ -58,11 +57,19 @@ import "@fontsource/fira-code";
         ) {
           return localStorage.getItem("theme");
         }
-        return "dark";
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
       })();
 
-      document.documentElement.classList.toggle("dark", theme !== "light");
-      localStorage.setItem("theme", theme);
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.localStorage.setItem("theme", theme);
     </script>
     <script type="application/ld+json">
       {

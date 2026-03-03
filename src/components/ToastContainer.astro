@@ -1,10 +1,10 @@
 ---
-import { TOAST_ICONS } from "../utils/icons";
+import { ICONS } from "../utils/icons";
 ---
 
 <div id="toast-container" class="toast-container"></div>
 
-<script is:inline define:vars={{ TOAST_ICONS }}>
+<script is:inline define:vars={{ ICONS }}>
   document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("toast-container");
     if (!container) return;
@@ -40,9 +40,7 @@ import { TOAST_ICONS } from "../utils/icons";
       if (icon !== null) {
         // 1. Icono personalizado (string) | 2. Icono por type de la carpeta utils | 3. Default
         iconHTML =
-          typeof icon === "string"
-            ? icon
-            : TOAST_ICONS[type] || TOAST_ICONS.default;
+          typeof icon === "string" ? icon : ICONS[type] || ICONS.default;
       }
 
       toast.innerHTML = `
