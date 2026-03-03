@@ -116,7 +116,6 @@ import { ICONS } from "../utils/icons.ts";
     gap: 1.5rem;
   }
 
-  /* LOGO */
   .logo-container {
     display: flex;
     align-items: center;
@@ -183,14 +182,20 @@ import { ICONS } from "../utils/icons.ts";
 
   @media (max-width: 640px) {
     .hero-title {
-      text-wrap: balance;
+      font-size: 2.25rem;
+      text-wrap: nowrap;
     }
 
     .buttons {
       flex-direction: column;
-      align-items: stretch; /*Estira los botones al mismo ancho*/
+      align-items: center; /*stretch: Estira los botones al mismo ancho*/
       gap: 0.8rem;
       padding: 0 1rem;
+    }
+
+    .buttons > :global(.btn) {
+      width: 85% !important;
+      min-width: none;
     }
 
     .logo-text {
