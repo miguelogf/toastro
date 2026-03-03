@@ -9,13 +9,14 @@ import { ICONS } from "../utils/icons.ts";
 
 <section class="hero">
   <div class="hero-content">
-    <Badge
-      label="Coming Soon"
-      variant="gradient"
-      color="var(--accent-color)"
-      gradientColors={["#f97316", "#f31b75"]}
-    />
-
+    <div class="badge-wrapper">
+      <Badge
+        label="Coming Soon"
+        variant="gradient"
+        color="var(--accent-color)"
+        gradientColors={["#f97316", "#f31b75"]}
+      />
+    </div>
     <div class="logo-container" aria-hidden="true">
       <div class="logo-wrapper">
         <img src={logoDark.src} alt="" class="logo-dark" />
@@ -116,6 +117,18 @@ import { ICONS } from "../utils/icons.ts";
     gap: 1.5rem;
   }
 
+  .badge-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.5rem; /* Ajusta el aire con el logo */
+  }
+
+  /* Si el componente Badge inyecta un span o un div, esto lo centra */
+  .badge-wrapper > :global(*) {
+    margin: 0 auto;
+  }
+
   .logo-container {
     display: flex;
     align-items: center;
@@ -190,7 +203,7 @@ import { ICONS } from "../utils/icons.ts";
 
     .buttons > :global(.btn) {
       width: 100% !important;
-      min-width: none;
+      min-width: 0;
     }
 
     .logo-text {

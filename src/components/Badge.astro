@@ -73,16 +73,17 @@ const style = `
 
 <style>
   .badge {
-    display: inline-flex;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
     align-items: center;
     padding: 0.25rem 0.65rem;
     font-size: 0.7rem;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 999px;
     line-height: 1;
     border: 1px solid transparent;
     font-family: var(--font-code);
-    /* Prioridad: 1. Color manual/calculado, 2. Color del tipo */
     color: var(--badge-text, var(--type-color));
   }
 
