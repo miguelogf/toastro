@@ -1,7 +1,7 @@
 :root {
   --type-success: #198754;
   --type-warning: #ed931b;
-  --type-danger:  #d32f2f;
+  --type-error:  #d32f2f;
   --type-info:    #2563eb;
   --type-neutral: #808ea2; /*808ea2*/
   --type-vibrant: #f31b75;
@@ -15,7 +15,7 @@
 
 .type--success { --type-color: var(--type-success); }
 .type--warning { --type-color: var(--type-warning); }
-.type--danger  { --type-color: var(--type-danger); }
+.type--error   { --type-color: var(--type-error); }
 .type--info    { --type-color: var(--type-info); }
 .type--neutral { --type-color: var(--type-neutral); }
 .type--vibrant { --type-color: var(--type-vibrant); }

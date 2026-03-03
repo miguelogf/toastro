@@ -4,9 +4,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
-
-// Nota: El import de ICONS dentro del frontmatter sirve si pasas datos a componentes,
-// pero para el <script> del cliente lo importaremos dentro del script.
+import { ICONS } from "../utils/icons.ts";
 ---
 
 <section class="hero">
@@ -57,31 +55,35 @@ import Button from "../components/Button.astro";
 
     const toastOptions = [
       {
+        message:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        type: "warning",
+        icon: ICONS.sparkles,
+        variant: "glass",
+      },
+      {
         message: "Successfully deployed to Vercel",
         type: "success",
-        variant: "solid",
-        icon: ICONS.success,
+        variant: "default",
       },
       {
         message: "Warning: Low disk space",
         type: "warning",
         variant: "soft",
-        icon: ICONS.warning,
       },
       {
         message: "Thanks for the support!",
-        type: "support",
+        type: "vibrant",
         variant: "outline",
-        icon: ICONS.vibrant,
       },
       {
         message: "New update available",
-        type: "loading",
+        type: "neutral",
         variant: "solid",
-        icon: ICONS.neutral,
       },
       {
         message: "🍞✨ A minimal toast for Astro",
+        icon: "", // Sin icono"",
         variant: "gradient",
         gradientColors: ["#6366f1", "#f31b75"],
       },
