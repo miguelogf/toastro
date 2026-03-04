@@ -9,14 +9,13 @@ import { ICONS } from "../utils/icons.ts";
 
 <section class="hero">
   <div class="hero-content">
-    <div class="badge-wrapper">
-      <Badge
-        label="Coming Soon"
-        variant="gradient"
-        color="var(--accent-color)"
-        gradientColors={["#f97316", "#f31b75"]}
-      />
-    </div>
+    <Badge
+      label="Coming Soon"
+      variant="gradient"
+      color="var(--accent-color)"
+      gradientColors={["#f97316", "#f31b75"]}
+    />
+
     <div class="logo-container" aria-hidden="true">
       <div class="logo-wrapper">
         <img src={logoDark.src} alt="" class="logo-dark" />
@@ -26,10 +25,10 @@ import { ICONS } from "../utils/icons.ts";
         >toast<span class="text-gradient-toastro">ro</span></span
       >
     </div>
-
     <h1 class="hero-title">
-      A beautiful and minimal<br />
-      <span class="text-gradient-orange">toast</span> for
+      A beautiful and minimal
+      <span class="text-gradient-orange">toast</span>
+      for
       <span class="text-gradient-pink">Astro.</span>
     </h1>
     <div class="buttons">
@@ -112,19 +111,10 @@ import { ICONS } from "../utils/icons.ts";
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 800px; /* Evita que el texto se vea muy largo en monitores grandes */
+    max-width: 720px;
     margin: 0 auto;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
-
-  .badge-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  /* Si el componente Badge inyecta un span o un div, esto lo centra */
-
   .logo-container {
     display: flex;
     align-items: center;
@@ -154,11 +144,14 @@ import { ICONS } from "../utils/icons.ts";
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3.5rem); /* Tamaño fluido según pantalla */
-    font-weight: 200;
-    margin: 0;
-    line-height: 1.1;
-    text-wrap: nowrap;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    max-width: 20ch;
+    margin: 0 auto;
+    text-align: center;
   }
 
   /* GRADIENTES */
@@ -198,11 +191,14 @@ import { ICONS } from "../utils/icons.ts";
     }
 
     .hero-title {
-      font-size: 2rem;
+      text-wrap: balance;
+      max-width: 20ch;
     }
 
     .buttons {
       flex-direction: column;
+      width: 90%;
+      margin: 2rem auto 0 auto;
     }
   }
 </style>
