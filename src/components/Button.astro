@@ -4,6 +4,7 @@ export interface Props {
   type?: "button" | "submit" | "reset";
   href?: string;
   newTab?: boolean;
+  fullWidth?: boolean; // <-- Nueva Prop
   [key: string]: any;
 }
 
@@ -12,6 +13,7 @@ const {
   type = "button",
   href,
   newTab = false,
+  fullWidth = false, // <-- Por defecto es false
   ...rest
 } = Astro.props;
 ---
@@ -22,13 +24,17 @@ const {
       href={href}
       target={newTab ? "_blank" : undefined}
       rel={newTab ? "noopener noreferrer" : undefined}
-      class={`btn btn-${variant}`}
+      class={`btn btn-${variant} ${fullWidth ? "full-width" : ""}`}
       {...rest}
     >
       <slot />
     </a>
   ) : (
-    <button type={type} class={`btn btn-${variant}`} {...rest}>
+    <button
+      type={type}
+      class={`btn btn-${variant} ${fullWidth ? "full-width" : ""}`}
+      {...rest}
+    >
       <slot />
     </button>
   )
@@ -48,11 +54,16 @@ const {
     cursor: pointer;
     text-decoration: none;
     font-family: var(--font-main);
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease,
-      border-color 0.3s ease,
-      transform 0.1s ease;
+    transition: all 0.3s ease;
+  }
+
+  /* Lógica Responsive Encapsulada */
+  @media (max-width: 640px) {
+    .btn.full-width {
+      width: 100%;
+      min-width: 0; /* Importante para anular el 160px */
+      padding: 0.75rem 1.5rem; /* Un poco más de área táctil */
+    }
   }
 
   /* El toque de calidad: efecto de presión */
