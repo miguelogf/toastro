@@ -1,7 +1,7 @@
 :root {
   /* Valores por defecto (Light Mode) */
   --bg-color: #ededed;
-  --text-color: #1d1d1d;
+  --text-color: #040404;
   --accent-color: #f97316;
   --font-main: "Montserrat Variable", sans-serif;
   --font-code: "Fira Code Variable", monospace;
