@@ -4,43 +4,37 @@
   import { tsParticles } from "@tsparticles/engine";
   import { loadSlim } from "@tsparticles/slim";
 
+  let particlesLoaded = false;
+
   async function initParticles() {
-    // 1. Cargamos solo lo necesario (slim) para que la web vuele
+    if (particlesLoaded) return;
+    particlesLoaded = true;
+
     await loadSlim(tsParticles);
 
-    // 2. Cargamos la configuración
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue("--accent-color")
+      .trim();
+
     await tsParticles.load({
       id: "tsparticles",
       options: {
-        background: {
-          color: "transparent", // Para que no tape tu fondo actual
-        },
-        fullScreen: {
-          enable: true,
-        },
+        background: { color: "transparent" },
+        fullScreen: { enable: true },
         particles: {
           number: {
-            value: 40,
+            value: 20,
             density: { enable: true, width: 1920, height: 1080 },
           },
-          color: { value: "#f97316" }, // El naranja de Toastro
+          color: { value: accent },
           shape: {
             type: "emoji",
             options: {
-              emoji: {
-                value: "🍞",
-              },
+              emoji: { value: "🍞" },
             },
           },
-          opacity: { value: 0.35 },
-          size: { value: { min: 3, max: 6 } },
-          // links: {
-          //   enable: true,
-          //   distance: 150,
-          //   color: "#b4b4b4",
-          //   opacity: 0,
-          //   width: 1,
-          // },
+          opacity: { value: 0.25 },
+          size: { value: { min: 2, max: 4 } },
           move: {
             enable: true,
             speed: 1,
@@ -50,22 +44,15 @@
         },
         interactivity: {
           events: {
-            // Desactivamos interacciones para que no molesten al usuario
-            onHover: { enable: false, mode: "grab" },
-            onClick: { enable: false, mode: "push" },
-          },
-          modes: {
-            grab: { distance: 140, links: { opacity: 1 } },
-            push: { quantity: 4 },
+            onHover: { enable: false },
+            onClick: { enable: false },
           },
         },
-
-        retina_detect: false,
+        detectRetina: false,
       },
     });
   }
 
-  // Inicializar al cargar y si usas View Transitions
   initParticles();
   document.addEventListener("astro:after-swap", initParticles);
 </script>

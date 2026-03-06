@@ -1,5 +1,6 @@
 :root {
   /* Valores por defecto (Light Mode) */
+  color-scheme: light dark;
   --bg-color: #ededed;
   --text-color: #040404;
   --accent-color: #f97316;

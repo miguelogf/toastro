@@ -4,7 +4,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
-import { ICONS } from "../utils/icons.ts";
+import Icon from "./Icon.astro";
 ---
 
 <section class="hero">
@@ -21,7 +21,7 @@ import { ICONS } from "../utils/icons.ts";
         <img src={logoDark.src} alt="" class="logo-dark" />
         <img src={logoLight.src} alt="" class="logo-light" />
       </div>
-      <span class="logo-text"
+      <span translate="no" class="logo-text"
         >toast<span class="text-gradient-toastro">ro</span></span
       >
     </div>
@@ -32,7 +32,7 @@ import { ICONS } from "../utils/icons.ts";
       <span class="text-gradient-pink">Astro.</span>
     </h1>
     <div class="buttons">
-      <Button id="btn-toast" fullWidth>Toast me! ✨</Button>
+      <Button id="btn-toast" fullWidth>Toast me! <Icon name="bell" /></Button>
       <Button
         href="https://github.com/miguelogf/toastro"
         variant="outline"
@@ -48,8 +48,7 @@ import { ICONS } from "../utils/icons.ts";
 <ToastContainer />
 
 <script>
-  import { ICONS } from "../utils/icons";
-
+  import { ICONS } from "../utils/icons.ts";
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn-toast");
 
@@ -58,7 +57,7 @@ import { ICONS } from "../utils/icons.ts";
         message:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         type: "warning",
-        icon: ICONS.sparkles,
+        icon: ICONS["sparkles"],
         variant: "glass",
       },
       {
@@ -181,6 +180,9 @@ import { ICONS } from "../utils/icons.ts";
     width: 100%;
   }
 
+  #btn-toast {
+    gap: 0.5rem;
+  }
   @media (max-width: 640px) {
     .logo-wrapper {
       width: 2rem;
