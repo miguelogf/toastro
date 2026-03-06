@@ -27,12 +27,14 @@ import Icon from "./Icon.astro";
     </div>
     <h1 class="hero-title">
       A beautiful and minimal
-      <span class="text-gradient-orange">toast</span>
+      <span translate="no" class="text-gradient-orange">toast</span>
       for
       <span class="text-gradient-pink">Astro.</span>
     </h1>
     <div class="buttons">
-      <Button id="btn-toast" fullWidth>Toast me! <Icon name="bell" /></Button>
+      <Button translate="no" id="btn-toast" fullWidth
+        >Toast me! <Icon name="bell" /></Button
+      >
       <Button
         href="https://github.com/miguelogf/toastro"
         variant="outline"
