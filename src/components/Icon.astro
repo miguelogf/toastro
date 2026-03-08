@@ -6,9 +6,10 @@ type IconName = keyof typeof ICONS | keyof typeof BRANDS;
 
 interface Props {
   name: IconName;
+  color?: string;
 }
 
-const { name } = Astro.props as Props;
+const { name, color = "currentColor" } = Astro.props as Props;
 
 const icon =
   ICONS[name as keyof typeof ICONS] ||
@@ -16,4 +17,10 @@ const icon =
   null;
 ---
 
-{icon && <Fragment set:html={icon} />}
+{
+  icon && (
+    <span style={`color:${color}`}>
+      <Fragment set:html={icon} />
+    </span>
+  )
+}
