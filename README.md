@@ -143,11 +143,11 @@ window.showToast({ message: "Longer…", duration: 8000 });
 
 ## ⚡ Libraries Used
 
-- **Astro** – Framework principal  
-- **ParticlesJS** – Animaciones visuales opcionales  
-- **Lucide Icons** – Íconos generales  
-- **Simple Icons** – Social Brand Icons  
-- **SVGL** – Tech Brand Icons  
+- **Astro** – Main framework  
+- **ParticlesJS** – Animated background particles
+- **Lucide Icons** – General icons  
+- **Simple Icons** – Social brand icons  
+- **SVGL** – Tech brand icons  
 
 ---
 
