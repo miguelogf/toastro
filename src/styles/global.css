@@ -6,13 +6,18 @@
   --accent-color: #f97316;
   --font-main: "Montserrat Variable", sans-serif;
   --font-code: "Fira Code Variable", monospace;
-  
-}
 
-html.dark {
-  /* Valores para Dark Mode */
-  --bg-color: #000000;
-  --text-color: #ededed;
+    /* Botones */
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-radius: 0.5rem;
+  --btn-hover-bg: rgba(128, 128, 128, 0.1);
+  --btn-hover-scale: 1.03;
+  --btn-hover-opacity: 0.7;
+  --btn-active-scale: 0.97;
+
+  --icon-size: 20px;
+  
 }
 
 html,
@@ -31,15 +36,39 @@ body {
   -o-transition: background-color 0.75s ease, color 0.75s ease;
 }
 
+button {
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--btn-hover-bg);
+  transform: scale(var(--btn-hover-scale));
+  opacity: var(--btn-hover-opacity);
+}
+
 main {
   position: relative;
   z-index: 1;
 }
 
 svg {
-  width: 20px;
-  height: 20px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   stroke-width: 1.5;
-  stroke: currentColor;
-  fill: none;
+}
+
+
+html.dark {
+  /* Valores para Dark Mode */
+  --bg-color: #000000;
+  --text-color: #ededed;
 }

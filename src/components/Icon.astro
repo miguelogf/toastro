@@ -1,7 +1,8 @@
 ---
 import { ICONS } from "../utils/icons";
+import { BRANDS } from "../utils/brands";
 
-type IconName = keyof typeof ICONS;
+type IconName = keyof typeof ICONS | keyof typeof BRANDS;
 
 interface Props {
   name: IconName;
@@ -9,7 +10,10 @@ interface Props {
 
 const { name } = Astro.props as Props;
 
-const icon = ICONS[name];
+const icon =
+  ICONS[name as keyof typeof ICONS] ||
+  BRANDS[name as keyof typeof BRANDS] ||
+  null;
 ---
 
 {icon && <Fragment set:html={icon} />}
