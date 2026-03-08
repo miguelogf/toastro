@@ -197,25 +197,27 @@ window.showToast(&lbrace; message: "Plain message",     type: "default" &rbrace;
           <thead><tr><th>Type</th><th>Icon</th><th>Use case</th></tr></thead>
           <tbody>
             <tr
-              ><td><code>default</code></td><td>—</td><td>Neutral messages</td
+              ><td><code>default</code></td><td><Icon name="default" /></td><td
+                >Neutral messages</td
               ></tr
             >
             <tr
-              ><td><code>success</code></td><td>✓</td><td>Completed actions</td
+              ><td><code>success</code></td><td><Icon name="success" /></td><td
+                >Completed actions</td
               ></tr
             >
             <tr
-              ><td><code>error</code></td><td>✕</td><td
+              ><td><code>error</code></td><td><Icon name="error" /></td><td
                 >Failures, validation errors</td
               ></tr
             >
             <tr
-              ><td><code>warning</code></td><td>⚠</td><td
+              ><td><code>warning</code></td><td><Icon name="warning" /></td><td
                 >Non-critical alerts</td
               ></tr
             >
             <tr
-              ><td><code>info</code></td><td>ℹ</td><td
+              ><td><code>info</code></td><td><Icon name="info" /></td><td
                 >Informational messages</td
               ></tr
             >
@@ -577,7 +579,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     font-family: var(--font-main);
   }
 
-  /* ── Sidebar ─────────────────────────────────────────────── */
+  /* ── Sidebar ── */
   .sidebar {
     position: sticky;
     top: 4rem;
@@ -628,7 +630,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     font-weight: 500;
   }
 
-  /* ── Content ─────────────────────────────────────────────── */
+  /* ── Content ── */
   .docs-content {
     padding: 2.5rem 0 4rem 3rem;
     min-width: 0;
@@ -657,7 +659,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     margin: 0;
   }
 
-  /* ── Sections ─────────────────────────────────────────────── */
+  /* ── Sections ── */
   .doc-section {
     margin-bottom: 3.5rem;
     scroll-margin-top: 5rem;
@@ -704,7 +706,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     border-radius: 4px;
   }
 
-  /* ── Code Blocks ─────────────────────────────────────────── */
+  /* ── Code Blocks ── */
   .code-block {
     position: relative;
     background: color-mix(in srgb, var(--text-color) 4%, transparent);
@@ -797,7 +799,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     color: #c3e88d;
   }
 
-  /* ── Code Tabs ───────────────────────────────────────────── */
+  /* ── Code Tabs ── */
   .code-tabs {
     margin: 0.75rem 0 1.25rem;
   }
@@ -851,7 +853,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     display: none !important;
   }
 
-  /* ── Tables ──────────────────────────────────────────────── */
+  /* ── Tables ── */
   .docs-table {
     width: 100%;
     border-collapse: collapse;
@@ -905,7 +907,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     font-family: var(--font-code);
   }
 
-  /* ── Callouts ────────────────────────────────────────────── */
+  /* ── Callouts ── */
   .callout {
     display: flex;
     align-items: flex-start;
@@ -946,7 +948,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     color: #34d399;
   }
 
-  /* ── Position Diagram ────────────────────────────────────── */
+  /* ── Position Diagram ── */
   .position-diagram {
     position: relative;
     width: 100%;
@@ -1009,7 +1011,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     right: 10px;
   }
 
-  /* ── Responsive ──────────────────────────────────────────── */
+  /* ── Responsive ── */
   @media (max-width: 768px) {
     .docs-page {
       grid-template-columns: 1fr;
