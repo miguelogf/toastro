@@ -179,4 +179,4 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";
 
 ---
 
-[Visit Documentation](https://toastro.vercel.app/)
+[Visit Documentation](https://toastro.vercel.app/docs)
