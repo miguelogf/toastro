@@ -46,7 +46,7 @@ const {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 160px;
+    min-width: 180px;
     padding: 0.5rem 1.5rem;
     font-size: 0.875rem;
     font-weight: 500;
@@ -55,14 +55,31 @@ const {
     text-decoration: none;
     font-family: var(--font-main);
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    gap: 0.5rem;
   }
+
   .btn:active {
     transform: var(--btn-active-scale);
+    -webkit-transform: var(--btn-active-scale);
+    -moz-transform: var(--btn-active-scale);
+    -ms-transform: var(--btn-active-scale);
+    -o-transform: var(--btn-active-scale);
   }
   .btn:focus {
     outline: none;
   }
-
+  .btn:hover {
+    background-color: var(--btn-hover-bg);
+    transform: scale(var(--btn-hover-scale));
+    -webkit-transform: scale(var(--btn-hover-scale));
+    -moz-transform: scale(var(--btn-hover-scale));
+    -ms-transform: scale(var(--btn-hover-scale));
+    -o-transform: scale(var(--btn-hover-scale));
+  }
   /* --- VARIANTE PRIMARY --- */
   .btn-primary {
     background-color: var(--text-color);
@@ -74,13 +91,12 @@ const {
     /* Suavizamos el color un 15% al pasar el ratón usando tu variable base */
     background-color: color-mix(
       in srgb,
-      var(--text-color) 90%,
+      var(--text-color) 85%,
       var(--bg-color)
     );
     border-color: color-mix(in srgb, var(--text-color) 85%, var(--bg-color));
   }
 
-  /* --- VARIANTE OUTLINE --- */
   /* --- VARIANTE OUTLINE --- */
   .btn-outline {
     background-color: transparent; /* importante para hover */
