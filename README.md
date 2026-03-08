@@ -1,10 +1,5 @@
 # Toastro 🍞
 
-[![npm version](https://img.shields.io/npm/v/toastro?color=blue&label=npm)](https://www.npmjs.com/package/toastro)
-[![License](https://img.shields.io/npm/l/toastro)](https://www.npmjs.com/package/toastro)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/toastro?style=social)](https://github.com/yourusername/toastro)
-[![Twitter Follow](https://img.shields.io/twitter/follow/yourtwitter?style=social)](https://twitter.com/yourtwitter)
-
 Minimal toast notification library for **Astro**.  
 Lightweight, framework-agnostic, and fully customizable.
 
