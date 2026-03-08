@@ -13,6 +13,8 @@ interface Props {
   color?: string;
   gradientColors?: string[];
   textColor?: string;
+  className?: string;
+  styleOverride?: string;
 }
 
 const {
@@ -22,6 +24,8 @@ const {
   color,
   gradientColors = ["#f97316", "#f31b75"],
   textColor,
+  className = "",
+  styleOverride = "",
 } = Astro.props;
 
 const themeColors: Record<string, string> = {
@@ -60,14 +64,19 @@ function getContrastColor(hexcolor: string | undefined, currentType: string) {
 const gradient = `linear-gradient(90deg, ${gradientColors.join(",")})`;
 const autoTextColor = getContrastColor(color, type);
 
+// ✅ Unificamos en un solo style
 const style = `
   ${color ? `--type-color: ${color};` : ""}
   ${textColor || autoTextColor ? `--badge-text: ${textColor || autoTextColor};` : ""}
   --badge-gradient: ${gradient};
+  ${styleOverride}
 `;
 ---
 
-<span class={`badge type--${type} variant--${variant}`} style={style}>
+<span
+  class={`badge type--${type} variant--${variant} ${className}`}
+  style={style}
+>
   {label}
 </span>
 
@@ -92,7 +101,7 @@ const style = `
   .variant--filled {
     background-color: var(--type-color);
     /* En filled sí forzamos el contraste para que sea legible */
-    color: var(--badge-text, white) !important;
+    color: var(--badge-text, white);
     border-color: rgba(0, 0, 0, 0.05);
   }
 

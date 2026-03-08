@@ -1,6 +1,8 @@
 ---
 // src/pages/docs.astro  (or src/components/Docs.astro)
 import Layout from "../layouts/Layout.astro";
+import Badge from "./Badge.astro";
+import Icon from "./Icon.astro";
 ---
 
 <Layout title="Docs — toastro">
@@ -31,7 +33,12 @@ import Layout from "../layouts/Layout.astro";
     <main class="docs-content">
       <!-- Header -->
       <div class="docs-header">
-        <div class="badge">Documentation</div>
+        <Badge
+          label="Documentation"
+          variant="outline"
+          color="var(--text-color)"
+          styleOverride="opacity: 0.4; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 1rem 0;"
+        />
         <h1>Getting Started</h1>
         <p class="docs-intro">
           A beautiful and minimal toast notification library for Astro. Install
@@ -46,75 +53,43 @@ import Layout from "../layouts/Layout.astro";
 
         <div class="code-tabs">
           <div class="code-tab-bar">
-            <button class="tab-btn active" data-tab="npm">npm</button>
-            <button class="tab-btn" data-tab="bun">bun</button>
-            <button class="tab-btn" data-tab="pnpm">pnpm</button>
-            <button class="tab-btn" data-tab="yarn">yarn</button>
+            <button class="tab-btn active" data-tab="npm"
+              ><Icon name="npm" />npm</button
+            >
+            <button class="tab-btn" data-tab="bun"
+              ><Icon name="bun" />bun</button
+            >
+            <button class="tab-btn" data-tab="pnpm"
+              ><Icon name="pnpm" />pnpm</button
+            >
+            <button class="tab-btn" data-tab="yarn"
+              ><Icon name="yarn" />yarn</button
+            >
           </div>
           <div class="code-block" data-tab-content="npm">
             <button class="copy-btn" aria-label="Copy">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path></svg
-              >
+              <Icon name="copy" />
             </button>
             <pre><code><span class="token-comment"># install the package</span>
 <span class="token-cmd">npm</span> install toastro</code></pre>
           </div>
           <div class="code-block hidden" data-tab-content="bun">
             <button class="copy-btn" aria-label="Copy">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path></svg
-              >
+              <Icon name="copy" />
             </button>
             <pre><code><span class="token-comment"># install the package</span>
 <span class="token-cmd">bun</span> add toastro</code></pre>
           </div>
           <div class="code-block hidden" data-tab-content="pnpm">
             <button class="copy-btn" aria-label="Copy">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path></svg
-              >
+              <Icon name="copy" />
             </button>
             <pre><code><span class="token-comment"># install the package</span>
 <span class="token-cmd">pnpm</span> add toastro</code></pre>
           </div>
           <div class="code-block hidden" data-tab-content="yarn">
             <button class="copy-btn" aria-label="Copy">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                ></path></svg
-              >
+              <Icon name="copy" />
             </button>
             <pre><code><span class="token-comment"># install the package</span>
 <span class="token-cmd">yarn</span> add toastro</code></pre>
@@ -133,17 +108,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="code-block">
           <div class="code-filename">src/layouts/Layout.astro</div>
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>---
 import &lbrace; ToastContainer &rbrace; from 'toastro';
@@ -193,17 +158,7 @@ import &lbrace; ToastContainer &rbrace; from 'toastro';
         <div class="code-block">
           <div class="code-filename">src/pages/index.astro</div>
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>&lt;button id="btn"&gt;Show toast&lt;/button&gt;
 
@@ -229,17 +184,7 @@ import &lbrace; ToastContainer &rbrace; from 'toastro';
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>window.showToast(&lbrace; message: "Saved!",            type: "success" &rbrace;);
 window.showToast(&lbrace; message: "Something failed",  type: "error"   &rbrace;);
@@ -285,17 +230,7 @@ window.showToast(&lbrace; message: "Plain message",     type: "default" &rbrace;
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>window.showToast(&lbrace; message: "Solid",   type: "success", variant: "solid"   &rbrace;);
 window.showToast(&lbrace; message: "Soft",    type: "success", variant: "soft"    &rbrace;);
@@ -306,13 +241,18 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
         <table class="docs-table">
           <thead><tr><th>Variant</th><th>Description</th></tr></thead>
           <tbody>
-            <tr
-              ><td><code>solid</code></td><td
-                >Filled background, high contrast <span class="tag-default"
-                  >default</span
-                ></td
-              ></tr
-            >
+            <tr>
+              <td><code>solid</code></td>
+              <td>
+                Filled background, high contrast
+                <Badge
+                  label="default"
+                  variant="soft"
+                  type="default"
+                  styleOverride="margin-left: 0.25rem;"
+                />
+              </td>
+            </tr>
             <tr><td><code>soft</code></td><td>Subtle tint, low contrast</td></tr
             >
             <tr
@@ -339,17 +279,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>&lt;ToastContainer position="bottom-right"  /&gt;  &lt;!-- default --&gt;
 &lt;ToastContainer position="bottom-left"   /&gt;
@@ -390,7 +320,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
 
       <!-- Custom Icons -->
       <section id="icons" class="doc-section">
-        <h2><span class="section-icon">🖼️</span> Custom Icons</h2>
+        <h2><span class="section-icon">✳️</span> Custom Icons</h2>
         <p>
           Pass a raw SVG string to override the default icon, or <code
             >null</code
@@ -399,17 +329,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>// Custom SVG icon
 window.showToast(&lbrace;
@@ -439,17 +359,7 @@ window.showToast(&lbrace;
         </p>
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>window.showToast(&lbrace;
   message: "Custom brand color",
@@ -464,17 +374,7 @@ window.showToast(&lbrace;
         </p>
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>window.showToast(&lbrace;
   message:        "Gradient toast 🌈",
@@ -494,17 +394,7 @@ window.showToast(&lbrace;
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>window.showToast(&lbrace; message: "Quick!",   duration: 1500 &rbrace;);
 window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code></pre>
@@ -521,17 +411,7 @@ window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>:root &lbrace;
   --toastro-bg:     var(--bg-color);    /* toast background */
@@ -565,17 +445,7 @@ window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>type Position =
   | "top-left"      | "top-center"    | "top-right"
@@ -632,17 +502,7 @@ window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code
 
         <div class="code-block">
           <button class="copy-btn" aria-label="Copy">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><rect x="9" y="9" width="13" height="13" rx="2"></rect><path
-                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-              ></path></svg
-            >
+            <Icon name="copy" />
           </button>
           <pre><code>type ToastType    = "default" | "success" | "error" | "warning" | "info";
 type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
@@ -658,18 +518,12 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     btn.addEventListener("click", function () {
       var tab = btn.dataset.tab;
       var parent = btn.closest(".code-tabs");
-
       parent.querySelectorAll(".tab-btn").forEach(function (b) {
         b.classList.remove("active");
       });
       btn.classList.add("active");
-
       parent.querySelectorAll("[data-tab-content]").forEach(function (block) {
-        if (block.dataset.tabContent === tab) {
-          block.classList.remove("hidden");
-        } else {
-          block.classList.add("hidden");
-        }
+        block.classList.toggle("hidden", block.dataset.tabContent !== tab);
       });
     });
   });
@@ -677,8 +531,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   // Copy buttons
   document.querySelectorAll(".copy-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var block = btn.closest(".code-block");
-      var code = block.querySelector("code");
+      var code = btn.closest(".code-block").querySelector("code");
       if (!code) return;
       navigator.clipboard.writeText(code.innerText).then(function () {
         btn.classList.add("copied");
@@ -690,14 +543,11 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   });
 
   // Active sidebar link on scroll
-  var sections = document.querySelectorAll(".doc-section");
-  var links = document.querySelectorAll(".sidebar-link");
-
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          links.forEach(function (l) {
+          document.querySelectorAll(".sidebar-link").forEach(function (l) {
             l.classList.remove("active");
           });
           var active = document.querySelector(
@@ -710,7 +560,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     { rootMargin: "-20% 0px -70% 0px" },
   );
 
-  sections.forEach(function (s) {
+  document.querySelectorAll(".doc-section").forEach(function (s) {
     observer.observe(s);
   });
 </script>
@@ -720,11 +570,11 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   .docs-page {
     display: grid;
     grid-template-columns: 220px 1fr;
-    gap: 0;
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 1.5rem;
     min-height: 100vh;
+    font-family: var(--font-main);
   }
 
   /* ── Sidebar ─────────────────────────────────────────────── */
@@ -754,7 +604,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     padding-left: 0.75rem;
     color: var(--text-color);
   }
-
   .sidebar-label:first-child {
     margin-top: 0;
   }
@@ -770,11 +619,9 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       opacity 0.15s,
       background 0.15s;
   }
-
   .sidebar-link:hover {
     opacity: 0.9;
   }
-
   .sidebar-link.active {
     opacity: 1;
     background: color-mix(in srgb, var(--text-color) 6%, transparent);
@@ -794,25 +641,12 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       color-mix(in srgb, var(--text-color) 8%, transparent);
   }
 
-  .badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--text-color);
-    opacity: 0.4;
-    border: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    margin-bottom: 1rem;
-  }
-
   .docs-header h1 {
     font-size: 2rem;
     font-weight: 600;
     margin: 0 0 0.75rem;
     letter-spacing: -0.03em;
+    font-family: var(--font-main);
   }
 
   .docs-intro {
@@ -837,6 +671,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-family: var(--font-main);
   }
 
   .doc-section h3 {
@@ -844,6 +679,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     font-weight: 600;
     margin: 1.75rem 0 0.5rem;
     opacity: 0.8;
+    font-family: var(--font-main);
   }
 
   .section-icon {
@@ -860,7 +696,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   .doc-section p code,
   .doc-section li code,
   .callout code {
-    font-family: "Fira Code", "Cascadia Code", monospace;
+    font-family: var(--font-code);
     font-size: 0.8em;
     background: color-mix(in srgb, var(--text-color) 7%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
@@ -880,7 +716,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
 
   .code-filename {
     font-size: 0.72rem;
-    font-family: "Fira Code", monospace;
+    font-family: var(--font-code);
     opacity: 0.4;
     padding: 0.55rem 1rem 0;
   }
@@ -892,7 +728,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   }
 
   pre code {
-    font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", monospace;
+    font-family: var(--font-code);
     font-size: 0.82rem;
     line-height: 1.7;
     color: var(--text-color);
@@ -953,7 +789,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     display: flex;
     align-items: center;
   }
-
   .copy-btn:hover {
     opacity: 1;
   }
@@ -975,7 +810,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
 
   .tab-btn {
     font-size: 0.78rem;
-    font-family: "Fira Code", monospace;
+    font-family: var(--font-code);
     padding: 0.35rem 0.85rem;
     background: none;
     border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
@@ -987,12 +822,19 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     transition:
       opacity 0.15s,
       background 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
+  :global(.tab-btn svg) {
+    width: 0.9em !important;
+    height: 0.9em !important;
+    flex-shrink: 0;
+  }
   .tab-btn:hover {
     opacity: 0.8;
   }
-
   .tab-btn.active {
     opacity: 1;
     background: color-mix(in srgb, var(--text-color) 4%, transparent);
@@ -1005,7 +847,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     border-radius: 0 8px 8px 8px;
     margin: 0;
   }
-
   .hidden {
     display: none !important;
   }
@@ -1036,6 +877,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       color-mix(in srgb, var(--text-color) 6%, transparent);
     opacity: 0.75;
     line-height: 1.5;
+    vertical-align: middle;
   }
 
   .docs-table tr:last-child td {
@@ -1046,7 +888,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   }
 
   .docs-table code {
-    font-family: "Fira Code", monospace;
+    font-family: var(--font-code);
     font-size: 0.78em;
     background: color-mix(in srgb, var(--text-color) 7%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
@@ -1060,17 +902,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     color: #f97316;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-  }
-
-  .tag-default {
-    font-size: 0.68rem;
-    background: color-mix(in srgb, var(--text-color) 8%, transparent);
-    border: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
-    padding: 0.1em 0.45em;
-    border-radius: 999px;
-    opacity: 0.6;
-    font-weight: 500;
-    margin-left: 0.35rem;
+    font-family: var(--font-code);
   }
 
   /* ── Callouts ────────────────────────────────────────────── */
@@ -1084,12 +916,10 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     line-height: 1.55;
     margin: 1rem 0;
   }
-
   .callout svg {
     flex-shrink: 0;
     margin-top: 1px;
   }
-
   .callout a {
     color: var(--text-color);
     text-decoration: underline;
@@ -1120,7 +950,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   .position-diagram {
     position: relative;
     width: 100%;
-    max-width: 380px;
+    margin: 1rem auto;
     height: 160px;
     background: color-mix(in srgb, var(--text-color) 3%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
@@ -1131,7 +961,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
   .pos-dot {
     position: absolute;
     font-size: 0.68rem;
-    font-family: "Fira Code", monospace;
+    font-family: var(--font-code);
     background: color-mix(in srgb, var(--text-color) 8%, transparent);
     border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
     padding: 0.2rem 0.5rem;
@@ -1185,7 +1015,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       grid-template-columns: 1fr;
       padding: 0 1rem;
     }
-
     .sidebar {
       position: static;
       border-right: none;
@@ -1194,22 +1023,18 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       padding: 1.5rem 0;
       overflow-x: auto;
     }
-
     .sidebar-nav {
       flex-direction: row;
       flex-wrap: nowrap;
       gap: 0.25rem;
     }
-
     .sidebar-label {
       display: none;
     }
-
     .sidebar-link {
       white-space: nowrap;
       font-size: 0.8rem;
     }
-
     .docs-content {
       padding: 2rem 0 3rem;
     }
