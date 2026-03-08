@@ -4,6 +4,9 @@ import "@fontsource/fira-code";
 
 import "../styles/global.css";
 import "../styles/theme.css";
+
+import NavBar from "../components/NavBar.astro";
+import ParticlesBackground from "../components/ParticlesBackground.astro";
 ---
 
 <!doctype html>
@@ -53,6 +56,10 @@ import "../styles/theme.css";
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <slot />
+    <ParticlesBackground />
+    <NavBar />
+    <main style="position:relative; z-index:1;">
+      <slot />
+    </main>
   </body>
 </html>
