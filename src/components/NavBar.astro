@@ -53,13 +53,11 @@ const socials = [
 <script>
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
-  const navbar = document.querySelector(".navbar") as HTMLElement | null;
   const body = document.body;
 
   menuToggle?.addEventListener("click", () => {
     const isOpened = menuToggle.classList.toggle("is-active");
     navMenu?.classList.toggle("is-visible");
-    navbar?.classList.toggle("menu-open", isOpened);
 
     // Evita el scroll cuando el menú está abierto
     body.style.overflow = isOpened ? "hidden" : "";
@@ -71,26 +69,25 @@ const socials = [
     position: sticky;
     top: 0;
     z-index: 100;
-    background: color-mix(in srgb, var(--bg-color) 75%, transparent);
-    backdrop-filter: blur(1rem);
-    transition:
-      background-color 0.75s ease,
-      color 0.75s ease;
-    -webkit-transition:
-      background-color 0.75s ease,
-      color 0.75s ease;
-    -moz-transition:
-      background-color 0.75s ease,
-      color 0.75s ease;
-    -ms-transition:
-      background-color 0.75s ease,
-      color 0.75s ease;
-    -o-transition:
-      background-color 0.75s ease,
-      color 0.75s ease;
+    /* Sin backdrop-filter aquí: evita crear un stacking context que
+       atraparía al .navbar-menu fixed e impediría su propio blur */
+    background: transparent;
+    transition: color 0.75s ease;
     border-bottom: 1px solid
       color-mix(in srgb, var(--text-color) 5%, transparent);
     padding: 0.75rem 1.5rem;
+  }
+
+  /* El blur del navbar va en un pseudo-elemento para no crear stacking context */
+  .navbar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--bg-color) 75%, transparent);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+    transition: background-color 0.75s ease;
   }
 
   .navbar-container {
@@ -103,7 +100,7 @@ const socials = [
   }
 
   .logo {
-    height: 1.8rem;
+    height: 1.5rem;
     width: auto;
   }
 
@@ -205,22 +202,13 @@ const socials = [
       display: none;
     }
 
-    /* Cuando el menú está abierto, el navbar se integra con el overlay */
-    .navbar.menu-open {
-      background: color-mix(in srgb, var(--bg-color) 95%, transparent);
-      backdrop-filter: blur(1.5rem);
-      -webkit-backdrop-filter: blur(1.5rem);
-      border-bottom-color: transparent;
-      z-index: 101;
-    }
-
     .navbar-menu {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100dvh;
-      background: color-mix(in srgb, var(--bg-color) 95%, transparent);
+      background: color-mix(in srgb, var(--bg-color) 70%, transparent);
       backdrop-filter: blur(1.5rem);
       -webkit-backdrop-filter: blur(1.5rem);
       display: flex;
@@ -253,13 +241,15 @@ const socials = [
       transform: translateY(15px);
       opacity: 0;
       transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.6s ease;
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease;
     }
-
     /* Cuando el menú se abre */
     .navbar-menu.is-visible .nav-link {
       transform: translateY(0);
+      opacity: 0.7;
+    }
+    .navbar-menu.is-visible .nav-link:hover {
       opacity: 1;
     }
 
