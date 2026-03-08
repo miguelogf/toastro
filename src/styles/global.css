@@ -37,6 +37,7 @@ body {
   -moz-transition: background-color 0.75s ease, color 0.75s ease;
   -ms-transition: background-color 0.75s ease, color 0.75s ease;
   -o-transition: background-color 0.75s ease, color 0.75s ease;
+  overflow-x: hidden; /* Evita que algo haga scroll horizontal */
 }
 
 main {
