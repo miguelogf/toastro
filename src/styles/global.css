@@ -1,3 +1,6 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
 :root {
   --bg:       #ededed;
   --surface:  #ffffff;
@@ -5,7 +8,7 @@
   --text:     #040404;
   --brand:    #FF4F1F;
 
-  --font-main: "Montserrat Variable", sans-serif;
+  --font-main: "Geist Variable", sans-serif;
   --font-code: 'Geist Mono Variable', monospace;
 
   --radius:    0.5rem;   /* token global, lo usarás en cards, inputs, etc. */
@@ -29,14 +32,15 @@ body {
   color: var(--text);
   font-family: var(--font-main);
   transition: background-color 0.75s ease, color 0.75s ease;
-  -webkit-transition: background-color 0.75s ease, color 0.75s ease;
-  -moz-transition: background-color 0.75s ease, color 0.75s ease;
-  -ms-transition: background-color 0.75s ease, color 0.75s ease;
-  -o-transition: background-color 0.75s ease, color 0.75s ease;
 }
 
 body {
   overflow-x: clip;
+}
+
+code,
+pre {
+  font-family: var(--font-code);
 }
 
 main {
@@ -75,6 +79,7 @@ svg {
     50% {
       opacity: 0.5;
       transform: scale(0.8);
+      -webkit-transform: scale(0.8);
     }
   }
 

@@ -1,7 +1,6 @@
 ---
 interface Props {
   type?:
-    | "default"
     | "success"
     | "warning"
     | "error"
@@ -14,7 +13,7 @@ interface Props {
     | "subtle"
     | "outline"
     | "ghost"
-    | "neutral"
+    | "surface"
     | "glass"
     | "gradient";
   color?: string;
@@ -25,7 +24,7 @@ interface Props {
 }
 
 const {
-  type = "default",
+  type = "neutral",
   variant = "soft",
   color,
   gradientColors = ["#f97316", "#f31b75"],
@@ -84,7 +83,7 @@ const style = [
     padding: 0.35rem 0.9rem;
     border-radius: 999px;
     font-weight: 500;
-    --type-color: var(--status-default);
+    --type-color: var(--status-neutral);
   }
   .badge--sm {
     font-size: 0.65rem;

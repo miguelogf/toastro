@@ -6,7 +6,6 @@
   --status-info:    #2196f3;
   --status-neutral: #808ea2;
   --status-brand:   #f31b75;
-  --status-default: #b4b4b4;
 }
 
 /* ── Type assignments ── */
@@ -16,7 +15,6 @@
 .type--info    { --type-color: var(--status-info);    }
 .type--neutral { --type-color: var(--status-neutral); }
 .type--brand   { --type-color: var(--status-brand);   }
-.type--default { --type-color: var(--status-default); }
 
 /* ── Variants ── */
 
@@ -29,29 +27,28 @@
 
 /* SOFT */
 .variant--soft {
-  background: color-mix(in srgb, var(--type-color) 12%, transparent);
+  background: color-mix(in srgb, var(--type-color) 15%, transparent);
   color: var(--type-color);
   border: 1px solid transparent;
 }
 
 /* SUBTLE */
 .variant--subtle {
-  border: 1px solid color-mix(in srgb, var(--type-color) 30%, transparent);
-    background: color-mix(in srgb, var(--type-color) 6%, transparent);
-    color: var(--type-color);
+  background: color-mix(in srgb, var(--type-color) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent);
+  color: var(--type-color);
 }
 
 /* GHOST */
 .variant--ghost {
   background: transparent;
   color: var(--type-color);
-  border: 1px solid transparent;
 }
 
-/* NEUTRAL */
-.variant--neutral {
+/* BASIC */
+.variant--surface {
   border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
-  color: var(--text);
+  color: var(--type-color);
   background: var(--surface);
 }
 
@@ -64,12 +61,14 @@
 
 /* GLASS */
 .variant--glass {
-  background: color-mix(in srgb, var(--type-color) 8%, transparent);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
   color: var(--text);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent);
-  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.04),
+    0 8px 32px rgba(0,0,0,0.06);
 }
 
 /* GRADIENT */

@@ -12,7 +12,7 @@ import Icon from "./Icon.astro";
       color="var(--brand)"
       class="badge-hero"
       animate="fade"
-      gradientColors={["#f97316", "#f31b75"]}
+      gradientColors={["#f97316", "#e53935"]}
     >
       <span class="badge-dot"></span>Open Source · MIT Licensed</Badge
     >
@@ -49,14 +49,13 @@ import Icon from "./Icon.astro";
       {
         message:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        type: "warning",
         icon: ICONS["sparkles"],
         variant: "glass",
       },
       {
         message: "Successfully deployed to Vercel",
         type: "success",
-        variant: "default",
+        variant: "subtle",
       },
       {
         message: "Warning: Low disk space",
@@ -65,7 +64,7 @@ import Icon from "./Icon.astro";
       },
       {
         message: "Thanks for the support!",
-        type: "vibrant",
+        type: "brand",
         variant: "outline",
       },
       {
