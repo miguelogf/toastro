@@ -1,8 +1,6 @@
 ---
 import Badge from "../components/Badge.astro";
 import ToastContainer from "../components/ToastContainer.astro";
-import logoLight from "../assets/logo-light.svg";
-import logoDark from "../assets/logo-dark.svg";
 import Button from "../components/Button.astro";
 import Icon from "./Icon.astro";
 ---
@@ -10,11 +8,14 @@ import Icon from "./Icon.astro";
 <section class="hero">
   <div class="hero-content">
     <Badge
-      label="Coming Soon"
       variant="gradient"
       color="var(--brand)"
+      class="badge-hero"
+      animate="fade"
       gradientColors={["#f97316", "#f31b75"]}
-    />
+    >
+      <span class="badge-dot"></span>Open Source · MIT Licensed</Badge
+    >
     <h1 class="hero-title">
       A beautiful and minimal
       <span translate="no" class="text-gradient-orange">toast</span>
@@ -118,12 +119,14 @@ import Icon from "./Icon.astro";
     text-align: center;
   }
 
-  /* GRADIENTES */
-  .text-toastro {
-    background: linear-gradient(to right, #f97316, #ff000e, #bf0055);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+    animation: pulse 2s ease infinite;
   }
+  /* GRADIENTES */
   .text-gradient-orange {
     background: linear-gradient(to right, #f97316, #fbbf24);
     -webkit-background-clip: text;

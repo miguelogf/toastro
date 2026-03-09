@@ -5,7 +5,7 @@
   --status-error:   #e53935;
   --status-info:    #2196f3;
   --status-neutral: #808ea2;
-  --status-brand:   #f31b75;   /* antes: vibrant/support — ahora ligado a identidad */
+  --status-brand:   #f31b75;
   --status-default: #b4b4b4;
 }
 
@@ -20,38 +20,52 @@
 
 /* ── Variants ── */
 
-/* BASIC */
-/* .variant--basic {
-  color: var(--text);
-  background: var(--surface);
-  border: 1px solid transparent;
-} */
-
 /* SOLID */
 .variant--solid {
-  color: var(--type-text, white);
-  background: var(--type-color);
   border: 1px solid var(--type-color);
+  background: var(--type-color);
+  color: var(--type-text, #fff);
 }
 
 /* SOFT */
 .variant--soft {
-  color: var(--type-color);
   background: color-mix(in srgb, var(--type-color) 12%, transparent);
+  color: var(--type-color);
   border: 1px solid transparent;
+}
+
+/* SUBTLE */
+.variant--subtle {
+  border: 1px solid color-mix(in srgb, var(--type-color) 30%, transparent);
+    background: color-mix(in srgb, var(--type-color) 6%, transparent);
+    color: var(--type-color);
+}
+
+/* GHOST */
+.variant--ghost {
+  background: transparent;
+  color: var(--type-color);
+  border: 1px solid transparent;
+}
+
+/* NEUTRAL */
+.variant--neutral {
+  border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
+  color: var(--text);
+  background: var(--surface);
 }
 
 /* OUTLINE */
 .variant--outline {
-  color: var(--type-color);
-  background: transparent;
   border: 1px solid var(--type-color);
+  background: transparent;
+  color: var(--type-color);
 }
 
 /* GLASS */
 .variant--glass {
-  color: var(--text);
   background: color-mix(in srgb, var(--type-color) 8%, transparent);
+  color: var(--text);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent);
@@ -60,8 +74,8 @@
 
 /* GRADIENT */
 .variant--gradient {
-  color: var(--type-color);
   border: 1px solid transparent;
+  color: var(--type-color);
   background:
     linear-gradient(var(--bg), var(--bg)) padding-box,
     var(--gradient-colors, linear-gradient(90deg, #f97316, #f31b75)) border-box;

@@ -133,8 +133,8 @@ window.showToast({ message: "Longer…", duration: 8000 });
 
 ```css
 :root {
-  --toastro-bg:     var(--bg-color);
-  --toastro-text:   var(--text-color);
+  --toastro-bg:     var(--bg);
+  --toastro-text:   var(--text);
   --toastro-radius: 12px;
 }
 ```

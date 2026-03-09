@@ -1,9 +1,10 @@
 ---
 import Logo from "../components/Logo.astro";
-import SocialLink from "./SocialLink.astro";
+import Badge from "./Badge.astro";
+import IconLink from "./IconLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
-const socials = [
+const iconLinks = [
   { name: "github", href: "https://github.com/miguelogf" },
   { name: "linkedin", href: "https://www.linkedin.com/in/miguelogf/" },
   { name: "x", href: "https://x.com/_miguelogf" },
@@ -12,31 +13,37 @@ const socials = [
 
 <nav class="navbar">
   <div class="navbar-container">
-    <div class="navbar-left">
+    <div class="navbar-brand">
       <a href="/"><Logo /></a>
+      <Badge
+        variant="soft"
+        color="var(--status-error)"
+        animate="bounce"
+        class="badge--sm">v0.1.0</Badge
+      >
     </div>
 
     <div class="navbar-menu" id="navMenu">
       <div class="nav-links">
-        <a href="/about" class="nav-link">About</a>
+        <a href="/" class="nav-link">Home</a>
         <a href="/docs" class="nav-link">Docs</a>
         <a href="/changelog" class="nav-link">Changelog</a>
       </div>
 
-      <div class="mobile-socials">
+      <div class="mobile-links">
         {
-          socials.map((link) => (
-            <SocialLink name={link.name} href={link.href} />
+          iconLinks.map((link) => (
+            <IconLink name={link.name} href={link.href} />
           ))
         }
       </div>
     </div>
 
-    <div class="navbar-right">
-      <div class="desktop-socials">
+    <div class="navbar-actions">
+      <div class="desktop-links">
         {
-          socials.map((link) => (
-            <SocialLink name={link.name} href={link.href} />
+          iconLinks.map((link) => (
+            <IconLink name={link.name} href={link.href} />
           ))
         }
       </div>
@@ -69,15 +76,12 @@ const socials = [
     position: sticky;
     top: 0;
     z-index: 100;
-    /* Sin backdrop-filter aquí: evita crear un stacking context que
-       atraparía al .navbar-menu fixed e impediría su propio blur */
     background: transparent;
     transition: color 0.75s ease;
     border-bottom: 1px solid color-mix(in srgb, var(--text) 5%, transparent);
     padding: 0.75rem 1.5rem;
   }
 
-  /* El blur del navbar va en un pseudo-elemento para no crear stacking context */
   .navbar::before {
     content: "";
     position: absolute;
@@ -90,23 +94,28 @@ const socials = [
   }
 
   .navbar-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-  }
-
-  .logo {
-    height: 1.5rem;
-    width: auto;
   }
 
   /* Desktop Menu */
+  .navbar-brand {
+    justify-self: start;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .navbar-menu {
+    justify-self: center;
+  }
+
   .nav-links {
     display: flex;
     gap: 2rem;
+    justify-content: center;
   }
   .nav-link {
     text-decoration: none;
@@ -119,14 +128,14 @@ const socials = [
   .nav-link:hover {
     opacity: 1;
   }
-
-  .navbar-right {
+  .navbar-actions {
+    justify-self: end;
     display: flex;
     flex-direction: row !important;
     align-items: center;
     gap: 1rem;
   }
-  .desktop-socials {
+  .desktop-links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -182,25 +191,22 @@ const socials = [
 
   /* Responsive Logic */
   @media (min-width: 769px) {
-    .navbar-menu {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .mobile-socials {
+    .mobile-links {
       display: none;
     }
   }
 
   @media (max-width: 768px) {
+    .navbar-container {
+      grid-template-columns: auto 1fr;
+    }
     .menu-toggle {
       display: flex;
     }
-    .desktop-socials,
+    .desktop-links,
     .spacer {
       display: none;
     }
-
     .navbar-menu {
       position: fixed;
       top: 0;
@@ -222,18 +228,15 @@ const socials = [
         visibility 0.5s;
       z-index: 100;
     }
-
     .navbar-menu.is-visible {
       opacity: 1;
       visibility: visible;
     }
-
     .nav-links {
       flex-direction: column;
       align-items: center;
       gap: 2.5rem;
     }
-
     .nav-link {
       font-size: 1.5rem;
       font-weight: 300;
@@ -251,7 +254,6 @@ const socials = [
     .navbar-menu.is-visible .nav-link:hover {
       opacity: 1;
     }
-
     /* Efecto escalonado (Stagger) */
     .nav-link:nth-child(1) {
       transition-delay: 0.1s;
@@ -262,8 +264,7 @@ const socials = [
     .nav-link:nth-child(3) {
       transition-delay: 0.3s;
     }
-
-    .mobile-socials {
+    .mobile-links {
       display: flex;
       gap: 2rem;
       margin-top: 1rem;
