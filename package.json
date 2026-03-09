@@ -9,10 +9,7 @@
   },
   "dependencies": {
     "@fontsource-variable/geist-mono": "^5.2.7",
-    "@fontsource-variable/montserrat": "^5.1.0",
-    "@fontsource/fira-code": "^5.1.0",
-    "@tsparticles/engine": "^3.9.1",
-    "@tsparticles/slim": "^3.9.1",
+    "@fontsource/geist": "^5.2.8",
     "astro": "^4.16.18"
   }
 }
