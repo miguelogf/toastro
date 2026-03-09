@@ -1,37 +1,35 @@
 :root {
-  --type-success: #34d399;
-  --type-warning: #ed931b;
-  --type-error:  #d32f2f;
-  --type-info:    #60a5fa;
-  --type-neutral: #808ea2; /*808ea2*/
-  --type-vibrant: #f31b75;
-  --type-default: #b4b4b4;
+  /* ── Semantic status colors ── */
+  --status-success: #34d399;
+  --status-warning: #ed931b;
+  --status-error:   #e53935;
+  --status-info:    #2196f3;
+  --status-neutral: #808ea2;
+  --status-brand:   #f31b75;   /* antes: vibrant/support — ahora ligado a identidad */
+  --status-default: #b4b4b4;
 }
 
-/* TYPES */
-.type {
-  --type-color: var(--type-default);
-}
+/* ── Type assignments ── */
+.type--success { --type-color: var(--status-success); }
+.type--warning { --type-color: var(--status-warning); }
+.type--error   { --type-color: var(--status-error);   }
+.type--info    { --type-color: var(--status-info);    }
+.type--neutral { --type-color: var(--status-neutral); }
+.type--brand   { --type-color: var(--status-brand);   }
+.type--default { --type-color: var(--status-default); }
 
-.type--success { --type-color: var(--type-success); }
-.type--warning { --type-color: var(--type-warning); }
-.type--error   { --type-color: var(--type-error); }
-.type--info    { --type-color: var(--type-info); }
-.type--neutral { --type-color: var(--type-neutral); }
-.type--vibrant { --type-color: var(--type-vibrant); }
-.type--default { --type-color: var(--type-default); }
+/* ── Variants ── */
 
-/* DEFAULT */
-.variant--default {
-  color: var(--type-color);
-  background: color-mix(in srgb, var(--bg-color), white 2.5%);
-  border: 1px solid color-mix(in srgb, var(--bg-color), white 20%);
-}
+/* BASIC */
+/* .variant--basic {
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid transparent;
+} */
 
 /* SOLID */
 .variant--solid {
-  /* Intentamos heredar un color de texto dinámico */
-  color: var(--badge-text, white) !important; 
+  color: var(--type-text, white);
   background: var(--type-color);
   border: 1px solid var(--type-color);
 }
@@ -39,50 +37,34 @@
 /* SOFT */
 .variant--soft {
   color: var(--type-color);
-  background: color-mix(in srgb, var(--type-color) 10%, transparent);
+  background: color-mix(in srgb, var(--type-color) 12%, transparent);
   border: 1px solid transparent;
-} 
+}
 
 /* OUTLINE */
 .variant--outline {
   color: var(--type-color);
   background: transparent;
-  outline: 1px solid var(--type-color);
-  outline-offset: -1px;
+  border: 1px solid var(--type-color);
 }
 
 /* GLASS */
 .variant--glass {
-  /* Fondo muy sutil basado en el color del tipo */
-  background: color-mix(in srgb, var(--toast-color) 8%, transparent);
-  /* El efecto de desenfoque de fondo */
+  color: var(--text);
+  background: color-mix(in srgb, var(--type-color) 8%, transparent);
   backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%); /* Soporte para Safari/iOS */
-  /* Sombra suave para dar profundidad */
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent);
   box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid color-mix(in srgb, white 7.5%, transparent);
-  
-  /* El texto debe ser legible: o el color del tipo o el color de texto general */
-  color: var(--text-color); 
 }
 
 /* GRADIENT */
 .variant--gradient {
-  border: 1px solid transparent; 
-  /* Usamos el color de texto que prefieras para gradientes */
-  color: var(--text-color); 
-  
-  background: 
-    /* Fondo interno (Cámbialo al color de fondo de mogf.dev si es oscuro) */
-    linear-gradient(var(--bg-color, #121212), var(--bg-color, #121212)) padding-box, 
-    /* AQUÍ ESTABA EL ERROR: Cambiamos --badge-gradient por --toast-gradient */
-    var(--toast-gradient, linear-gradient(90deg, #f97316, #e50a64)) border-box; 
-    
-  backdrop-filter: blur(10px);
+  color: var(--type-color);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    var(--gradient-colors, linear-gradient(90deg, #f97316, #f31b75)) border-box;
   background-origin: border-box;
   background-clip: padding-box, border-box;
-}
-
-html {
-  touch-action: manipulation;
 }

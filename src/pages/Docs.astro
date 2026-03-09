@@ -36,7 +36,7 @@ import Icon from "../components/Icon.astro";
         <Badge
           label="Documentation"
           variant="outline"
-          color="var(--text-color)"
+          color="var(--text)"
           styleOverride="opacity: 0.4; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 1rem 0;"
         />
         <h1>Getting Started</h1>
@@ -292,7 +292,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
           </div>
 
           <div class="callout callout-tip">
-            <Icon name="default" color="var(--type-success)" />
+            <Icon name="default" color="var(--status-success)" />
             <span
               >The slide-in animation adapts automatically: left positions slide
               from the left, right from the right, center positions from below.</span
@@ -396,8 +396,8 @@ window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code
               <Icon name="copy" />
             </button>
             <pre><code>:root &lbrace;
-  --toastro-bg:     var(--bg-color);    /* toast background */
-  --toastro-text:   var(--text-color);  /* text color       */
+  --toastro-bg:     var(--bg);    /* toast background */
+  --toastro-text:   var(--text);  /* text color       */
   --toastro-radius: 12px;              /* border radius    */
 &rbrace;</code></pre>
           </div>
@@ -567,8 +567,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       top: 4rem;
       height: fit-content;
       padding: 2.5rem 1.5rem 2.5rem 0;
-      border-right: 1px solid
-        color-mix(in srgb, var(--text-color) 8%, transparent);
+      border-right: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
     }
 
     .sidebar-nav {
@@ -586,7 +585,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       margin-top: 1.25rem;
       margin-bottom: 0.25rem;
       padding-left: 0.75rem;
-      color: var(--text-color);
+      color: var(--text);
     }
     .sidebar-label:first-child {
       margin-top: 0;
@@ -594,7 +593,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
 
     .sidebar-link {
       font-size: 0.85rem;
-      color: var(--text-color);
+      color: var(--text);
       text-decoration: none;
       padding: 0.35rem 0.75rem;
       border-radius: 6px;
@@ -608,7 +607,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     }
     .sidebar-link.active {
       opacity: 1;
-      background: color-mix(in srgb, var(--text-color) 6%, transparent);
+      background: var(--surface);
       font-weight: 500;
     }
 
@@ -621,8 +620,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     .docs-header {
       margin-bottom: 3rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid
-        color-mix(in srgb, var(--text-color) 8%, transparent);
+      border-bottom: 1px solid var(--surface);
     }
 
     .docs-header h1 {
@@ -630,7 +628,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       font-weight: 600;
       margin: 0 0 0.75rem;
       letter-spacing: -0.03em;
-      font-family: var(--font-main);
     }
 
     .docs-intro {
@@ -655,7 +652,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-family: var(--font-main);
     }
 
     .doc-section h3 {
@@ -663,7 +659,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       font-weight: 600;
       margin: 1.75rem 0 0.5rem;
       opacity: 0.8;
-      font-family: var(--font-main);
     }
 
     .section-icon {
@@ -682,8 +677,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     .callout code {
       font-family: var(--font-code);
       font-size: 0.8em;
-      background: color-mix(in srgb, var(--text-color) 7%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+      background: color-mix(in srgb, var(--text) 7%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
       padding: 0.1em 0.4em;
       border-radius: 4px;
     }
@@ -691,8 +686,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     /* ── Code Blocks ── */
     .code-block {
       position: relative;
-      background: color-mix(in srgb, var(--text-color) 4%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
       border-radius: 10px;
       margin: 0.75rem 0 1.25rem;
       overflow: hidden;
@@ -715,7 +710,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       font-family: var(--font-code);
       font-size: 0.82rem;
       line-height: 1.7;
-      color: var(--text-color);
+      color: var(--text);
     }
 
     /* Syntax tokens */
@@ -762,12 +757,12 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       position: absolute;
       top: 0.6rem;
       right: 0.6rem;
-      background: color-mix(in srgb, var(--text-color) 8%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+      background: color-mix(in srgb, var(--text) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
       border-radius: 6px;
       padding: 0.35rem;
       cursor: pointer;
-      color: var(--text-color);
+      color: var(--text);
       opacity: 0.5;
       transition: opacity 0.15s;
       display: flex;
@@ -778,7 +773,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     }
     .copy-btn.copied {
       opacity: 1;
-      color: var(--type-success);
+      color: var(--status-success);
     }
 
     /* ── Code Tabs ── */
@@ -797,11 +792,11 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       font-family: var(--font-code);
       padding: 0.35rem 0.85rem;
       background: none;
-      border: 1px solid color-mix(in srgb, var(--text-color) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
       border-bottom: none;
       border-radius: 6px 6px 0 0;
       cursor: pointer;
-      color: var(--text-color);
+      color: var(--text);
       opacity: 0.45;
       transition:
         opacity 0.15s,
@@ -821,9 +816,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     }
     .tab-btn.active {
       opacity: 1;
-      background: color-mix(in srgb, var(--text-color) 4%, transparent);
-      border-bottom: 1px solid
-        color-mix(in srgb, var(--text-color) 4%, transparent);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 4%, transparent);
       z-index: 1;
     }
 
@@ -855,14 +849,12 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       letter-spacing: 0.04em;
       text-transform: uppercase;
       opacity: 0.45;
-      border-bottom: 1px solid
-        color-mix(in srgb, var(--text-color) 10%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
     }
 
     .docs-table td {
       padding: 0.65rem 1rem;
-      border-bottom: 1px solid
-        color-mix(in srgb, var(--text-color) 6%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
       opacity: 0.75;
       line-height: 1.5;
       vertical-align: middle;
@@ -878,8 +870,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     .docs-table code {
       font-family: var(--font-code);
       font-size: 0.78em;
-      background: color-mix(in srgb, var(--text-color) 7%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+      background: color-mix(in srgb, var(--text) 7%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
       padding: 0.1em 0.4em;
       border-radius: 4px;
     }
@@ -887,7 +879,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
     .required {
       font-size: 0.72rem;
       font-weight: 600;
-      color: #f97316;
+      color: var(--brand);
       text-transform: uppercase;
       letter-spacing: 0.04em;
       font-family: var(--font-code);
@@ -909,29 +901,26 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       margin-top: 1px;
     }
     .callout a {
-      color: var(--text-color);
+      color: var(--text);
       text-decoration: underline;
-      text-decoration-color: color-mix(
-        in srgb,
-        var(--text-color) 30%,
-        transparent
-      );
+      text-decoration-color: color-mix(in srgb, var(--text) 30%, transparent);
     }
 
     .callout-info {
-      background: color-mix(in srgb, var(--type-info) 8%, transparent);
-      border: 1px solid color-mix(in srgb, var(--type-info) 20%, transparent);
+      background: color-mix(in srgb, var(--status-info) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--status-info) 20%, transparent);
     }
     .callout-info svg {
-      color: var(--type-info);
+      color: var(--status-info);
     }
 
     .callout-tip {
-      background: color-mix(in srgb, var(--type-success) 8%, transparent);
-      border: 1px solid color-mix(in srgb, var(--type-success) 20%, transparent);
+      background: color-mix(in srgb, var(--status-success) 8%, transparent);
+      border: 1px solid
+        color-mix(in srgb, var(--status-success) 20%, transparent);
     }
     .callout-tip svg {
-      color: var(--type-success);
+      color: var(--status-success);
     }
 
     /* ── Position Diagram ── */
@@ -940,8 +929,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       width: 100%;
       margin: 1rem auto;
       height: 160px;
-      background: color-mix(in srgb, var(--text-color) 3%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+      background: color-mix(in srgb, var(--text) 3%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
       border-radius: 10px;
       margin: 1rem 0;
     }
@@ -950,8 +939,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       position: absolute;
       font-size: 0.68rem;
       font-family: var(--font-code);
-      background: color-mix(in srgb, var(--text-color) 8%, transparent);
-      border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+      background: color-mix(in srgb, var(--text) 8%, transparent);
+      border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
       padding: 0.2rem 0.5rem;
       border-radius: 5px;
       opacity: 0.5;
@@ -1006,8 +995,7 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       .sidebar {
         position: static;
         border-right: none;
-        border-bottom: 1px solid
-          color-mix(in srgb, var(--text-color) 8%, transparent);
+        border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
         padding: 1.5rem 0;
         overflow-x: auto;
       }

@@ -5,76 +5,51 @@ interface Props {
     | "default"
     | "success"
     | "warning"
-    | "danger"
+    | "error"
     | "info"
-    | "loading"
-    | "support";
-  variant?: "solid" | "soft" | "outline" | "gradient" | "glass";
+    | "neutral"
+    | "brand";
+  variant?: "basic" | "solid" | "soft" | "outline" | "glass" | "gradient";
   color?: string;
   gradientColors?: string[];
   textColor?: string;
-  className?: string;
-  styleOverride?: string;
+  class?: string;
 }
 
 const {
   label,
   type = "default",
-  variant = "filled",
+  variant = "soft", // soft es el default más versátil
   color,
   gradientColors = ["#f97316", "#f31b75"],
   textColor,
-  className = "",
-  styleOverride = "",
+  class: className = "",
 } = Astro.props;
 
-const themeColors: Record<string, string> = {
-  success: "#198754",
-  warning: "#ed931b",
-  danger: "#d32f2f",
-  info: "#2563eb",
-  loading: "#808ea2",
-  support: "#f31b75",
-  default: "#b4b4b4",
-};
-
-function getContrastColor(hexcolor: string | undefined, currentType: string) {
-  if (!hexcolor || hexcolor.startsWith("var")) return undefined;
-
-  let hex = hexcolor.startsWith("#")
-    ? hexcolor
-    : themeColors[currentType] || themeColors.default;
-  if (!hex.startsWith("#")) return "white";
-
-  hex = hex.replace("#", "");
-  if (hex.length === 3)
-    hex = hex
-      .split("")
-      .map((s) => s + s)
-      .join("");
-
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-
-  return yiq >= 150 ? "#000000" : "#ffffff";
+// Solo necesario para variant solid — contraste automático
+function contrastColor(hex: string): string {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 >= 150 ? "#000000" : "#ffffff";
 }
 
-const gradient = `linear-gradient(90deg, ${gradientColors.join(",")})`;
-const autoTextColor = getContrastColor(color, type);
+const resolvedTextColor =
+  textColor ?? (color ? contrastColor(color) : undefined);
+const gradient = `linear-gradient(90deg, ${gradientColors.join(", ")})`;
 
-// ✅ Unificamos en un solo style
-const style = `
-  ${color ? `--type-color: ${color};` : ""}
-  ${textColor || autoTextColor ? `--badge-text: ${textColor || autoTextColor};` : ""}
-  --badge-gradient: ${gradient};
-  ${styleOverride}
-`;
+const style = [
+  color && `--type-color: ${color}`,
+  resolvedTextColor && `--type-text: ${resolvedTextColor}`,
+  `--gradient-colors: ${gradient}`,
+]
+  .filter(Boolean)
+  .join("; ");
 ---
 
 <span
-  class={`badge type--${type} variant--${variant} ${className}`}
+  class:list={["badge", `type--${type}`, `variant--${variant}`, className]}
   style={style}
 >
   {label}
@@ -83,57 +58,19 @@ const style = `
 <style>
   .badge {
     display: inline-flex;
-    margin: 0 0.5rem;
-    width: fit-content;
     align-items: center;
     justify-content: center;
+    width: fit-content;
     padding: 0.25rem 0.65rem;
     font-size: 0.7rem;
     font-weight: 500;
+    font-family: var(--font-code);
     border-radius: 999px;
     line-height: 1;
     border: 1px solid transparent;
-    font-family: var(--font-code);
-    color: var(--badge-text, var(--type-color));
     vertical-align: middle;
-  }
 
-  .variant--filled {
-    background-color: var(--type-color);
-    /* En filled sí forzamos el contraste para que sea legible */
-    color: var(--badge-text, white);
-    border-color: rgba(0, 0, 0, 0.05);
-  }
-
-  .variant--soft {
-    background-color: color-mix(in srgb, var(--type-color) 15%, transparent);
-    color: var(--type-color);
-  }
-
-  .variant--outline {
-    background: transparent;
-    border: 1px solid var(--type-color);
-    color: var(--type-color);
-  }
-
-  .variant--gradient {
-    /* Usamos el truco de border-box que tenías en tu theme.css */
-    border: 1px solid transparent;
-    background:
-      linear-gradient(var(--bg-color, #121212), var(--bg-color, #121212))
-        padding-box,
-      var(--badge-gradient) border-box;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    /* Aquí es la clave: usamos el color que venga por prop (accent-color) */
-    color: var(--badge-text, var(--type-color));
-  }
-
-  .variant--glass {
-    background: color-mix(in srgb, var(--type-color) 10%, transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent);
-    color: var(--type-color);
+    /* Fallback si no viene tipo */
+    --type-color: var(--status-default);
   }
 </style>

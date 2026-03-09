@@ -1,12 +1,12 @@
 ---
 import "@fontsource-variable/montserrat";
-import "@fontsource/fira-code";
+import "@fontsource-variable/geist-mono/index.css";
 
 import "../styles/global.css";
 import "../styles/theme.css";
 
 import NavBar from "../components/NavBar.astro";
-import ParticlesBackground from "../components/ParticlesBackground.astro";
+import FloatingBackground from "../components/FloatingBackground.astro";
 ---
 
 <!doctype html>
@@ -56,7 +56,7 @@ import ParticlesBackground from "../components/ParticlesBackground.astro";
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <ParticlesBackground />
+    <FloatingBackground />
     <NavBar />
     <main style="position:relative; z-index:1;">
       <slot />

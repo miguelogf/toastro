@@ -12,19 +12,9 @@ import Icon from "./Icon.astro";
     <Badge
       label="Coming Soon"
       variant="gradient"
-      color="var(--accent-color)"
+      color="var(--brand)"
       gradientColors={["#f97316", "#f31b75"]}
     />
-
-    <div class="logo-container" aria-hidden="true">
-      <div class="logo-wrapper">
-        <img src={logoDark.src} alt="" class="logo-dark" />
-        <img src={logoLight.src} alt="" class="logo-light" />
-      </div>
-      <span translate="no" class="logo-text"
-        >toast<span class="text-gradient-toastro">ro</span></span
-      >
-    </div>
     <h1 class="hero-title">
       A beautiful and minimal
       <span translate="no" class="text-gradient-orange">toast</span>
@@ -116,33 +106,6 @@ import Icon from "./Icon.astro";
     margin: 0 auto;
     gap: 1.75rem;
   }
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: -1rem;
-  }
-
-  .logo-wrapper {
-    width: 2.5rem;
-    aspect-ratio: 1 / 1;
-  }
-
-  .logo-text {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-  }
-
-  .logo-dark {
-    display: none;
-  }
-  html.dark .logo-dark {
-    display: block;
-  }
-  html.dark .logo-light {
-    display: none;
-  }
 
   .hero-title {
     font-size: clamp(2.2rem, 6vw, 3.5rem);
@@ -156,7 +119,7 @@ import Icon from "./Icon.astro";
   }
 
   /* GRADIENTES */
-  .text-gradient-toastro {
+  .text-toastro {
     background: linear-gradient(to right, #f97316, #ff000e, #bf0055);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -1,0 +1,116 @@
+---
+interface Props {
+  count?: number;
+  opacity?: number;
+  withGlow?: boolean;
+}
+
+const {
+  count = 12,
+  opacity = 0.18,
+  withGlow = true,
+} = Astro.props;
+
+const breads = Array.from({ length: count }, (_, i) => ({
+  id: i,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: 4 + Math.random() * 8,
+  duration: 18 + Math.random() * 24,
+  delay: -(Math.random() * 20),
+  drift: (Math.random() - 0.5) * 6,
+  rotate: Math.random() * 360,
+  rotateDelta: (Math.random() - 0.5) * 180,
+}));
+---
+
+<div class="bg" aria-hidden="true">
+  {withGlow && <div class="bg__glow" />}
+
+  {breads.map((b) => (
+    <span
+      class="bg__emoji"
+      style={`
+        left: ${b.x}%;
+        top: ${b.y}%;
+        font-size: ${b.size}px;
+        --opacity: ${opacity};
+        --dur: ${b.duration}s;
+        --delay: ${b.delay}s;
+        --drift: ${b.drift}vw;
+        --rot: ${b.rotate}deg;
+        --rot-end: ${b.rotate + b.rotateDelta}deg;
+      `}
+    >🍞</span>
+  ))}
+</div>
+
+<style>
+  .bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg__glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 60% 40% at 50% 38%,
+      color-mix(in srgb, var(--brand) 12%, transparent),
+      transparent 65%
+    );
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .bg__emoji {
+    position: absolute;
+    display: block;
+    line-height: 1;
+    user-select: none;
+    will-change: transform, opacity;
+    opacity: 0; /* empieza invisible — la animación toma el control */
+    animation: icon-float var(--dur) var(--delay) ease-in-out infinite;
+  }
+
+  @keyframes icon-float {
+    0% {
+      opacity: 0;
+      transform: translateY(0) translateX(0) rotate(var(--rot));
+    }
+    12% {
+      opacity: var(--opacity);
+    }
+    75% {
+      opacity: var(--opacity);
+      transform: translateY(-11vh) translateX(var(--drift)) rotate(var(--rot-end));
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-18vh) translateX(calc(var(--drift) * 1.2)) rotate(calc(var(--rot-end) + 20deg));
+    }
+  }
+</style>
+
+{withGlow && (
+  <script is:inline>
+    (function () {
+      const glow = document.querySelector(".bg__glow");
+      if (!glow) return;
+
+      function onScroll() {
+        const progress = Math.min(window.scrollY / (window.innerHeight * 0.4), 1);
+        glow.style.opacity = 1 - progress;
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      document.addEventListener("astro:after-swap", function () {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      });
+    })();
+  </script>
+)}
