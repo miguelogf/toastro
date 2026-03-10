@@ -65,74 +65,94 @@ em {
 }
 
   
-  /* ── Animations ── */
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ── Animations ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
-
-    @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.15); /* Un poco más notable */
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes bounce {
-    0% {
-      transform: translateY(-8px) scale(0.96);
-      opacity: 0;
-    }
-
-    40% {
-      transform: translateY(0) scale(1.02);
-      opacity: 1;
-    }
-
-    55% {
-      transform: translateY(-4px) scale(0.99);
-    }
-
-    70% {
-      transform: translateY(0);
-    }
-
-    82% {
-      transform: translateY(-2px);
-    }
-
-    92% {
-      transform: translateY(0);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
-
-  @keyframes reveal {
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+  @keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15); /* Un poco más notable */
+    opacity: 0.8;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-8px) scale(0.96);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(0) scale(1.02);
+    opacity: 1;
+  }
+
+  55% {
+    transform: translateY(-4px) scale(0.99);
+  }
+
+  70% {
+    transform: translateY(0);
+  }
+
+  82% {
+    transform: translateY(-2px);
+  }
+
+  92% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* View transition */
+
+::view-transition-old(root) {
+  animation: fade-out 0.18s ease forwards;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.22s ease forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

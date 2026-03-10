@@ -301,8 +301,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
           <div class="callout callout-tip">
             <Icon name="zap" color="var(--status-success)" />
             <span
-              >The slide-in animation adapts automatically: left positions slide
-              from the left, right from the right, center positions from below.</span
+              >The slide-in animation adapts automatically: left positions slide from the left, right from the right, center positions from below.</span
             >
           </div>
         </section>
@@ -927,6 +926,8 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       background: color-mix(in srgb, var(--status-success) 8%, transparent);
       border: 1px solid
         color-mix(in srgb, var(--status-success) 20%, transparent);
+      align-items: center;
+      
     }
     .callout-tip svg {
       color: var(--status-success);

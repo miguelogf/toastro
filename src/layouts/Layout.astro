@@ -11,7 +11,7 @@ import FloatingBackground from "../components/FloatingBackground.astro";
   <head>
     <!-- Base -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="color-scheme" content="dark" />
     <title>toastro — A tiny toast library made specifically for Astro.</title>
     <meta
@@ -51,6 +51,11 @@ import FloatingBackground from "../components/FloatingBackground.astro";
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <script>
+      if (!document.startViewTransition) {
+        console.warn("View Transitions API not supported");
+      }
+    </script>
   </head>
   <body>
     <FloatingBackground />
