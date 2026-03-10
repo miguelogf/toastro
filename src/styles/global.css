@@ -84,36 +84,36 @@ svg {
   }
 
   @keyframes bounce {
-  0% {
-    transform: translateY(-8px) scale(0.96);
-    opacity: 0;
-  }
+    0% {
+      transform: translateY(-8px) scale(0.96);
+      opacity: 0;
+    }
 
-  40% {
-    transform: translateY(0) scale(1.02);
-    opacity: 1;
-  }
+    40% {
+      transform: translateY(0) scale(1.02);
+      opacity: 1;
+    }
 
-  55% {
-    transform: translateY(-4px) scale(0.99);
-  }
+    55% {
+      transform: translateY(-4px) scale(0.99);
+    }
 
-  70% {
-    transform: translateY(0);
-  }
+    70% {
+      transform: translateY(0);
+    }
 
-  82% {
-    transform: translateY(-2px);
-  }
+    82% {
+      transform: translateY(-2px);
+    }
 
-  92% {
-    transform: translateY(0);
-  }
+    92% {
+      transform: translateY(0);
+    }
 
-  100% {
-    transform: translateY(0);
+    100% {
+      transform: translateY(0);
+    }
   }
-}
 
   @keyframes float {
     0%,
@@ -124,3 +124,10 @@ svg {
       transform: translateY(-8px);
     }
   }
+
+  @keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

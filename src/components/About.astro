@@ -1,0 +1,252 @@
+<section class="section what-section">
+  <div class="section-inner">
+    <div class="label-tag">What is toastro?</div>
+    <div class="what-grid">
+      <div class="what-text">
+        <h2>A minimal toast library, built for <em>Astro</em>.</h2>
+        <p>
+          Most toast libraries assume you're in React, Vue, or Svelte land.
+          Toastro was built from scratch for Astro — no framework adapter
+          needed, no extra runtime overhead, no opinions about your stack.
+        </p>
+        <p>
+          Drop <code>&lt;ToastContainer /&gt;</code> into your layout once, call
+          <code>window.showToast()</code> from anywhere. That's it.
+        </p>
+      </div>
+      <div class="what-features">
+        <div class="feat-item">
+          <span class="feat-icon">⚡</span>
+          <div>
+            <strong>Zero dependencies</strong>
+            <span>Pure web platform APIs. No runtime bloat.</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">🎨</span>
+          <div>
+            <strong>4 variants × 5 types</strong>
+            <span>solid, soft, outline, glass — all composable.</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">🌍</span>
+          <div>
+            <strong>Global API</strong>
+            <span>Works from any script, island, or framework.</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">🎭</span>
+          <div>
+            <strong>CSS-variable theming</strong>
+            <span>Inherits your design system automatically.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".feat-item");
+
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("revealed");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+  items.forEach((el, i) => {
+  el.style.transitionDelay = `${i * 80}ms`;
+  observer.observe(el);
+});
+});
+</script> -->
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("revealed");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".feat-item").forEach((el, i) => {
+  el.style.transitionDelay = `${i * 80}ms`;
+  observer.observe(el);
+});
+</script>
+
+<style>
+/* ── Sections ── */
+  .section {
+    position: relative;
+    padding: 6rem 1.5rem;
+  }
+
+  .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .label-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-family: var(--font-code);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.75rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin: 0 0 3rem;
+  }
+
+  /* ── What section ── */
+  .what-section {
+    border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .what-text h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin: 0 0 1.25rem;
+  }
+
+  .what-text h2 em {
+    font-style: normal;
+    color: var(--brand);
+  }
+
+  .what-text p {
+    font-size: 0.92rem;
+    opacity: 0.6;
+    line-height: 1.75;
+    margin: 0 0 0.85rem;
+  }
+
+  .what-text code {
+    font-family: var(--font-code);
+    font-size: 0.82em;
+    background: color-mix(in srgb, var(--text) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+
+  .what-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+.feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+
+  background: color-mix(in srgb, var(--text) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
+  border-radius: 10px;
+
+  opacity: 0;
+  transform: translateY(16px);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.2s,
+    box-shadow 0.2s;
+  }
+
+  .feat-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .feat-item:hover {
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--brand) 8%, transparent);
+  }
+
+  .feat-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .feat-item strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .feat-item span {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  
+  @media (max-width: 768px) {
+    .what-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stack-card--primary {
+      grid-column: span 1;
+      grid-template-columns: auto 1fr;
+    }
+
+    .stack-card--primary .stack-tag {
+      grid-column: span 2;
+    }
+
+    .hero {
+      min-height: 80vh;
+    }
+  }
+</style>

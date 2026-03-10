@@ -1,30 +1,31 @@
 ---
 import Badge from "../components/Badge.astro";
-import ToastContainer from "../components/ToastContainer.astro";
 import Button from "../components/Button.astro";
 import Icon from "./Icon.astro";
+import ToastContainer from "../components/ToastContainer.astro";
 ---
 
 <section class="hero">
   <div class="hero-content">
     <Badge
-      variant="gradient"
+      variant="subtle"
       color="var(--brand)"
       class="badge-hero"
       animate="fade"
-      gradientColors={["#f97316", "#e53935"]}
     >
       <span class="badge-dot"></span>Open Source · MIT Licensed</Badge
     >
-    <h1 class="hero-title">
-      A beautiful and minimal
-      <span translate="no" class="text-gradient-orange">toast</span>
-      for
-      <span class="text-gradient-pink">Astro.</span>
-    </h1>
+        <h1 class="hero-title">
+          <span class="title-line">the toast lib</span>
+          <span class="title-line accent">Astro deserved.</span>
+        </h1>
+        <p class="hero-sub">
+          Beautiful, zero-dependency toast notifications for Astro.<br />
+          No framework. No noise. Just bread. 🍞
+        </p>
     <div class="buttons">
       <Button translate="no" id="btn-toast" fullWidth
-        >Toast me! <Icon name="bell" /></Button
+        ><Icon name="bell" />Toast me!</Button
       >
       <Button
         href="https://github.com/miguelogf/toastro"
@@ -32,9 +33,12 @@ import Icon from "./Icon.astro";
         newTab
         fullWidth
       >
-        Star on GitHub <Icon name="github" />
+        <Icon name="github" />Star on GitHub
       </Button>
     </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <Icon name="arrow" />
   </div>
 </section>
 
@@ -90,10 +94,10 @@ import Icon from "./Icon.astro";
 
 <style>
   .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     display: grid;
     place-items: center;
-    padding: 0 1rem;
+    position: relative;
   }
 
   .hero-content {
@@ -104,20 +108,11 @@ import Icon from "./Icon.astro";
     width: 100%;
     max-width: 720px;
     margin: 0 auto;
-    gap: 1.75rem;
   }
 
-  .hero-title {
-    font-size: clamp(2.2rem, 6vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-    max-width: 20ch;
-    margin: 0 auto;
-    text-align: center;
+  :global(.badge-hero) {
+    margin-bottom: 2rem;
   }
-
   .badge-dot {
     width: 6px;
     height: 6px;
@@ -125,31 +120,64 @@ import Icon from "./Icon.astro";
     background: var(--brand);
     animation: pulse 2s ease infinite;
   }
-  /* GRADIENTES */
-  .text-gradient-orange {
-    background: linear-gradient(to right, #f97316, #fbbf24);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+  .hero-title {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 700;
-  }
-  .text-gradient-pink {
-    background: linear-gradient(to right, #ff000e, #bf0055);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin: 0 0 1.5rem;
   }
 
+  .title-line {
+    display: block;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .title-line:first-child {
+    animation-delay: 0.1s;
+    opacity: 0.55;
+  }
+  .title-line:last-child {
+    animation-delay: 0.2s;
+  }
+
+  .title-line.accent {
+    color: var(--brand);
+    opacity: 1;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    opacity: 0.55;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  
   .buttons {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 0.75rem;
     justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
   }
 
   #btn-toast {
     gap: 0.25rem;
   }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 1;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite;
+  }
+
+
   @media (max-width: 640px) {
     .logo-wrapper {
       width: 2rem;
@@ -167,7 +195,7 @@ import Icon from "./Icon.astro";
     .buttons {
       flex-direction: column;
       width: 95%;
-      margin: 2rem auto 0 auto;
+      margin: 2rem auto 4rem auto;
     }
   }
 </style>
