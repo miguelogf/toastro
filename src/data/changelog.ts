@@ -19,7 +19,7 @@ export interface Release {
 export const changelog: Release[] = [
   {
     version: "0.1.0",
-    date: "2025-01-15",
+    date: "2026-03-09",
     title: "First Slice 🍞",
     description: "The very first public release of toastro. A minimal, zero-dependency toast library built specifically for Astro.",
     changes: [

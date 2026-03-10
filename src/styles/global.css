@@ -32,38 +32,35 @@ body {
   color: var(--text);
   font-family: var(--font-main);
   transition: background-color 0.75s ease, color 0.75s ease;
+  scroll-behavior: smooth;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   overflow-x: clip;
 }
-
 code,
 pre {
   font-family: var(--font-code);
 }
-
 main {
   position: relative;
   z-index: 1;
 }
-
 a {
   text-decoration: none;
 }
-
 svg {
   width: var(--icon-size);
   height: var(--icon-size);
   stroke-width: 1.5;
   display: block;
 }
-
 em {
   font-style: normal;
   color: var(--brand);
 }
-
   
 /* ── Animations ── */
 @keyframes fadeUp {
