@@ -1,0 +1,99 @@
+---
+import Section from "./Section.astro"
+import Icon from "./Icon.astro";
+import Card from "./Card.astro"
+---
+
+<Section class="license-section" label="License">
+  <Card class="license-card" interactive={true}>
+    <div class="license-header">
+      <div class="license-icon">
+        <Icon name="shield" size="1.5rem"/>
+      </div>
+      <div>
+        <h2>MIT License</h2>
+        <p>Free to use, modify, and distribute.</p>
+      </div>
+    </div>
+    <div class="license-body">
+      <pre><code>MIT License — Copyright (c) 2026 toastro contributors
+
+Permission is hereby granted, free of charge, to use, copy, modify, merge, publish, and distribute the Software without restriction, provided that the above copyright notice and this permission notice are included in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. </code></pre>
+    </div>    
+  </Card>
+</Section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Seleccionamos la clase base del componente Card
+  document.querySelectorAll(".reveal-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+</script>
+
+<style>
+  .license-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.75rem;
+    background: color-mix(in srgb, var(--brand) 5%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+
+  .license-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--brand) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand) 25%, transparent);
+    border-radius: 10px;
+    color: var(--brand);
+    flex-shrink: 0;
+    
+  }
+
+  .license-icon :global(svg) {
+    display: block; /* Crucial para que scale() funcione siempre */
+    animation: pulse 3s ease-in-out infinite;
+  }
+  .license-card:hover .license-icon :global(svg) {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--brand);
+  }
+  .license-header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.02em;
+  }
+  .license-header p {
+    font-size: 0.82rem;
+    opacity: 0.5;
+    margin: 0;
+  }
+  .license-body {
+    padding: 1.5rem 1.75rem;
+    overflow-x: auto;
+  }
+  .license-body pre {
+    margin: 0;
+    font-family: var(--font-code);
+    font-size: 0.78rem;
+    line-height: 1.8;
+    opacity: 0.55;
+    white-space: pre-wrap;
+  }
+</style>

@@ -13,7 +13,6 @@ const { class: className, id, label, title, subtitle } = Astro.props;
 
 <section id={id} class:list={["section", className]}>
   <div class="section-inner">
-    {/* Renderizado condicional: solo aparecen si pasas la prop */}
     {label && <div class="label-tag">{label}</div>}
     {title && <h2 class="section-title" set:html={title} />}
     {subtitle && <p class="section-sub">{subtitle}</p>}
@@ -26,6 +25,7 @@ const { class: className, id, label, title, subtitle } = Astro.props;
   .section {
     position: relative;
     padding: 6rem 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   }
 
   .section-inner {
@@ -44,7 +44,6 @@ const { class: className, id, label, title, subtitle } = Astro.props;
     opacity: 0.8;
     margin-bottom: 1rem;
   }
-
   .section-title {
     font-size: clamp(1.6rem, 4vw, 2.4rem);
     font-weight: 700;

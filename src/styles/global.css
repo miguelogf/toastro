@@ -56,8 +56,15 @@ svg {
   width: var(--icon-size);
   height: var(--icon-size);
   stroke-width: 1.5;
+  display: block;
 }
 
+em {
+  font-style: normal;
+  color: var(--brand);
+}
+
+  
   /* ── Animations ── */
   @keyframes fadeUp {
     from {
@@ -70,16 +77,14 @@ svg {
     }
   }
 
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
+    @keyframes pulse {
+    0%, 100% {
       transform: scale(1);
+      opacity: 1;
     }
     50% {
-      opacity: 0.5;
-      transform: scale(0.8);
-      -webkit-transform: scale(0.8);
+      transform: scale(1.15); /* Un poco más notable */
+      opacity: 0.8;
     }
   }
 

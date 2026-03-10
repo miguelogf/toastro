@@ -1,0 +1,89 @@
+---
+import Section from "../components/Section.astro"
+import Button from "./Button.astro"
+---
+<Section class="cta-section">
+  <div class="section-inner cta-inner">
+    <span class="cta-emoji">🍞</span>
+    <h2>Ready to toast?</h2>
+    <p>One install. One component. Beautiful notifications everywhere.</p>
+    <div class="cta-links">
+      
+      <Button href="/docs" color="var(--brand)" textColor="white">Get started</Button>
+      <Button href="https://github.com/miguelogf/toastro"
+        variant="outline">API Reference →</Button>
+      
+    </div>
+  </div>
+</Section>
+
+<style>
+  .cta-section {
+    border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1.25rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .cta-inner h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-inner p {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin: 0 0 2rem;
+  }
+
+  .cta-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+.cta-section {
+    border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1.25rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .cta-inner h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-inner p {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin: 0 0 2rem;
+  }
+
+  .cta-links {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
