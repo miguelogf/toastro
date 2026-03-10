@@ -17,22 +17,38 @@ const exampleGroups = [
       {
         id: "e-subtle",
         label: "Subtle",
-        config: { message: "Successfully deployed to Vercel", type: "success", variant: "subtle" },
+        config: {
+          message: "Successfully deployed to Vercel",
+          type: "success",
+          variant: "subtle",
+        },
       },
       {
         id: "e-soft",
         label: "Soft",
-        config: { message: "Warning: Low disk space", type: "info", variant: "soft" },
+        config: {
+          message: "Warning: Low disk space",
+          type: "info",
+          variant: "soft",
+        },
       },
       {
         id: "e-outline",
         label: "Outline",
-        config: { message: "Thanks for the support!", type: "brand", variant: "outline" },
+        config: {
+          message: "Thanks for the support!",
+          type: "favorite",
+          variant: "outline",
+        },
       },
       {
         id: "e-solid",
         label: "Solid",
-        config: { message: "New update available", type: "neutral", variant: "solid" },
+        config: {
+          message: "New update available",
+          type: "neutral",
+          variant: "solid",
+        },
       },
       {
         id: "e-gradient",
@@ -49,32 +65,130 @@ const exampleGroups = [
   {
     label: "Toast Types",
     examples: [
-      { id: "t-success", label: "Success", config: { message: "Changes saved!", type: "success", variant: "solid" } },
-      { id: "t-error",   label: "Error",   config: { message: "Something went wrong", type: "error",   variant: "solid" } },
-      { id: "t-warning", label: "Warning", config: { message: "Your session is about to expire", type: "warning", variant: "solid" } },
-      { id: "t-info",    label: "Info",    config: { message: "A new version is available", type: "info", variant: "solid" } },
-      { id: "t-neutral", label: "Neutral", config: { message: "Processing your request…", type: "neutral", variant: "solid" } },
-      { id: "t-brand",   label: "Brand",   config: { message: "Welcome to toastro 🍞", type: "brand",   variant: "solid" } },
+      {
+        id: "t-success",
+        label: "Success",
+        config: {
+          message: "Changes saved!",
+          type: "success",
+          variant: "solid",
+        },
+      },
+      {
+        id: "t-error",
+        label: "Error",
+        config: {
+          message: "Something went wrong",
+          type: "error",
+          variant: "solid",
+        },
+      },
+      {
+        id: "t-warning",
+        label: "Warning",
+        config: {
+          message: "Your session is about to expire",
+          type: "warning",
+          variant: "solid",
+        },
+      },
+      {
+        id: "t-info",
+        label: "Info",
+        config: {
+          message: "A new version is available",
+          type: "info",
+          variant: "solid",
+        },
+      },
+      {
+        id: "t-neutral",
+        label: "Neutral",
+        config: {
+          message: "Processing your request…",
+          type: "neutral",
+          variant: "solid",
+        },
+      },
+      {
+        id: "t-favorite",
+        label: "Brand",
+        config: {
+          message: "Welcome to toastro 🍞",
+          type: "favorite",
+          variant: "solid",
+        },
+      },
     ],
   },
   {
     label: "Custom",
     examples: [
-      { id: "c-no-icon",  label: "No icon",     config: { message: "Clean, iconless toast",           noIcon: true, variant: "soft",    type: "neutral" } },
-      { id: "c-quick",    label: "Quick",        config: { message: "Copied!",                         type: "success", variant: "subtle", duration: 1500 } },
-      { id: "c-persist",  label: "Persistent",   config: { message: "Don't forget to save your work",  type: "warning", variant: "outline", duration: 8000 } },
-      { id: "c-long",     label: "Long message", config: { message: "Your file has been uploaded and processed. Share it with your team.", type: "success", variant: "glass" } },
+      {
+        id: "c-no-icon",
+        label: "No icon",
+        config: {
+          message: "Clean, iconless toast",
+          noIcon: true,
+          variant: "soft",
+          type: "neutral",
+        },
+      },
+      {
+        id: "c-quick",
+        label: "Quick",
+        config: {
+          message: "Copied!",
+          type: "success",
+          variant: "subtle",
+          duration: 1500,
+        },
+      },
+      {
+        id: "c-persist",
+        label: "Persistent",
+        config: {
+          message: "Don't forget to save your work",
+          type: "warning",
+          variant: "outline",
+          duration: 8000,
+        },
+      },
+      {
+        id: "c-long",
+        label: "Long message",
+        config: {
+          message:
+            "Your file has been uploaded and processed. Share it with your team.",
+          type: "success",
+          variant: "glass",
+        },
+      },
     ],
   },
 ];
 
 const TYPE_COLORS: Record<string, string> = {
-  success: "#34d399", error: "#e53935", warning: "#ed931b",
-  info: "#2563eb",    neutral: "#808ea2", brand: "#f31b75", default: "#808ea2",
+  success: "#34d399",
+  error: "#e53935",
+  warning: "#ed931b",
+  info: "#2563eb",
+  neutral: "#808ea2",
+  favorite: "#f31b75",
+  default: "#808ea2",
 };
 
-const VARIANTS = ["solid","soft","subtle","outline","ghost","surface","glass","gradient"];
-const TYPES    = ["success","error","warning","info","neutral","brand"];
+const VARIANTS = [
+  "solid",
+  "soft",
+  "subtle",
+  "outline",
+  "ghost",
+  "surface",
+  "glass",
+  "gradient",
+];
+const TYPES = ["success", "error", "warning", "info", "neutral", "favorite"];
 ---
 
 <Section
@@ -85,42 +199,72 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
   class="builder-section"
 >
   <div class="builder-root">
-
     <!-- LEFT: Controls -->
     <aside class="panel controls-panel">
-
       <div class="panel-hdr">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          width="13"
+          height="13"
+        >
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"
+          ></path>
         </svg>
         Builder
       </div>
 
       <!-- Type -->
       <div class="ctrl">
-        <div class="ctrl-hd">Type <code class="live" id="lbl-type">success</code></div>
+        <div class="ctrl-hd">
+          Type <code class="live" id="lbl-type">success</code>
+        </div>
         <div class="type-grid">
-          {TYPES.map((t) => (
-            <label class="type-chip" data-type={t} style={`--cc:${TYPE_COLORS[t]}`}>
-              <input type="radio" name="b-type" value={t} checked={t === "success"} class="sr-only"/>
-              <span class="chip-dot"></span>
-              <span class="chip-txt">{t}</span>
-            </label>
-          ))}
+          {
+            TYPES.map((t) => (
+              <label
+                class="type-chip"
+                data-type={t}
+                style={`--cc:${TYPE_COLORS[t]}`}
+              >
+                <input
+                  type="radio"
+                  name="b-type"
+                  value={t}
+                  checked={t === "success"}
+                  class="sr-only"
+                />
+                <span class="chip-dot" />
+                <span class="chip-txt">{t}</span>
+              </label>
+            ))
+          }
         </div>
       </div>
 
       <!-- Variant -->
       <div class="ctrl">
-        <div class="ctrl-hd">Variant <code class="live" id="lbl-variant">solid</code></div>
+        <div class="ctrl-hd">
+          Variant <code class="live" id="lbl-variant">solid</code>
+        </div>
         <div class="variant-grid">
-          {VARIANTS.map((v) => (
-            <label class="v-pill" data-variant={v}>
-              <input type="radio" name="b-variant" value={v} checked={v === "solid"} class="sr-only"/>
-              {v}
-            </label>
-          ))}
+          {
+            VARIANTS.map((v) => (
+              <label class="v-pill" data-variant={v}>
+                <input
+                  type="radio"
+                  name="b-variant"
+                  value={v}
+                  checked={v === "solid"}
+                  class="sr-only"
+                />
+                {v}
+              </label>
+            ))
+          }
         </div>
       </div>
 
@@ -128,16 +272,34 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
       <div class="ctrl">
         <div class="ctrl-hd">Message</div>
         <div class="inp-wrap">
-          <input id="b-msg" class="msg-inp" type="text" value="Saved successfully 🍞" maxlength="80"/>
+          <input
+            id="b-msg"
+            class="msg-inp"
+            type="text"
+            value="Saved successfully 🍞"
+            maxlength="80"
+          />
           <span class="char-ct" id="char-count">22/80</span>
         </div>
       </div>
 
       <!-- Duration -->
       <div class="ctrl">
-        <div class="ctrl-hd">Duration <code class="live" id="lbl-dur">4000ms</code></div>
-        <input id="b-dur" class="range-sl" type="range" min="1000" max="10000" step="500" value="4000"/>
-        <div class="range-tks"><span>1s</span><span>5s</span><span>10s</span></div>
+        <div class="ctrl-hd">
+          Duration <code class="live" id="lbl-dur">4000ms</code>
+        </div>
+        <input
+          id="b-dur"
+          class="range-sl"
+          type="range"
+          min="1000"
+          max="10000"
+          step="500"
+          value="4000"
+        />
+        <div class="range-tks">
+          <span>1s</span><span>5s</span><span>10s</span>
+        </div>
       </div>
 
       <!-- Icon toggle -->
@@ -151,239 +313,308 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
       <!-- Fire -->
       <div class="ctrl" style="padding-top:.15rem">
         <button class="fire-btn" id="builder-fire">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
-            <polygon points="5 3 19 12 5 21 5 3"/>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            width="13"
+            height="13"
+          >
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
           Fire toast
         </button>
       </div>
-
     </aside>
 
     <!-- RIGHT -->
     <div class="right-col">
-
       <!-- Examples -->
       <div class="panel examples-panel">
         <div class="ep-hd">
           <span class="ep-title">Examples</span>
           <span class="ep-hint">Click to preview</span>
         </div>
-        {exampleGroups.map((group) => (
-          <div class="eg-group">
-            <div class="eg-lbl">{group.label}</div>
-            <div class="eg-pills">
-              {group.examples.map((ex) => {
-                const cfg = ex.config as any;
-                const tc  = TYPE_COLORS[cfg.type ?? "default"] ?? "#808ea2";
-                return (
-                  <button
-                    class="eg-pill"
-                    data-cfg={JSON.stringify(cfg)}
-                    style={`--tc:${tc}`}
-                  >
-                    <span class="eg-dot"></span>
-                    {ex.label}
-                    {cfg.duration && cfg.duration !== 4000 && (
-                      <span class="eg-badge">{cfg.duration / 1000}s</span>
-                    )}
-                  </button>
-                );
-              })}
+        {
+          exampleGroups.map((group) => (
+            <div class="eg-group">
+              <div class="eg-lbl">{group.label}</div>
+              <div class="eg-pills">
+                {group.examples.map((ex) => {
+                  const cfg = ex.config as any;
+                  const tc = TYPE_COLORS[cfg.type ?? "default"] ?? "#808ea2";
+                  return (
+                    <button
+                      class="eg-pill"
+                      data-cfg={JSON.stringify(cfg)}
+                      style={`--tc:${tc}`}
+                    >
+                      <span class="eg-dot" />
+                      {ex.label}
+                      {cfg.duration && cfg.duration !== 4000 && (
+                        <span class="eg-badge">{cfg.duration / 1000}s</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <!-- Code -->
       <div class="panel code-panel">
         <div class="cp-hd">
           <div class="cp-lang">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12">
-              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              width="12"
+              height="12"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline><polyline
+                points="8 6 2 12 8 18"></polyline>
             </svg>
             JavaScript
           </div>
           <button class="copy-btn" id="copy-code">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
-              <rect x="9" y="9" width="13" height="13" rx="2"/>
-              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
+              height="12"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+              ></path>
             </svg>
             <span id="copy-lbl">Copy</span>
           </button>
         </div>
-        <pre class="code-pre"><code id="code-out"></code></pre>
+        <pre class="code-pre"><code id="code-out" /></pre>
       </div>
-
     </div>
   </div>
 </Section>
 
 <script is:inline>
-(function () {
-  var state = {
-    type:"success", variant:"solid",
-    message:"Saved successfully 🍞",
-    duration:4000, showIcon:true, noIcon:false,
-    gradientColors:null,
-  };
-
-  var TYPE_COLORS = {
-    success:"#34d399",error:"#e53935",warning:"#ed931b",
-    info:"#2563eb",neutral:"#808ea2",brand:"#f31b75",default:"#808ea2",
-  };
-
-  function buildCode() {
-    var l = ["window.showToast({"];
-    l.push('  message: "' + state.message.replace(/\\/g,"\\\\").replace(/"/g,'\\"') + '",');
-    if (state.type !== "success")  l.push('  type: "' + state.type + '",');
-    if (state.variant !== "solid") l.push('  variant: "' + state.variant + '",');
-    if (state.noIcon || !state.showIcon) l.push("  icon: null,");
-    if (state.gradientColors) l.push("  gradientColors: " + JSON.stringify(state.gradientColors) + ",");
-    if (state.duration !== 4000) l.push("  duration: " + state.duration + ",");
-    l.push("});");
-    return l.join("\n");
-  }
-
-  function hl(s) {
-    return s
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
-      .replace(/\b(window)\b/g,'<span class="c-obj">$1</span>')
-      .replace(/\b(showToast)\b/g,'<span class="c-fn">$1</span>')
-      .replace(/\b(message|type|variant|icon|duration|gradientColors)\b(?=:)/g,'<span class="c-key">$1</span>')
-      .replace(/("(?:[^"\\]|\\.)*")/g,'<span class="c-str">$1</span>')
-      .replace(/\b(\d+)\b/g,'<span class="c-num">$1</span>')
-      .replace(/\b(null)\b/g,'<span class="c-kw">$1</span>');
-  }
-
-  function updateCode() {
-    var el = document.getElementById("code-out");
-    if (el) el.innerHTML = hl(buildCode());
-  }
-
-  function fire() {
-    if (typeof window.showToast !== "function") return;
-    var p = {
-      message:  state.message,
-      type:     state.type,
-      variant:  state.variant,
-      duration: state.duration,
+  (function () {
+    var state = {
+      type: "success",
+      variant: "solid",
+      message: "Saved successfully 🍞",
+      duration: 4000,
+      showIcon: true,
+      noIcon: false,
+      gradientColors: null,
     };
-    if (state.noIcon || !state.showIcon) p.icon = null;
-    if (state.gradientColors) p.gradientColors = state.gradientColors;
-    window.showToast(p);
-  }
 
-  function syncUI() {
-    document.querySelectorAll(".type-chip").forEach(function(c){
-      c.classList.toggle("type-chip--on", c.dataset.type === state.type);
-    });
-    document.querySelectorAll(".v-pill").forEach(function(p){
-      p.classList.toggle("v-pill--on", p.dataset.variant === state.variant);
-    });
-    var e;
-    if ((e=document.getElementById("lbl-type")))    e.textContent = state.type;
-    if ((e=document.getElementById("lbl-variant"))) e.textContent = state.variant;
-    if ((e=document.getElementById("lbl-dur")))     e.textContent = state.duration + "ms";
-    if ((e=document.getElementById("b-msg")))       e.value = state.message;
-    if ((e=document.getElementById("char-count")))  e.textContent = state.message.length + "/80";
-    if ((e=document.getElementById("b-dur")))       e.value = state.duration;
-    var tg = document.getElementById("b-icon-tg");
-    if (tg) {
-      var on = state.showIcon && !state.noIcon;
-      tg.setAttribute("aria-checked", String(on));
-      tg.classList.toggle("toggle--off", !on);
+    var TYPE_COLORS = {
+      success: "#34d399",
+      error: "#e53935",
+      warning: "#ed931b",
+      info: "#2563eb",
+      neutral: "#808ea2",
+      favorite: "#f31b75",
+      default: "#808ea2",
+    };
+
+    function buildCode() {
+      var l = ["window.showToast({"];
+      l.push(
+        '  message: "' +
+          state.message.replace(/\\/g, "\\\\").replace(/"/g, '\\"') +
+          '",',
+      );
+      if (state.type !== "success") l.push('  type: "' + state.type + '",');
+      if (state.variant !== "solid")
+        l.push('  variant: "' + state.variant + '",');
+      if (state.noIcon || !state.showIcon) l.push("  icon: null,");
+      if (state.gradientColors)
+        l.push(
+          "  gradientColors: " + JSON.stringify(state.gradientColors) + ",",
+        );
+      if (state.duration !== 4000)
+        l.push("  duration: " + state.duration + ",");
+      l.push("});");
+      return l.join("\n");
     }
-  }
 
-  function render() { syncUI(); updateCode(); }
+    function hl(s) {
+      return s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\b(window)\b/g, '<span class="c-obj">$1</span>')
+        .replace(/\b(showToast)\b/g, '<span class="c-fn">$1</span>')
+        .replace(
+          /\b(message|type|variant|icon|duration|gradientColors)\b(?=:)/g,
+          '<span class="c-key">$1</span>',
+        )
+        .replace(/("(?:[^"\\]|\\.)*")/g, '<span class="c-str">$1</span>')
+        .replace(/\b(\d+)\b/g, '<span class="c-num">$1</span>')
+        .replace(/\b(null)\b/g, '<span class="c-kw">$1</span>');
+    }
 
-  // Type radios
-  document.querySelectorAll("input[name='b-type']").forEach(function(inp){
-    inp.addEventListener("change", function(e){ state.type = e.target.value; render(); });
-  });
+    function updateCode() {
+      var el = document.getElementById("code-out");
+      if (el) el.innerHTML = hl(buildCode());
+    }
 
-  // Variant radios
-  document.querySelectorAll("input[name='b-variant']").forEach(function(inp){
-    inp.addEventListener("change", function(e){ state.variant = e.target.value; render(); });
-  });
+    function fire() {
+      if (typeof window.showToast !== "function") return;
+      var p = {
+        message: state.message,
+        type: state.type,
+        variant: state.variant,
+        duration: state.duration,
+      };
+      if (state.noIcon || !state.showIcon) p.icon = null;
+      if (state.gradientColors) p.gradientColors = state.gradientColors;
+      window.showToast(p);
+    }
 
-  // Message
-  var msgEl = document.getElementById("b-msg");
-  if (msgEl) msgEl.addEventListener("input", function(e){
-    state.message = e.target.value;
-    var cc = document.getElementById("char-count");
-    if (cc) cc.textContent = state.message.length + "/80";
-    updateCode();
-  });
-
-  // Duration
-  var durEl = document.getElementById("b-dur");
-  if (durEl) durEl.addEventListener("input", function(e){
-    state.duration = parseInt(e.target.value);
-    var ld = document.getElementById("lbl-dur");
-    if (ld) ld.textContent = state.duration + "ms";
-    updateCode();
-  });
-
-  // Icon toggle
-  var tgEl = document.getElementById("b-icon-tg");
-  if (tgEl) tgEl.addEventListener("click", function(){
-    state.showIcon = !state.showIcon;
-    state.noIcon   = !state.showIcon;
-    tgEl.setAttribute("aria-checked", String(state.showIcon));
-    tgEl.classList.toggle("toggle--off", !state.showIcon);
-    updateCode();
-  });
-
-  // Builder fire
-  var fbEl = document.getElementById("builder-fire");
-  if (fbEl) fbEl.addEventListener("click", function(){
-    fire();
-    fbEl.classList.add("firing");
-    setTimeout(function(){ fbEl.classList.remove("firing"); }, 600);
-  });
-
-  // Example pills
-  document.querySelectorAll(".eg-pill").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      var cfg;
-      try { cfg = JSON.parse(btn.dataset.cfg); } catch(e){ return; }
-
-      state.message        = cfg.message  || "";
-      state.type           = cfg.type     || "default";
-      state.variant        = cfg.variant  || "solid";
-      state.duration       = cfg.duration || 4000;
-      state.gradientColors = cfg.gradientColors || null;
-      state.noIcon         = !!cfg.noIcon;
-      state.showIcon       = !state.noIcon;
-
-      document.querySelectorAll(".eg-pill").forEach(function(p){
-        p.classList.remove("eg-pill--active");
+    function syncUI() {
+      document.querySelectorAll(".type-chip").forEach(function (c) {
+        c.classList.toggle("type-chip--on", c.dataset.type === state.type);
       });
-      btn.classList.add("eg-pill--active");
+      document.querySelectorAll(".v-pill").forEach(function (p) {
+        p.classList.toggle("v-pill--on", p.dataset.variant === state.variant);
+      });
+      var e;
+      if ((e = document.getElementById("lbl-type"))) e.textContent = state.type;
+      if ((e = document.getElementById("lbl-variant")))
+        e.textContent = state.variant;
+      if ((e = document.getElementById("lbl-dur")))
+        e.textContent = state.duration + "ms";
+      if ((e = document.getElementById("b-msg"))) e.value = state.message;
+      if ((e = document.getElementById("char-count")))
+        e.textContent = state.message.length + "/80";
+      if ((e = document.getElementById("b-dur"))) e.value = state.duration;
+      var tg = document.getElementById("b-icon-tg");
+      if (tg) {
+        var on = state.showIcon && !state.noIcon;
+        tg.setAttribute("aria-checked", String(on));
+        tg.classList.toggle("toggle--off", !on);
+      }
+    }
 
-      fire();
-      render();
+    function render() {
+      syncUI();
+      updateCode();
+    }
+
+    // Type radios
+    document.querySelectorAll("input[name='b-type']").forEach(function (inp) {
+      inp.addEventListener("change", function (e) {
+        state.type = e.target.value;
+        render();
+      });
     });
-  });
 
-  // Copy
-  var cpBtn = document.getElementById("copy-code");
-  var cpLbl = document.getElementById("copy-lbl");
-  if (cpBtn) cpBtn.addEventListener("click", function(){
-    navigator.clipboard.writeText(buildCode()).then(function(){
-      if (cpLbl) cpLbl.textContent = "Copied!";
-      cpBtn.classList.add("copied");
-      setTimeout(function(){
-        if (cpLbl) cpLbl.textContent = "Copy";
-        cpBtn.classList.remove("copied");
-      }, 2000);
+    // Variant radios
+    document
+      .querySelectorAll("input[name='b-variant']")
+      .forEach(function (inp) {
+        inp.addEventListener("change", function (e) {
+          state.variant = e.target.value;
+          render();
+        });
+      });
+
+    // Message
+    var msgEl = document.getElementById("b-msg");
+    if (msgEl)
+      msgEl.addEventListener("input", function (e) {
+        state.message = e.target.value;
+        var cc = document.getElementById("char-count");
+        if (cc) cc.textContent = state.message.length + "/80";
+        updateCode();
+      });
+
+    // Duration
+    var durEl = document.getElementById("b-dur");
+    if (durEl)
+      durEl.addEventListener("input", function (e) {
+        state.duration = parseInt(e.target.value);
+        var ld = document.getElementById("lbl-dur");
+        if (ld) ld.textContent = state.duration + "ms";
+        updateCode();
+      });
+
+    // Icon toggle
+    var tgEl = document.getElementById("b-icon-tg");
+    if (tgEl)
+      tgEl.addEventListener("click", function () {
+        state.showIcon = !state.showIcon;
+        state.noIcon = !state.showIcon;
+        tgEl.setAttribute("aria-checked", String(state.showIcon));
+        tgEl.classList.toggle("toggle--off", !state.showIcon);
+        updateCode();
+      });
+
+    // Builder fire
+    var fbEl = document.getElementById("builder-fire");
+    if (fbEl)
+      fbEl.addEventListener("click", function () {
+        fire();
+        fbEl.classList.add("firing");
+        setTimeout(function () {
+          fbEl.classList.remove("firing");
+        }, 600);
+      });
+
+    // Example pills
+    document.querySelectorAll(".eg-pill").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var cfg;
+        try {
+          cfg = JSON.parse(btn.dataset.cfg);
+        } catch (e) {
+          return;
+        }
+
+        state.message = cfg.message || "";
+        state.type = cfg.type || "default";
+        state.variant = cfg.variant || "solid";
+        state.duration = cfg.duration || 4000;
+        state.gradientColors = cfg.gradientColors || null;
+        state.noIcon = !!cfg.noIcon;
+        state.showIcon = !state.noIcon;
+
+        document.querySelectorAll(".eg-pill").forEach(function (p) {
+          p.classList.remove("eg-pill--active");
+        });
+        btn.classList.add("eg-pill--active");
+
+        fire();
+        render();
+      });
     });
-  });
 
-  render();
-})();
+    // Copy
+    var cpBtn = document.getElementById("copy-code");
+    var cpLbl = document.getElementById("copy-lbl");
+    if (cpBtn)
+      cpBtn.addEventListener("click", function () {
+        navigator.clipboard.writeText(buildCode()).then(function () {
+          if (cpLbl) cpLbl.textContent = "Copied!";
+          cpBtn.classList.add("copied");
+          setTimeout(function () {
+            if (cpLbl) cpLbl.textContent = "Copy";
+            cpBtn.classList.remove("copied");
+          }, 2000);
+        });
+      });
+
+    render();
+  })();
 </script>
 
 <style>
@@ -396,8 +627,15 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
   }
 
   .sr-only {
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* ── Panel base ──────────────────────────────────────── */
@@ -409,13 +647,21 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
   }
 
   /* ── Controls ────────────────────────────────────────── */
-  .controls-panel { display:flex; flex-direction:column; }
+  .controls-panel {
+    display: flex;
+    flex-direction: column;
+  }
 
   .panel-hdr {
-    display: flex; align-items: center; gap: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.6rem 1.1rem;
-    font-size: 0.6rem; font-family: var(--font-code);
-    font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    font-size: 0.6rem;
+    font-family: var(--font-code);
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
     opacity: 0.3;
     border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
     background: color-mix(in srgb, var(--text) 2%, transparent);
@@ -425,34 +671,62 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
     padding: 0.8rem 1.1rem;
     border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
   }
-  .ctrl:last-child { border-bottom: none; }
+  .ctrl:last-child {
+    border-bottom: none;
+  }
 
-  .ctrl-row { display:flex; align-items:center; justify-content:space-between; }
+  .ctrl-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .ctrl-hd {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em; opacity: 0.35; margin-bottom: 0.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.35;
+    margin-bottom: 0.55rem;
   }
-  .ctrl-row .ctrl-hd { margin: 0; }
+  .ctrl-row .ctrl-hd {
+    margin: 0;
+  }
 
   .live {
-    font-family: var(--font-code); font-size: 0.58rem;
+    font-family: var(--font-code);
+    font-size: 0.58rem;
     color: var(--brand);
     background: color-mix(in srgb, var(--brand) 10%, transparent);
     border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
-    padding: 0.07rem 0.38rem; border-radius: 4px;
-    text-transform: none; letter-spacing: 0;
+    padding: 0.07rem 0.38rem;
+    border-radius: 4px;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   /* Type chips */
-  .type-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.28rem; }
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.28rem;
+  }
 
   .type-chip {
-    display: flex; align-items: center; gap: 0.3rem;
-    padding: 0.36rem 0.48rem; border-radius: 7px;
-    border: 1px solid transparent; background: transparent;
-    cursor: pointer; transition: background 0.12s, border-color 0.12s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.36rem 0.48rem;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background 0.12s,
+      border-color 0.12s;
   }
   .type-chip:hover {
     background: color-mix(in srgb, var(--cc) 8%, transparent);
@@ -463,210 +737,411 @@ const TYPES    = ["success","error","warning","info","neutral","brand"];
     border-color: color-mix(in srgb, var(--cc) 30%, transparent);
   }
   .chip-dot {
-    width:6px; height:6px; border-radius:50%;
-    background:var(--cc); flex-shrink:0; opacity:0.45;
-    transition:opacity 0.12s;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cc);
+    flex-shrink: 0;
+    opacity: 0.45;
+    transition: opacity 0.12s;
   }
-  .type-chip--on .chip-dot { opacity: 1; }
+  .type-chip--on .chip-dot {
+    opacity: 1;
+  }
   .chip-txt {
-    font-family:var(--font-code); font-size:0.57rem;
-    opacity:0.38; transition:opacity 0.12s, color 0.12s;
+    font-family: var(--font-code);
+    font-size: 0.57rem;
+    opacity: 0.38;
+    transition:
+      opacity 0.12s,
+      color 0.12s;
   }
-  .type-chip--on .chip-txt { opacity:1; color:var(--cc); }
+  .type-chip--on .chip-txt {
+    opacity: 1;
+    color: var(--cc);
+  }
 
   /* Variant pills */
-  .variant-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.26rem; }
+  .variant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.26rem;
+  }
 
   .v-pill {
-    display:flex; align-items:center; justify-content:center;
-    padding:0.3rem 0.1rem; border-radius:6px;
-    border:1px solid color-mix(in srgb, var(--text) 9%, transparent);
-    font-family:var(--font-code); font-size:0.55rem;
-    opacity:0.38; cursor:pointer; text-align:center;
-    transition:background 0.12s, border-color 0.12s, opacity 0.12s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.1rem;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+    font-family: var(--font-code);
+    font-size: 0.55rem;
+    opacity: 0.38;
+    cursor: pointer;
+    text-align: center;
+    transition:
+      background 0.12s,
+      border-color 0.12s,
+      opacity 0.12s;
   }
-  .v-pill:hover { opacity:0.72; background:color-mix(in srgb, var(--text) 5%, transparent); }
+  .v-pill:hover {
+    opacity: 0.72;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+  }
   .v-pill--on {
-    opacity:1;
-    background:color-mix(in srgb, var(--brand) 10%, transparent);
-    border-color:color-mix(in srgb, var(--brand) 30%, transparent);
-    color:var(--brand); font-weight:700;
+    opacity: 1;
+    background: color-mix(in srgb, var(--brand) 10%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+    color: var(--brand);
+    font-weight: 700;
   }
 
   /* Message */
-  .inp-wrap { position:relative; }
+  .inp-wrap {
+    position: relative;
+  }
   .msg-inp {
-    width:100%; box-sizing:border-box;
-    background:color-mix(in srgb, var(--text) 5%, transparent);
-    border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
-    border-radius:8px; padding:0.46rem 2.3rem 0.46rem 0.68rem;
-    font-family:var(--font-main); font-size:0.75rem;
-    color:var(--text); outline:none;
-    transition:border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+    background: color-mix(in srgb, var(--text) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    border-radius: 8px;
+    padding: 0.46rem 2.3rem 0.46rem 0.68rem;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    color: var(--text);
+    outline: none;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
   }
   .msg-inp:focus {
-    border-color:color-mix(in srgb, var(--brand) 45%, transparent);
-    box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 8%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 45%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 8%, transparent);
   }
   .char-ct {
-    position:absolute; right:0.5rem; top:50%; transform:translateY(-50%);
-    font-size:0.55rem; font-family:var(--font-code); opacity:0.22; pointer-events:none;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.55rem;
+    font-family: var(--font-code);
+    opacity: 0.22;
+    pointer-events: none;
   }
 
   /* Range */
   .range-sl {
-    -webkit-appearance:none; appearance:none;
-    width:100%; height:3px; border-radius:99px;
-    background:color-mix(in srgb, var(--text) 12%, transparent);
-    outline:none; cursor:pointer; display:block;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--text) 12%, transparent);
+    outline: none;
+    cursor: pointer;
+    display: block;
   }
   .range-sl::-webkit-slider-thumb {
-    -webkit-appearance:none;
-    width:14px; height:14px; border-radius:50%;
-    background:var(--brand); border:2px solid var(--bg);
-    box-shadow:0 0 0 2px color-mix(in srgb, var(--brand) 26%, transparent);
-    cursor:pointer;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--brand);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--brand) 26%, transparent);
+    cursor: pointer;
   }
   .range-tks {
-    display:flex; justify-content:space-between;
-    font-size:0.53rem; font-family:var(--font-code); opacity:0.2; margin-top:0.26rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.53rem;
+    font-family: var(--font-code);
+    opacity: 0.2;
+    margin-top: 0.26rem;
   }
 
   /* Toggle */
   .toggle {
-    width:34px; height:19px; border-radius:99px;
-    background:var(--brand); border:none; cursor:pointer;
-    position:relative; transition:background 0.2s; flex-shrink:0;
+    width: 34px;
+    height: 19px;
+    border-radius: 99px;
+    background: var(--brand);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+    flex-shrink: 0;
   }
-  .toggle--off { background:color-mix(in srgb, var(--text) 14%, transparent); }
+  .toggle--off {
+    background: color-mix(in srgb, var(--text) 14%, transparent);
+  }
   .tg-thumb {
-    position:absolute; top:2px; left:2px;
-    width:15px; height:15px; border-radius:50%;
-    background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.22);
-    transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .toggle[aria-checked="true"]  .tg-thumb { transform:translateX(15px); }
-  .toggle[aria-checked="false"] .tg-thumb { transform:translateX(0); }
+  .toggle[aria-checked="true"] .tg-thumb {
+    transform: translateX(15px);
+  }
+  .toggle[aria-checked="false"] .tg-thumb {
+    transform: translateX(0);
+  }
 
   /* Fire */
   .fire-btn {
-    display:flex; align-items:center; justify-content:center; gap:0.4rem;
-    width:100%; padding:0.52rem; border:none; border-radius:9px;
-    background:var(--brand); color:#fff;
-    font-family:var(--font-main); font-size:0.78rem; font-weight:700;
-    cursor:pointer; transition:opacity 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.52rem;
+    border: none;
+    border-radius: 9px;
+    background: var(--brand);
+    color: #fff;
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      opacity 0.15s,
+      transform 0.1s;
   }
-  .fire-btn:hover { opacity:0.87; }
-  .fire-btn:active { transform:scale(0.97); }
-  .fire-btn.firing { animation:fire-pop 0.5s ease; }
+  .fire-btn:hover {
+    opacity: 0.87;
+  }
+  .fire-btn:active {
+    transform: scale(0.97);
+  }
+  .fire-btn.firing {
+    animation: fire-pop 0.5s ease;
+  }
 
   @keyframes fire-pop {
-    0%{transform:scale(1)} 30%{transform:scale(0.95)} 65%{transform:scale(1.04)} 100%{transform:scale(1)}
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(0.95);
+    }
+    65% {
+      transform: scale(1.04);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   /* ── Right column ────────────────────────────────────── */
-  .right-col { display:flex; flex-direction:column; gap:1rem; }
+  .right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   /* ── Examples ────────────────────────────────────────── */
   .ep-hd {
-    display:flex; align-items:baseline; justify-content:space-between;
-    padding:0.85rem 1.25rem 0.65rem;
-    border-bottom:1px solid color-mix(in srgb, var(--text) 7%, transparent);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem 0.65rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
   }
-  .ep-title { font-size:0.98rem; font-weight:700; letter-spacing:-0.02em; }
-  .ep-hint  { font-size:0.68rem; opacity:0.26; font-style:italic; }
+  .ep-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .ep-hint {
+    font-size: 0.68rem;
+    opacity: 0.26;
+    font-style: italic;
+  }
 
   .eg-group {
-    padding:0.75rem 1.25rem;
-    border-bottom:1px solid color-mix(in srgb, var(--text) 5%, transparent);
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 5%, transparent);
   }
-  .eg-group:last-child { border-bottom:none; }
+  .eg-group:last-child {
+    border-bottom: none;
+  }
 
   .eg-lbl {
-    font-size:0.57rem; font-weight:700; letter-spacing:0.1em;
-    text-transform:uppercase; opacity:0.26; margin-bottom:0.55rem;
+    font-size: 0.57rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.26;
+    margin-bottom: 0.55rem;
   }
 
-  .eg-pills { display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .eg-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
 
   /* Pills — same aesthetic as goey-toast reference */
   .eg-pill {
-    display:inline-flex; align-items:center; gap:0.38rem;
-    padding:0.42rem 0.95rem; border-radius:99px;
-    border:1px solid color-mix(in srgb, var(--text) 10%, transparent);
-    background:color-mix(in srgb, var(--text) 4%, transparent);
-    font-family:var(--font-main); font-size:0.8rem; font-weight:500;
-    color:var(--text); cursor:pointer;
-    transition:background 0.14s, border-color 0.14s, transform 0.1s, color 0.14s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.42rem 0.95rem;
+    border-radius: 99px;
+    border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+    background: color-mix(in srgb, var(--text) 4%, transparent);
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      background 0.14s,
+      border-color 0.14s,
+      transform 0.1s,
+      color 0.14s;
   }
   .eg-pill:hover {
-    background:color-mix(in srgb, var(--tc, var(--brand)) 9%, transparent);
-    border-color:color-mix(in srgb, var(--tc, var(--brand)) 26%, transparent);
-    transform:translateY(-1px);
+    background: color-mix(in srgb, var(--tc, var(--brand)) 9%, transparent);
+    border-color: color-mix(in srgb, var(--tc, var(--brand)) 26%, transparent);
+    transform: translateY(-1px);
   }
   .eg-pill--active {
-    background:color-mix(in srgb, var(--tc, var(--brand)) 11%, transparent);
-    border-color:color-mix(in srgb, var(--tc, var(--brand)) 34%, transparent);
-    color:var(--tc, var(--brand)); font-weight:600;
+    background: color-mix(in srgb, var(--tc, var(--brand)) 11%, transparent);
+    border-color: color-mix(in srgb, var(--tc, var(--brand)) 34%, transparent);
+    color: var(--tc, var(--brand));
+    font-weight: 600;
   }
   .eg-dot {
-    width:5px; height:5px; border-radius:50%;
-    background:var(--tc, var(--brand));
-    flex-shrink:0; opacity:0.55; transition:opacity 0.14s;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--tc, var(--brand));
+    flex-shrink: 0;
+    opacity: 0.55;
+    transition: opacity 0.14s;
   }
-  .eg-pill--active .eg-dot { opacity:1; }
+  .eg-pill--active .eg-dot {
+    opacity: 1;
+  }
   .eg-badge {
-    font-family:var(--font-code); font-size:0.54rem; opacity:0.38;
-    background:color-mix(in srgb, var(--text) 8%, transparent);
-    padding:0.04rem 0.32rem; border-radius:4px;
+    font-family: var(--font-code);
+    font-size: 0.54rem;
+    opacity: 0.38;
+    background: color-mix(in srgb, var(--text) 8%, transparent);
+    padding: 0.04rem 0.32rem;
+    border-radius: 4px;
   }
 
   /* ── Code panel ──────────────────────────────────────── */
   .cp-hd {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0.52rem 1rem;
-    border-bottom:1px solid color-mix(in srgb, var(--text) 7%, transparent);
-    background:color-mix(in srgb, var(--text) 2%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.52rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
+    background: color-mix(in srgb, var(--text) 2%, transparent);
   }
   .cp-lang {
-    display:flex; align-items:center; gap:0.32rem;
-    font-size:0.58rem; font-family:var(--font-code); opacity:0.26;
+    display: flex;
+    align-items: center;
+    gap: 0.32rem;
+    font-size: 0.58rem;
+    font-family: var(--font-code);
+    opacity: 0.26;
   }
   .copy-btn {
-    display:inline-flex; align-items:center; gap:0.3rem;
-    font-size:0.66rem; font-family:var(--font-main); font-weight:600;
-    padding:0.23rem 0.58rem;
-    background:color-mix(in srgb, var(--text) 6%, transparent);
-    border:1px solid color-mix(in srgb, var(--text) 11%, transparent);
-    border-radius:6px; color:var(--text); cursor:pointer;
-    transition:background 0.12s, color 0.14s, border-color 0.14s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.66rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    padding: 0.23rem 0.58rem;
+    background: color-mix(in srgb, var(--text) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--text) 11%, transparent);
+    border-radius: 6px;
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      background 0.12s,
+      color 0.14s,
+      border-color 0.14s;
   }
-  .copy-btn:hover { background:color-mix(in srgb, var(--text) 10%, transparent); }
+  .copy-btn:hover {
+    background: color-mix(in srgb, var(--text) 10%, transparent);
+  }
   .copy-btn.copied {
-    color:#34d399;
-    border-color:color-mix(in srgb, #34d399 28%, transparent);
-    background:color-mix(in srgb, #34d399 7%, transparent);
+    color: #34d399;
+    border-color: color-mix(in srgb, #34d399 28%, transparent);
+    background: color-mix(in srgb, #34d399 7%, transparent);
   }
 
-  .code-pre { margin:0; padding:0.85rem 1.1rem; overflow-x:auto; }
+  .code-pre {
+    margin: 0;
+    padding: 0.85rem 1.1rem;
+    overflow-x: auto;
+  }
   .code-pre code {
-    font-family:var(--font-code); font-size:0.75rem;
-    line-height:1.9; color:var(--text); display:block;
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    line-height: 1.9;
+    color: var(--text);
+    display: block;
   }
 
   /* Syntax */
-  :root { --c-fn:#2563eb;--c-key:#0891b2;--c-str:#16a34a;--c-num:#d97706;--c-kw:#e53935; }
-  :global(html.dark) { --c-fn:#82aaff;--c-key:#89ddff;--c-str:#c3e88d;--c-num:#f78c6c;--c-kw:#f87171; }
-  :global(.c-obj){opacity:.35}
-  :global(.c-fn) {color:var(--c-fn)}
-  :global(.c-key){color:var(--c-key)}
-  :global(.c-str){color:var(--c-str)}
-  :global(.c-num){color:var(--c-num)}
-  :global(.c-kw) {color:var(--c-kw)}
+  :root {
+    --c-fn: #2563eb;
+    --c-key: #0891b2;
+    --c-str: #16a34a;
+    --c-num: #d97706;
+    --c-kw: #e53935;
+  }
+  :global(html.dark) {
+    --c-fn: #82aaff;
+    --c-key: #89ddff;
+    --c-str: #c3e88d;
+    --c-num: #f78c6c;
+    --c-kw: #f87171;
+  }
+  :global(.c-obj) {
+    opacity: 0.35;
+  }
+  :global(.c-fn) {
+    color: var(--c-fn);
+  }
+  :global(.c-key) {
+    color: var(--c-key);
+  }
+  :global(.c-str) {
+    color: var(--c-str);
+  }
+  :global(.c-num) {
+    color: var(--c-num);
+  }
+  :global(.c-kw) {
+    color: var(--c-kw);
+  }
 
   /* Section em */
-  :global(.builder-section .section-title em){font-style:normal;color:var(--brand)}
+  :global(.builder-section .section-title em) {
+    font-style: normal;
+    color: var(--brand);
+  }
 
   /* Responsive */
-  @media(max-width:860px){ .builder-root{grid-template-columns:1fr} }
+  @media (max-width: 860px) {
+    .builder-root {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

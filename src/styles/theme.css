@@ -1,11 +1,11 @@
 :root {
   /* ── Semantic status colors ── */
-  --status-success: #34d399;
-  --status-warning: #ed931b;
-  --status-error:   #e53935;
-  --status-info:    #2563eb;
-  --status-neutral: #808ea2;
-  --status-brand:   #f31b75;
+  --status-success:  #34d399;
+  --status-warning:  #ed931b;
+  --status-error:    #e53935;
+  --status-info:     #2563eb;
+  --status-neutral:  #808ea2;
+  --status-favorite: #f31b75;
 }
 
 /* ── Type assignments ── */
@@ -14,7 +14,7 @@
 .type--error   { --type-color: var(--status-error);   }
 .type--info    { --type-color: var(--status-info);    }
 .type--neutral { --type-color: var(--status-neutral); }
-.type--brand   { --type-color: var(--status-brand);   }
+.type--brand   { --type-color: var(--status-favorite);   }
 
 /* ── Variants ── */
 

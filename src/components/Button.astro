@@ -5,8 +5,7 @@ export interface Props {
   href?: string;
   newTab?: boolean;
   fullWidth?: boolean;
-  color?: string;
-  textColor?: string;
+  class?: string;
   [key: string]: any;
 }
 
@@ -16,14 +15,9 @@ const {
   href,
   newTab = false,
   fullWidth = false,
-  color,
-  textColor,
+  class: className = "",
   ...rest
 } = Astro.props;
-
-// Preparamos los fallbacks para las variables de CSS
-const accentColor = color || "var(--text)";
-const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : accentColor);
 ---
 
 {
@@ -32,7 +26,12 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
       href={href}
       target={newTab ? "_blank" : undefined}
       rel={newTab ? "noopener noreferrer" : undefined}
-      class:list={["btn", `btn-${variant}`, { "full-width": fullWidth }]}
+      class:list={[
+        "btn",
+        `btn-${variant}`,
+        { "full-width": fullWidth },
+        className,
+      ]}
       {...rest}
     >
       <slot />
@@ -40,7 +39,12 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
   ) : (
     <button
       type={type}
-      class:list={["btn", `btn-${variant}`, { "full-width": fullWidth }]}
+      class:list={[
+        "btn",
+        `btn-${variant}`,
+        { "full-width": fullWidth },
+        className,
+      ]}
       {...rest}
     >
       <slot />
@@ -48,11 +52,8 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
   )
 }
 
-<style define:vars={{ accentColor, customTextColor }}>
+<style>
   .btn {
-    --accent: var(--accentColor);
-    --btn-text: var(--customTextColor);
-    
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
@@ -65,26 +66,25 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease;
-    color: var(--btn-text);
     margin-bottom: 1rem;
   }
 
   .btn-primary {
-    background-color: var(--accent);
-    border: 1px solid var(--accent);
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-bg);
     color: var(--btn-text);
   }
 
   .btn-outline {
-    background-color: color-mix(in srgb, var(--accent) 6%, transparent);
-    border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
-    color: var(--accent);
+    background-color: color-mix(in srgb, var(--btn-bg) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--btn-bg) 15%, transparent);
+    color: var(--text);
   }
 
   .btn-ghost {
     background-color: transparent;
     border: 1px solid transparent !important;
-    color: var(--accent);
+    color: var(--text);
     padding: 0.5rem 0.5rem;
     opacity: 0.5;
   }
@@ -96,7 +96,7 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
   }
 
   .btn-ghost:hover {
-    background-color: color-mix(in srgb, var(--accent) 8%, transparent);
+    background-color: color-mix(in srgb, var(--btn-bg) 8%, transparent);
   }
 
   .btn:active {
@@ -104,7 +104,7 @@ const customTextColor = textColor || (variant === "primary" ? "var(--bg)" : acce
   }
 
   .btn:focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 1px solid var(--brand);
     outline-offset: 2px;
   }
 

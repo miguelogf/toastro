@@ -15,23 +15,19 @@ import ToastContainer from "../components/ToastContainer.astro";
     >
       <span class="badge-dot"></span>Open Source · MIT Licensed</Badge
     >
-        <h1 class="hero-title">
-          <span class="title-line">the toast lib</span>
-           <span class="title-line accent">Astro deserved.</span>
-        </h1>
-        <p class="hero-sub">
-          Beautiful, zero-dependency toast notifications for Astro.<br />
-          No framework. No noise. Just bread. 🍞
-        </p>
+    <h1 class="hero-title">
+      <span class="title-line">the toast lib</span>
+      <span class="title-line accent">Astro deserved.</span>
+    </h1>
+    <p class="hero-sub">
+      Beautiful, zero-dependency toast notifications for Astro.<br />
+      No framework. No noise. Just bread. 🍞
+    </p>
     <div class="buttons">
       <Button href="/docs" id="btn-toast" fullWidth
         >Get Started<Icon name="arrowUpRight" /></Button
       >
-      <Button
-        href="#builder"
-        variant="outline"
-        fullWidth
-      >
+      <Button href="#builder" variant="outline" fullWidth>
         Try it now<Icon name="zap" />
       </Button>
     </div>
@@ -93,7 +89,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 
 <style>
   .hero {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px); /* calc(100vh - 80px); */
     display: grid;
     place-items: center;
     position: relative;
@@ -154,7 +150,7 @@ import ToastContainer from "../components/ToastContainer.astro";
     text-wrap: balance;
     animation: fadeUp 0.6s 0.3s ease both;
   }
-  
+
   .buttons {
     display: flex;
     gap: 0.75rem;
@@ -176,7 +172,6 @@ import ToastContainer from "../components/ToastContainer.astro";
     opacity: 0.3;
     animation: float 3s ease-in-out infinite;
   }
-
 
   @media (max-width: 640px) {
     .logo-wrapper {

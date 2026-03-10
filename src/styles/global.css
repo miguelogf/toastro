@@ -6,12 +6,16 @@
   --surface:  #ffffff;
   --border:   #d4d4d4;
   --text:     #040404;
+
   --brand:    #FF4F1F;
+
+  --btn-bg:   #040404;
+  --btn-text: #ffffff;
 
   --font-main: "Geist Variable", sans-serif;
   --font-code: 'Geist Mono Variable', monospace;
 
-  --radius:    0.5rem;   /* token global, lo usarás en cards, inputs, etc. */
+  --radius: 0.5rem;
   --icon-size: 20px;
 }
 
@@ -20,8 +24,10 @@ html.dark {
   --surface: #111111;
   --border:  #2a2a2a;
   --text:    #ededed;
-}
 
+  --btn-bg:  #ffffff;
+  --btn-text:#000000;
+}
 html,
 body {
   margin: 0;
@@ -33,13 +39,9 @@ body {
   font-family: var(--font-main);
   transition: background-color 0.75s ease, color 0.75s ease;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
-html {
-  scroll-behavior: smooth;
-}
-body {
-  overflow-x: clip;
-}
+
 code,
 pre {
   font-family: var(--font-code);

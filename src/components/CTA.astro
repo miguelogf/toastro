@@ -1,18 +1,18 @@
 ---
-import Section from "../components/Section.astro"
-import Button from "./Button.astro"
+import Section from "../components/Section.astro";
+import Button from "./Button.astro";
 ---
+
 <Section class="cta-section">
   <div class="section-inner cta-inner">
     <span class="cta-emoji">🍞</span>
     <h2>Ready to toast?</h2>
     <p>One install. One component. Beautiful notifications everywhere.</p>
     <div class="cta-links">
-      
-      <Button href="/docs" color="var(--brand)" textColor="white">Get started</Button>
-      <Button href="https://github.com/miguelogf/toastro"
-        variant="outline">API Reference →</Button>
-      
+      <Button href="/docs" class="cta-btn">Get started</Button>
+      <Button href="https://github.com/miguelogf/toastro" variant="outline"
+        >API Reference →</Button
+      >
     </div>
   </div>
 </Section>
@@ -20,6 +20,9 @@ import Button from "./Button.astro"
 <style>
   .cta-section {
     border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  }
+  .cta-btn {
+    color:;
   }
 
   .cta-inner {
@@ -52,7 +55,7 @@ import Button from "./Button.astro"
     justify-content: center;
     flex-wrap: wrap;
   }
-.cta-section {
+  .cta-section {
     border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   }
 
