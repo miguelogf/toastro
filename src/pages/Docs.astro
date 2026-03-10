@@ -1,14 +1,22 @@
 ---
 // src/pages/docs.astro  (or src/components/Docs.astro)
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro"
 import Badge from "../components/Badge.astro";
 import Icon from "../components/Icon.astro";
 ---
 
 <Layout title="Docs — toastro">
   <div class="docs-page">
+    
+    
     <!-- Sidebar -->
     <aside class="sidebar">
+      <Button
+        href="/"
+        variant="ghost">
+        <Icon name="arrowLeft" />Back to home
+      </Button>
       <nav class="sidebar-nav">
         <span class="sidebar-label">Getting Started</span>
         <a href="#installation" class="sidebar-link">Installation</a>
@@ -122,7 +130,7 @@ import &lbrace; ToastContainer &rbrace; from 'toastro';
         </div>
 
         <div class="callout callout-info">
-          <Icon name="info" color="var(--type-info)" />
+          <Icon name="info" color="var(--status-info)" />
           <span
             ><code>&lt;ToastContainer /&gt;</code> defaults to <code
               >position="bottom-right"</code
@@ -269,7 +277,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
 
           <div class="code-block">
             <button class="copy-btn" aria-label="Copy">
-              <Icon name="copy" />
+              <Icon name="copy"/>
             </button>
             <pre><code>&lt;ToastContainer position="bottom-right"  /&gt;  &lt;!-- default --&gt;
 &lt;ToastContainer position="bottom-left"   /&gt;
@@ -291,7 +299,7 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
           </div>
 
           <div class="callout callout-tip">
-            <Icon name="default" color="var(--status-success)" />
+            <Icon name="zap" color="var(--status-success)" />
             <span
               >The slide-in animation adapts automatically: left positions slide
               from the left, right from the right, center positions from below.</span
