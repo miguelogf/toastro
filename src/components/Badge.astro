@@ -1,5 +1,6 @@
 ---
 interface Props {
+  id?: string;
   type?: "success" | "warning" | "error" | "info" | "neutral" | "brand";
   variant?:
     | "solid"
@@ -11,23 +12,21 @@ interface Props {
     | "glass"
     | "gradient";
   color?: string;
-  gradientColors?: string[];
   textColor?: string;
   class?: string;
   animate?: "fade" | "pulse" | "bounce" | "float" | "none";
 }
 
 const {
+  id,
   type = "neutral",
   variant = "soft",
   color,
-  gradientColors = ["#f97316", "#f31b75"],
   textColor,
   animate = "none",
   class: className = "",
 } = Astro.props;
 
-// Solo necesario para variant solid — contraste automático
 function contrastColor(hex: string): string {
   const h = hex.replace("#", "");
   const r = parseInt(h.slice(0, 2), 16);
@@ -38,21 +37,29 @@ function contrastColor(hex: string): string {
   return brightness > 128 ? "#000000" : "#ffffff";
 }
 
+const typeColors = {
+  success: "var(--status-success)",
+  warning: "var(--status-warning)",
+  error: "var(--status-error)",
+  info: "var(--status-info)",
+  neutral: "var(--status-neutral)",
+  brand: "var(--status-brand)",
+};
+
 const resolvedTextColor =
   textColor ??
   (variant === "solid" && color ? contrastColor(color) : undefined);
-const gradient = `linear-gradient(90deg, ${gradientColors.join(", ")})`;
 
 const style = [
-  color && `--type-color: ${color}`,
-  resolvedTextColor && `--type-text: ${resolvedTextColor}`,
-  `--gradient-colors: ${gradient}`,
+  color ? `--type-color: ${color}` : undefined,
+  resolvedTextColor ? `--type-text: ${resolvedTextColor}` : undefined,
 ]
   .filter(Boolean)
   .join("; ");
 ---
 
 <span
+  id={id}
   class:list={[
     "badge",
     `type--${type}`,
@@ -77,7 +84,10 @@ const style = [
     padding: 0.35rem 0.9rem;
     border-radius: 999px;
     font-weight: 500;
-    --type-color: var(--status-neutral);
+  }
+  .badge--xs {
+    font-size: 0.5rem;
+    padding: 0.25rem 0.6rem;
   }
   .badge--sm {
     font-size: 0.65rem;
