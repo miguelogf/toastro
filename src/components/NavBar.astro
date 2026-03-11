@@ -1,61 +1,80 @@
 ---
-  import Logo from "../components/Logo.astro";
-  import Badge from "./Badge.astro";
-  import IconLink from "./IconLink.astro";
-  import ThemeToggle from "./ThemeToggle.astro";
+import Logo from "../components/Logo.astro";
+import Badge from "./Badge.astro";
+import IconLink from "./IconLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
-  const iconLinks = [
-    { name: "github",   href: "https://github.com/miguelogf" },
-    { name: "linkedin", href: "https://www.linkedin.com/in/miguelogf/" },
-    { name: "x",        href: "https://x.com/_miguelogf" },
-  ] as const;
+const iconLinks = [
+  { name: "github", href: "https://github.com/miguelogf" },
+  { name: "linkedin", href: "https://www.linkedin.com/in/miguelogf/" },
+  { name: "x", href: "https://x.com/_miguelogf" },
+] as const;
 
-  const navLinks = [
-    { label: "Home",      href: "/",         index: "01" },
-    { label: "Docs",      href: "/docs",      index: "02" },
-    { label: "Changelog", href: "/changelog", index: "03" },
-  ] as const;
+const navLinks = [
+  { label: "Home", href: "/", index: "01" },
+  { label: "Docs", href: "/docs", index: "02" },
+  { label: "Changelog", href: "/changelog", index: "03" },
+] as const;
 
-  const currentPath = Astro.url.pathname;
-
+const currentPath = Astro.url.pathname;
 ---
 
 <!-- transition:persist keeps navbar alive across View Transitions page changes -->
 <nav class="navbar" id="navbar" transition:persist>
   <div class="navbar-container">
-
     <div class="navbar-brand">
       <a href="/"><Logo /></a>
-      <Badge variant="soft" color="var(--status-error)" animate="bounce" class="badge--sm">
-        v0.1.0
-      </Badge>
+      <Badge variant="soft" animate="bounce" class="badge--sm"> v0.1.0 </Badge>
     </div>
 
     <div class="navbar-menu" id="navMenu">
       <div class="nav-links">
-        {navLinks.map(({ label, href, index }) => {
-          const isActive = currentPath === href || (href !== "/" && currentPath.startsWith(href));
-          return (
-            <a href={href} class:list={["nav-link", isActive && "nav-link--active"]}>
-              <span class="nl-index">{index}</span>
-              <span class="nl-label">{label}</span>
-              <svg class="nl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
-                <path d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
-            </a>
-          );
-        })}
+        {
+          navLinks.map(({ label, href, index }) => {
+            const isActive =
+              currentPath === href ||
+              (href !== "/" && currentPath.startsWith(href));
+            return (
+              <a
+                href={href}
+                class:list={["nav-link", isActive && "nav-link--active"]}
+              >
+                <span class="nl-index">{index}</span>
+                <span class="nl-label">{label}</span>
+                <svg
+                  class="nl-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  width="16"
+                  height="16"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </a>
+            );
+          })
+        }
       </div>
 
       <!-- Mobile-only: socials inside the overlay -->
       <div class="mobile-links">
-        {iconLinks.map((link) => <IconLink name={link.name} href={link.href} />)}
+        {
+          iconLinks.map((link) => (
+            <IconLink name={link.name} href={link.href} />
+          ))
+        }
       </div>
     </div>
 
     <div class="navbar-actions">
       <div class="desktop-links">
-        {iconLinks.map((link) => <IconLink name={link.name} href={link.href} />)}
+        {
+          iconLinks.map((link) => (
+            <IconLink name={link.name} href={link.href} />
+          ))
+        }
       </div>
       <div class="spacer"></div>
       <ThemeToggle />
@@ -64,15 +83,14 @@
         <span class="line bottom"></span>
       </button>
     </div>
-
   </div>
 </nav>
 
 <script>
   function initNavbar() {
     const menuToggle = document.getElementById("menuToggle");
-    const navMenu    = document.getElementById("navMenu");
-    const body       = document.body;
+    const navMenu = document.getElementById("navMenu");
+    const body = document.body;
 
     if (!menuToggle || !navMenu) return;
 
@@ -103,7 +121,7 @@
 </script>
 
 <style>
-  /* ── Navbar ──────────────────────────────────────────── */
+  /* ── Navbar ── */
   .navbar {
     position: sticky;
     top: 0;
@@ -133,14 +151,14 @@
     margin: 0 auto;
   }
 
-  /* ── Brand ───────────────────────────────────────────── */
+  /* ── Brand ── */
   .navbar-brand {
     justify-self: start;
     display: flex;
     gap: 0.25rem;
   }
 
-  /* ── Desktop nav links ───────────────────────────────── */
+  /* ── Desktop nav links ── */
   .navbar-menu {
     justify-self: center;
     animation: fadeUp 0.6s ease both;
@@ -164,14 +182,18 @@
 
   /* Hide mobile-only elements on desktop */
   .nl-index,
-  .nl-arrow { display: none; }
+  .nl-arrow {
+    display: none;
+  }
 
-  .nav-link:hover { opacity: 1; }
+  .nav-link:hover {
+    opacity: 1;
+  }
 
   /* Active: just a subtle brand dot underneath — no background */
   .nav-link--active {
     opacity: 1;
-    color: var(--brand);
+    /*color: var(--brand);*/
   }
 
   .nav-link--active::after {
@@ -188,11 +210,17 @@
   }
 
   @keyframes dot-in {
-    from { transform: translateX(-50%) scale(0); opacity: 0; }
-    to   { transform: translateX(-50%) scale(1); opacity: 1; }
+    from {
+      transform: translateX(-50%) scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
   }
 
-  /* ── Actions ─────────────────────────────────────────── */
+  /* ── Actions ── */
   .navbar-actions {
     justify-self: end;
     display: flex;
@@ -245,20 +273,34 @@
   }
 
   /* 3.75px = (6px gap + 1.5px height) / 2 — sin deformación */
-  .menu-toggle.is-active .line.top    { transform: translateY(3.75px) rotate(45deg); }
-  .menu-toggle.is-active .line.bottom { transform: translateY(-3.75px) rotate(-45deg); }
+  .menu-toggle.is-active .line.top {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+  .menu-toggle.is-active .line.bottom {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
 
-  /* ── Mobile overlay ──────────────────────────────────── */
+  /* ── Mobile overlay ── */
   @media (min-width: 769px) {
-    .mobile-links { display: none; }
+    .mobile-links {
+      display: none;
+    }
   }
 
   @media (max-width: 768px) {
-    .navbar-container { grid-template-columns: auto 1fr; }
+    .navbar-container {
+      grid-template-columns: auto 1fr;
+    }
 
-    .menu-toggle    { display: flex; }
-    .desktop-links  { display: none; }
-    .spacer         { display: none; }
+    .menu-toggle {
+      display: flex;
+    }
+    .desktop-links {
+      display: none;
+    }
+    .spacer {
+      display: none;
+    }
 
     .navbar-menu {
       position: fixed;
@@ -302,7 +344,7 @@
     .nav-link {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       gap: 0.85rem;
       width: 100%;
       padding: 0.9rem 0;
@@ -319,10 +361,14 @@
     }
 
     /* Remove the dot on mobile */
-    .nav-link::after { display: none; }
+    .nav-link::after {
+      display: none;
+    }
 
     .nl-index,
-    .nl-arrow { display: flex; }
+    .nl-arrow {
+      display: flex;
+    }
 
     .nl-index {
       font-family: var(--font-code);
@@ -335,7 +381,9 @@
       margin-bottom: -2px; /* optical align with large text */
     }
 
-    .nl-label { text-align: center;}
+    .nl-label {
+      text-align: center;
+    }
 
     .nl-arrow {
       opacity: 0;
@@ -352,7 +400,9 @@
       transform: translateY(0);
     }
 
-    .navbar-menu.is-visible .nav-link:hover { opacity: 1; }
+    .navbar-menu.is-visible .nav-link:hover {
+      opacity: 1;
+    }
     .navbar-menu.is-visible .nav-link:hover .nl-arrow {
       opacity: 1;
       transform: translate(0, 0);
@@ -361,7 +411,7 @@
     .navbar-menu.is-visible .nav-link--active {
       opacity: 1;
       font-weight: 600;
-      color: var(--brand);
+      /* color: var(--brand); */
     }
 
     .navbar-menu.is-visible .nav-link--active .nl-index {
@@ -375,9 +425,15 @@
     }
 
     /* Stagger */
-    .nav-link:nth-child(1) { transition-delay: 0.08s; }
-    .nav-link:nth-child(2) { transition-delay: 0.15s; }
-    .nav-link:nth-child(3) { transition-delay: 0.22s; }
+    .nav-link:nth-child(1) {
+      transition-delay: 0.08s;
+    }
+    .nav-link:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    .nav-link:nth-child(3) {
+      transition-delay: 0.22s;
+    }
 
     /* Socials row */
     .mobile-links {
@@ -385,7 +441,9 @@
       gap: 2rem;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.4s ease 0.28s, transform 0.4s ease 0.28s;
+      transition:
+        opacity 0.4s ease 0.28s,
+        transform 0.4s ease 0.28s;
     }
 
     .navbar-menu.is-visible .mobile-links {

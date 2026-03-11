@@ -37,7 +37,7 @@ const exampleGroups = [
         label: "Outline",
         config: {
           message: "Thanks for the support!",
-          type: "favorite",
+          type: "brand",
           variant: "outline",
         },
       },
@@ -111,11 +111,11 @@ const exampleGroups = [
         },
       },
       {
-        id: "t-favorite",
+        id: "t-brand",
         label: "Brand",
         config: {
           message: "Welcome to toastro 🍞",
-          type: "favorite",
+          type: "brand",
           variant: "solid",
         },
       },
@@ -174,7 +174,7 @@ const TYPE_COLORS: Record<string, string> = {
   warning: "#ed931b",
   info: "#2563eb",
   neutral: "#808ea2",
-  favorite: "#f31b75",
+  brand: "#f31b75",
   default: "#808ea2",
 };
 
@@ -188,7 +188,7 @@ const VARIANTS = [
   "glass",
   "gradient",
 ];
-const TYPES = ["success", "error", "warning", "info", "neutral", "favorite"];
+const TYPES = ["success", "error", "warning", "info", "neutral", "brand"];
 ---
 
 <Section
@@ -421,7 +421,7 @@ const TYPES = ["success", "error", "warning", "info", "neutral", "favorite"];
       warning: "#ed931b",
       info: "#2563eb",
       neutral: "#808ea2",
-      favorite: "#f31b75",
+      brand: "#f31b75",
       default: "#808ea2",
     };
 

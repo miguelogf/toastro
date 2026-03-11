@@ -1,14 +1,14 @@
 ---
-import Section from "./Section.astro"
+import Section from "./Section.astro";
 import Icon from "./Icon.astro";
-import Card from "./Card.astro"
+import Card from "./Card.astro";
 ---
 
 <Section class="license-section" label="License">
   <Card class="license-card" interactive={true}>
     <div class="license-header">
       <div class="license-icon">
-        <Icon name="shield" size="1.5rem"/>
+        <Icon name="shield" size="1.5rem" />
       </div>
       <div>
         <h2>MIT License</h2>
@@ -21,7 +21,7 @@ import Card from "./Card.astro"
 Permission is hereby granted, free of charge, to use, copy, modify, merge, publish, and distribute the Software without restriction, provided that the above copyright notice and this permission notice are included in all copies.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. </code></pre>
-    </div>    
+    </div>
   </Card>
 </Section>
 
@@ -31,7 +31,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. </code></pre>
     align-items: center;
     gap: 1rem;
     padding: 1.5rem 1.75rem;
-    background: color-mix(in srgb, var(--brand) 5%, transparent);
     border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   }
 
@@ -46,7 +45,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. </code></pre>
     border-radius: 10px;
     color: var(--brand);
     flex-shrink: 0;
-    
   }
 
   .license-icon :global(svg) {

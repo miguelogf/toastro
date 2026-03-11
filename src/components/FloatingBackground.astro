@@ -7,7 +7,7 @@ interface Props {
 
 const {
   count = 20,
-  opacity = 0.18,
+  opacity = 0.1,
   withGlow = true,
 } = Astro.props;
 
@@ -25,11 +25,11 @@ const breads = Array.from({ length: count }, (_, i) => ({
 ---
 
 <div class="bg" aria-hidden="true">
-  {withGlow && <div class="bg__glow" />}
+  {withGlow && <div class="bg-glow" />}
 
   {breads.map((b) => (
     <span
-      class="bg__emoji"
+      class="bg-emoji"
       style={`
         left: ${b.x}%;
         top: ${b.y}%;
@@ -54,19 +54,19 @@ const breads = Array.from({ length: count }, (_, i) => ({
     overflow: hidden;
   }
 
-  .bg__glow {
+  .bg-glow {
     position: absolute;
     inset: 0;
     background: radial-gradient(
       ellipse 80% 60% at 50% 40%,
-      color-mix(in srgb, var(--brand) 15%, transparent),
+      color-mix(in srgb, var(--brand) 8%, transparent),
       transparent 70%
     );
     pointer-events: none;
     transition: opacity 0.4s ease;
   }
 
-  .bg__emoji {
+  .bg-emoji {
     position: absolute;
     display: block;
     line-height: 1;
@@ -93,12 +93,13 @@ const breads = Array.from({ length: count }, (_, i) => ({
       transform: translateY(-18vh) translateX(calc(var(--drift) * 1.2)) rotate(calc(var(--rot-end) + 20deg));
     }
   }
+  
 </style>
 
 {withGlow && (
   <script is:inline>
     (function () {
-      const glow = document.querySelector(".bg__glow");
+      const glow = document.querySelector(".bg-glow");
       if (!glow) return;
 
       function onScroll() {

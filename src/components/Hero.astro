@@ -7,12 +7,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 
 <section class="hero">
   <div class="hero-content">
-    <Badge
-      variant="subtle"
-      color="var(--brand)"
-      class="badge-hero"
-      animate="fade"
-    >
+    <Badge variant="subtle" class="badge-hero" animate="fade">
       <span class="badge-dot"></span>Open Source · MIT Licensed</Badge
     >
     <h1 class="hero-title">
@@ -37,9 +32,9 @@ import ToastContainer from "../components/ToastContainer.astro";
   </div>
 </section>
 
-<ToastContainer />
+<!-- <ToastContainer /> -->
 
-<script>
+<!-- <script>
   import { ICONS } from "../utils/icons.ts";
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn-toast");
@@ -48,7 +43,7 @@ import ToastContainer from "../components/ToastContainer.astro";
       {
         message:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        icon: ICONS["sparkles"],
+        icon: ICONS.sparkles,
         variant: "glass",
       },
       {
@@ -85,7 +80,7 @@ import ToastContainer from "../components/ToastContainer.astro";
       window.showToast?.(randomConfig as any);
     });
   });
-</script>
+</script> -->
 
 <style>
   .hero {
@@ -189,7 +184,7 @@ import ToastContainer from "../components/ToastContainer.astro";
 
     .buttons {
       flex-direction: column;
-      width: 95%;
+      width: 90%;
       margin: 2rem auto 4rem auto;
     }
   }
