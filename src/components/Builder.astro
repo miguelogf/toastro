@@ -1,5 +1,6 @@
 ---
 // src/components/Builder.astro
+import Icon from "./Icon.astro";
 import Section from "./Section.astro";
 
 const exampleGroups = [
@@ -313,17 +314,7 @@ const TYPES = ["success", "error", "warning", "info", "neutral", "brand"];
       <!-- Fire -->
       <div class="ctrl" style="padding-top:.15rem">
         <button class="fire-btn" id="builder-fire">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            width="13"
-            height="13"
-          >
-            <polygon points="5 3 19 12 5 21 5 3"></polygon>
-          </svg>
-          Fire toast
+          Fire toast <Icon name="play" />
         </button>
       </div>
     </aside>
