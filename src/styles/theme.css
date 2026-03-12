@@ -3,7 +3,7 @@
   --status-success:  #34d399;
   --status-warning:  #ed931b;
   --status-error:    #e53935;
-  --status-info:     #4493f8;
+  --status-info:     #0071e3; /*0071e3 4493f8 4493f8*/
   --status-neutral:  #808ea2;
   --status-brand:    #f31b75;
 }
