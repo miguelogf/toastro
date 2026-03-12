@@ -23,7 +23,7 @@ export const changelog: Release[] = [
     title: "First Slice 🍞",
     description: "The very first public release of toastro. A minimal, zero-dependency toast library built specifically for Astro.",
     changes: [
-      { type: "feat", text: "ToastContainer component — drop-in once, works everywhere" },
+      { type: "feat", text: "Toaster component — drop-in once, works everywhere" },
       { type: "feat", text: "8 visual variants: solid, soft, subtle, outline, ghost, surface, glass, gradient" },
       { type: "feat", text: "5 semantic types: success, error, warning, info, default" },
       { type: "feat", text: "7 configurable positions" },

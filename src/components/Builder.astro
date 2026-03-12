@@ -309,8 +309,11 @@ const TYPES = ["success", "error", "warning", "info", "neutral", "brand"];
       <!-- Fire -->
       <div class="ctrl" style="padding-top:.5rem">
         <Button id="builder-fire" style="width: 100%;">
-          Fire toast <Icon name="play" />
+          Fire toast <Icon name="flame" />
         </Button>
+        <Button variant="outline" type="reset" style="width: 100%"
+          >Reset <Icon name="reload" /></Button
+        >
       </div>
     </aside>
 
@@ -841,7 +844,7 @@ const TYPES = ["success", "error", "warning", "info", "neutral", "brand"];
     width: 34px;
     height: 19px;
     border-radius: 99px;
-    background: color-mix(in srgb, var(--text) 25%, transparent);
+    background: color-mix(in srgb, var(--text) 40%, transparent);
     border: none;
     cursor: pointer;
     position: relative;
@@ -849,7 +852,7 @@ const TYPES = ["success", "error", "warning", "info", "neutral", "brand"];
     flex-shrink: 0;
   }
   .toggle--off {
-    background: color-mix(in srgb, var(--text) 14%, transparent);
+    background: color-mix(in srgb, var(--text) 15%, transparent);
   }
   .tg-thumb {
     position: absolute;

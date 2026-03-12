@@ -1,20 +1,16 @@
 ---
 // src/pages/docs.astro  (or src/components/Docs.astro)
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro"
+import Button from "../components/Button.astro";
 import Badge from "../components/Badge.astro";
 import Icon from "../components/Icon.astro";
 ---
 
 <Layout title="Docs — toastro">
   <div class="docs-page">
-    
-    
     <!-- Sidebar -->
     <aside class="sidebar">
-      <Button
-        href="/"
-        variant="ghost">
+      <Button href="/" variant="ghost">
         <Icon name="arrowLeft" />Back to home
       </Button>
       <nav class="sidebar-nav">
@@ -41,11 +37,9 @@ import Icon from "../components/Icon.astro";
     <main class="docs-content">
       <!-- Header -->
       <div class="docs-header">
-        <Badge
-          variant="outline"
-          color="var(--text)"
-          class="docs-badge"
-        >Documentation</Badge>
+        <Badge variant="outline" color="var(--text)" class="docs-badge"
+          >Documentation</Badge
+        >
         <h1>Getting Started</h1>
         <p class="docs-intro">
           A beautiful and minimal toast notification library for Astro. Install
@@ -108,7 +102,7 @@ import Icon from "../components/Icon.astro";
       <section id="setup" class="doc-section">
         <h2><span class="section-icon">🛠️</span> Setup</h2>
         <p>
-          Add <code>&lt;ToastContainer /&gt;</code> once in your main layout. It manages
+          Add <code>&lt;Toaster /&gt;</code> once in your main layout. It manages
           the notification queue and all animations automatically.
         </p>
 
@@ -118,13 +112,13 @@ import Icon from "../components/Icon.astro";
             <Icon name="copy" />
           </button>
           <pre><code>---
-import &lbrace; ToastContainer &rbrace; from 'toastro';
+import &lbrace; Toaster &rbrace; from 'toastro';
 ---
 
 &lt;html lang="en"&gt;
   &lt;body&gt;
     &lt;slot /&gt;
-    &lt;ToastContainer /&gt;
+    &lt;Toaster /&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
         </div>
@@ -132,7 +126,7 @@ import &lbrace; ToastContainer &rbrace; from 'toastro';
         <div class="callout callout-info">
           <Icon name="info" color="var(--status-info)" />
           <span
-            ><code>&lt;ToastContainer /&gt;</code> defaults to <code
+            ><code>&lt;Toaster /&gt;</code> defaults to <code
               >position="bottom-right"</code
             >. See <a href="#positions">Positions</a> for all options.</span
           >
@@ -143,9 +137,8 @@ import &lbrace; ToastContainer &rbrace; from 'toastro';
           <h2><span class="section-icon">⚡</span> Usage</h2>
           <p>
             Call <code>window.showToast()</code> from any client script. No imports
-            needed — it's globally available once <code
-              >&lt;ToastContainer /&gt;</code
-            > is mounted.
+            needed — it's globally available once <code>&lt;Toaster /&gt;</code> is
+            mounted.
           </p>
 
           <div class="code-block">
@@ -271,21 +264,21 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
         <section id="positions" class="doc-section">
           <h2><span class="section-icon">📐</span> Positions</h2>
           <p>
-            Pass <code>position</code> to <code>&lt;ToastContainer /&gt;</code> to
-            control where toasts appear.
+            Pass <code>position</code> to <code>&lt;Toaster /&gt;</code> to control
+            where toasts appear.
           </p>
 
           <div class="code-block">
             <button class="copy-btn" aria-label="Copy">
-              <Icon name="copy"/>
+              <Icon name="copy" />
             </button>
-            <pre><code>&lt;ToastContainer position="bottom-right"  /&gt;  &lt;!-- default --&gt;
-&lt;ToastContainer position="bottom-left"   /&gt;
-&lt;ToastContainer position="bottom-center" /&gt;
-&lt;ToastContainer position="top-right"     /&gt;
-&lt;ToastContainer position="top-left"      /&gt;
-&lt;ToastContainer position="top-center"    /&gt;
-&lt;ToastContainer position="center"        /&gt;</code></pre>
+            <pre><code>&lt;Toaster position="bottom-right"  /&gt;  &lt;!-- default --&gt;
+&lt;Toaster position="bottom-left"   /&gt;
+&lt;Toaster position="bottom-center" /&gt;
+&lt;Toaster position="top-right"     /&gt;
+&lt;Toaster position="top-left"      /&gt;
+&lt;Toaster position="top-center"    /&gt;
+&lt;Toaster position="center"        /&gt;</code></pre>
           </div>
 
           <div class="position-diagram">
@@ -301,7 +294,8 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
           <div class="callout callout-tip">
             <Icon name="zap" color="var(--status-success)" />
             <span
-              >The slide-in animation adapts automatically: left positions slide from the left, right from the right, center positions from below.</span
+              >The slide-in animation adapts automatically: left positions slide
+              from the left, right from the right, center positions from below.</span
             >
           </div>
         </section>
@@ -413,7 +407,7 @@ window.showToast(&lbrace; message: "Lingers…", duration: 8000 &rbrace;);</code
         <section id="api" class="doc-section">
           <h2><span class="section-icon">⚙️</span> API Reference</h2>
 
-          <h3><code>&lt;ToastContainer /&gt;</code> props</h3>
+          <h3><code>&lt;Toaster /&gt;</code> props</h3>
           <table class="docs-table">
             <thead
               ><tr
@@ -623,7 +617,10 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       min-width: 0;
     }
 
-    :global(.docs-badge){opacity: 0.4; margin: 0 0 1rem 0;}
+    :global(.docs-badge) {
+      opacity: 0.4;
+      margin: 0 0 1rem 0;
+    }
 
     .docs-header {
       margin-bottom: 3rem;
@@ -927,7 +924,6 @@ type ToastVariant = "solid" | "soft" | "outline" | "glass";</code></pre>
       border: 1px solid
         color-mix(in srgb, var(--status-success) 20%, transparent);
       align-items: center;
-      
     }
     .callout-tip svg {
       color: var(--status-success);

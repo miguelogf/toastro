@@ -3,7 +3,7 @@ import "../styles/global.css";
 import "../styles/theme.css";
 
 import NavBar from "../components/NavBar.astro";
-import FloatingBackground from "../components/FloatingBackground.astro";
+import Backdrop from "../components/Backdrop.astro";
 ---
 
 <!doctype html>
@@ -64,7 +64,7 @@ import FloatingBackground from "../components/FloatingBackground.astro";
     </script>
   </head>
   <body>
-    <FloatingBackground />
+    <Backdrop />
     <NavBar />
     <main style="position:relative; z-index:1;">
       <slot />

@@ -1,16 +1,22 @@
 ---
-import Section from "./Section.astro"
-import Card from "./Card.astro"
+import Section from "./Section.astro";
+import Card from "./Card.astro";
 ---
-<Section 
-  class="what-section"
-  label="What is toastro?"
->
+
+<Section class="what-section" label="What is toastro?">
   <div class="what-grid">
     <div class="what-text">
       <h2>A minimal toast library, built for <em>Astro</em>.</h2>
-      <p> Most toast libraries assume you're in React, Vue, or Svelte land. Toastro was built from scratch for Astro — no framework adapter needed, no extra runtime overhead, no opinions about your stack.</p>
-      <p> Drop <code>&lt;ToastContainer /&gt;</code> into your layout once, call <code>window.showToast()</code> from anywhere. That's it. </p>
+      <p>
+        Most toast libraries assume you're in React, Vue, or Svelte land.
+        Toastro was built from scratch for Astro — no framework adapter needed,
+        no extra runtime overhead, no opinions about your stack.
+      </p>
+      <p>
+        Drop <code>&lt;Toaster /&gt;</code> into your layout once, call <code
+          >window.showToast()</code
+        > from anywhere. That's it.
+      </p>
     </div>
     <div class="what-features">
       <Card>
@@ -107,7 +113,6 @@ import Card from "./Card.astro"
     align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem;
-
   }
 
   .feat-icon {
@@ -128,7 +133,6 @@ import Card from "./Card.astro"
     opacity: 0.5;
   }
 
-  
   @media (max-width: 768px) {
     .what-grid {
       grid-template-columns: 1fr;

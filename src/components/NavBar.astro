@@ -2,7 +2,7 @@
 import Logo from "../components/Logo.astro";
 import Badge from "./Badge.astro";
 import IconLink from "./IconLink.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import Theme from "./Theme.astro";
 
 const iconLinks = [
   { name: "github", href: "https://github.com/miguelogf" },
@@ -77,7 +77,7 @@ const currentPath = Astro.url.pathname;
         }
       </div>
       <div class="spacer"></div>
-      <ThemeToggle />
+      <Theme />
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <span class="line top"></span>
         <span class="line bottom"></span>

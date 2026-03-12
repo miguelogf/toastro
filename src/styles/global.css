@@ -82,7 +82,7 @@ em {
     opacity: 1;
   }
   50% {
-    transform: scale(1.15); /* Un poco más notable */
+    transform: scale(1.25);
     opacity: 0.8;
   }
 }

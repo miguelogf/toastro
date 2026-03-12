@@ -2,13 +2,13 @@
 import { ICONS } from "../utils/icons"; // Ajusta la ruta
 ---
 
-<button id="themeToggle" aria-label="Change theme">
+<button id="Theme" aria-label="Change theme">
   <Fragment set:html={ICONS.sun} />
   <Fragment set:html={ICONS.moon} />
 </button>
 
 <style>
-  #themeToggle {
+  #Theme {
     background: transparent;
     border: 1px transparent;
     border-radius: 8px;
@@ -21,7 +21,7 @@ import { ICONS } from "../utils/icons"; // Ajusta la ruta
     justify-content: center;
   }
 
-  #themeToggle:hover {
+  #Theme:hover {
     background: rgba(128, 128, 128, 0.2);
   }
 
@@ -42,8 +42,8 @@ import { ICONS } from "../utils/icons"; // Ajusta la ruta
 </style>
 
 <script>
-  function setupThemeToggle() {
-    const btn = document.getElementById("themeToggle");
+  function setupTheme() {
+    const btn = document.getElementById("Theme");
     const element = document.documentElement;
 
     // dark por defecto
@@ -59,6 +59,6 @@ import { ICONS } from "../utils/icons"; // Ajusta la ruta
     }
   }
 
-  setupThemeToggle();
-  document.addEventListener("astro:after-swap", setupThemeToggle);
+  setupTheme();
+  document.addEventListener("astro:after-swap", setupTheme);
 </script>

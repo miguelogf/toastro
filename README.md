@@ -27,17 +27,17 @@ yarn add toastro
 
 ## ⚙️ Setup
 
-Add `<ToastContainer />` once in your main layout. It handles the queue and animations automatically.
+Add `<Toaster />` once in your main layout. It handles the queue and animations automatically.
 
 ```astro
 --- 
-import { ToastContainer } from 'toastro';
+import { Toaster } from 'toastro';
 ---
 
 <html lang="en">
   <body>
     <slot />
-    <ToastContainer /> <!-- default position="bottom-right" -->
+    <Toaster /> <!-- default position="bottom-right" -->
   </body>
 </html>
 ```
@@ -46,7 +46,7 @@ import { ToastContainer } from 'toastro';
 
 ## ✨ Usage
 
-Call `window.showToast()` from any client script. No imports needed after mounting `<ToastContainer />`.
+Call `window.showToast()` from any client script. No imports needed after mounting `<Toaster />`.
 
 ```html
 <button id="btn">Show toast</button>
@@ -90,9 +90,9 @@ Call `window.showToast()` from any client script. No imports needed after mounti
 ## 📍 Positions
 
 ```astro
-<ToastContainer position="bottom-right" /> <!-- default -->
-<ToastContainer position="top-left" />
-<ToastContainer position="center" />
+<Toaster position="bottom-right" /> <!-- default -->
+<Toaster position="top-left" />
+<Toaster position="center" />
 ```
 
 ---
@@ -153,7 +153,7 @@ window.showToast({ message: "Longer…", duration: 8000 });
 
 ## 📜 API Reference
 
-### `<ToastContainer />` props
+### `<Toaster />` props
 
 | Prop     | Type      | Default        | Description |
 |----------|-----------|----------------|------------|
