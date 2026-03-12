@@ -8,9 +8,15 @@ interface Props {
   name: IconName;
   color?: string;
   size?: string | number;
+  class?: string;
 }
 
-const { name, color = "currentColor", size } = Astro.props as Props;
+const {
+  name,
+  color = "currentColor",
+  size,
+  class: className,
+} = Astro.props as Props;
 
 const icon =
   ICONS[name as keyof typeof ICONS] ||
@@ -26,7 +32,9 @@ const style = `
 {
   icon && (
     <span style={style}>
-      <Fragment set:html={icon} />
+      <Fragment
+        set:html={icon.replace("<svg", `<svg class="${className ?? ""}"`)}
+      />
     </span>
   )
 }
