@@ -1,8 +1,7 @@
 ---
-import Badge from "../components/Badge.astro";
-import Button from "../components/Button.astro";
-import Icon from "./Icon.astro";
-import Toaster from "../components/Toaster.astro";
+import Badge from "@ui/Badge.astro";
+import Button from "@ui/Button.astro";
+import Icon from "@ui/Icon.astro";
 ---
 
 <section class="hero">
@@ -31,56 +30,6 @@ import Toaster from "../components/Toaster.astro";
     <Icon name="arrow" />
   </div>
 </section>
-
-<!-- <Toaster /> -->
-
-<!-- <script>
-  import { ICONS } from "../utils/icons.ts";
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("btn-toast");
-
-    const toastOptions = [
-      {
-        message:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-        icon: ICONS.sparkles,
-        variant: "glass",
-      },
-      {
-        message: "Successfully deployed to Vercel",
-        type: "success",
-        variant: "subtle",
-      },
-      {
-        message: "Warning: Low disk space",
-        type: "info",
-        variant: "soft",
-      },
-      {
-        message: "Thanks for the support!",
-        type: "brand",
-        variant: "outline",
-      },
-      {
-        message: "New update available",
-        type: "neutral",
-        variant: "solid",
-      },
-      {
-        message: "🍞✨ A minimal toast for Astro",
-        icon: "", // Sin icono"",
-        variant: "gradient",
-        gradientColors: ["#6366f1", "#f31b75"],
-      },
-    ];
-
-    btn?.addEventListener("click", () => {
-      const randomConfig =
-        toastOptions[Math.floor(Math.random() * toastOptions.length)];
-      window.showToast?.(randomConfig as any);
-    });
-  });
-</script> -->
 
 <style>
   .hero {
