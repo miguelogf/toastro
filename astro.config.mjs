@@ -8,7 +8,7 @@ export default defineConfig({
         "@": path.resolve("./src"),
         "@ui": path.resolve("./src/components/ui"),
         "@sections": path.resolve("./src/components/sections"),
-        "@data": path.resolve("./data"),
+        "@data": path.resolve("./src/data"),
         "@layouts": path.resolve("./src/layouts"),
         "@utils": path.resolve("./src/utils"),
       },

@@ -14,6 +14,7 @@ interface Props {
   color?: string;
   textColor?: string;
   class?: string;
+  style?: string;
   animate?: "fade" | "pulse" | "bounce" | "float" | "none";
 }
 
@@ -25,6 +26,7 @@ const {
   textColor,
   animate = "none",
   class: className = "",
+  style: styleOverride = "",
 } = Astro.props;
 
 function contrastColor(hex: string): string {
@@ -37,15 +39,6 @@ function contrastColor(hex: string): string {
   return brightness > 128 ? "#000000" : "#ffffff";
 }
 
-const typeColors = {
-  success: "var(--status-success)",
-  warning: "var(--status-warning)",
-  error: "var(--status-error)",
-  info: "var(--status-info)",
-  neutral: "var(--status-neutral)",
-  brand: "var(--status-brand)",
-};
-
 const resolvedTextColor =
   textColor ??
   (variant === "solid" && color ? contrastColor(color) : undefined);
@@ -53,6 +46,7 @@ const resolvedTextColor =
 const style = [
   color ? `--type-color: ${color}` : undefined,
   resolvedTextColor ? `--type-text: ${resolvedTextColor}` : undefined,
+  styleOverride || undefined,
 ]
   .filter(Boolean)
   .join("; ");

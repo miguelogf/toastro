@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { changelog } from "../data/changelog";
-import Button from "../components/Button.astro"
-import Icon from "../components/Icon.astro"
+import Layout from "@layouts/Layout.astro";
+import { changelog } from "@data/changelog";
+import Button from "@ui/Button.astro"
+import Icon from "@ui/Icon.astro"
 
 // Ordenar de más reciente a más antiguo
 const releases = [...changelog].sort(

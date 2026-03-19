@@ -48,7 +48,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">solid</span>
             </div>
@@ -62,7 +63,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">soft</span>
             </div>
@@ -76,7 +78,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">subtle</span>
             </div>
@@ -90,7 +93,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">outline</span>
             </div>
@@ -104,7 +108,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">ghost</span>
             </div>
@@ -118,7 +123,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">surface</span>
             </div>
@@ -132,7 +138,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">glass</span>
             </div>
@@ -146,7 +153,8 @@ import Icon from "@ui/Icon.astro";
                   stroke="currentColor"
                   stroke-width="2.5"
                   ><polyline points="20 6 9 17 4 12"></polyline></svg
-                > Saved!
+                >
+                Saved!
               </div>
               <span class="vtag">gradient</span>
             </div>
@@ -259,80 +267,87 @@ import Icon from "@ui/Icon.astro";
           </div>
           <div class="types-grid">
             <div class="tcard tc-success"><Icon name="success" />success</div>
-            <div class="tcard tc-error"><Icon name="error" /></div>error
+            <div class="tcard tc-error"><Icon name="error" />error</div>
+            <div class="tcard tc-warning"><Icon name="warning" />warning</div>
+            <div class="tcard tc-info"><Icon name="info" />info</div>
+            <div class="tcard tc-default"><Icon name="neutral" />default</div>
           </div>
-          <div class="tcard tc-warning"><Icon name="warning" /></div>warning
         </div>
-        <div class="tcard tc-info"><Icon name="info" /></div>info</Card
-      >
-      <div class="tcard tc-default"><Icon name="neutral" /></div>default
+      </Card>
+    </div>
+
+    <!-- ⑦ CSS Theming — 2 cols -->
+    <div class="bento-cell cell-theme">
+      <Card interactive={true} reveal={true}>
+        <div class="inner inner-theme">
+          <div class="theme-left">
+            <span class="blabel">CSS Variables</span>
+            <strong>Inherits your design system</strong>
+            <p>
+              Toastro reads your existing CSS variables automatically. Drop it
+              in and it already looks right — no extra config needed.
+            </p>
+            <div class="theme-swatches">
+              <span class="sw sw-bg"></span>
+              <span class="sw sw-brand"></span>
+              <span class="sw sw-text"></span>
+              <span class="sw-label">your tokens →</span>
+            </div>
+          </div>
+          <div class="theme-code">
+            <div class="tc-filename">global.css</div>
+            <div class="cl">
+              <span class="tc-sel">:root</span>
+              <span class="c-p">&#123;</span>
+            </div>
+            <div class="cl ci">
+              <span class="tc-var">--toastro-bg</span><span class="c-p">:</span>
+              <span class="tc-val">var(--bg-color)</span><span class="c-p"
+                >;</span
+              >
+              <span class="tc-cmt">/* background */</span>
+            </div>
+            <div class="cl ci">
+              <span class="tc-var">--toastro-text</span><span class="c-p"
+                >:</span
+              >
+              <span class="tc-val">var(--text-color)</span><span class="c-p"
+                >;</span
+              >
+              <span class="tc-cmt">/* text */</span>
+            </div>
+            <div class="cl ci">
+              <span class="tc-var">--toastro-radius</span><span class="c-p"
+                >:</span
+              >
+              <span class="tc-val">12px</span><span class="c-p">;</span>
+              <span class="tc-cmt">/* corners */</span>
+            </div>
+            <div class="cl"><span class="c-p">&#125;</span></div>
+          </div>
+        </div>
+      </Card>
+    </div>
+
+    <!-- ⑧ MIT License — compact -->
+    <div class="bento-cell cell-mit">
+      <Card interactive={true} reveal={true}>
+        <div class="inner inner-mit">
+          <div class="mit-free">
+            <Icon name="dollar" />
+          </div>
+          <span class="blabel">MIT License</span>
+          <strong>Free forever</strong>
+          <p>
+            Use, modify, and distribute — personal or commercial projects. No
+            strings attached.
+          </p>
+          <div class="mit-badge">Open Source</div>
+        </div>
+      </Card>
     </div>
   </div>
 </Section>
-
-<!-- ⑦ CSS Theming — 2 cols -->
-<div class="bento-cell cell-theme">
-  <Card interactive={true} reveal={true}>
-    <div class="inner inner-theme">
-      <div class="theme-left">
-        <span class="blabel">CSS Variables</span>
-        <strong>Inherits your design system</strong>
-        <p>
-          Toastro reads your existing CSS variables automatically. Drop it in
-          and it already looks right — no extra config needed.
-        </p>
-        <div class="theme-swatches">
-          <span class="sw sw-bg"></span>
-          <span class="sw sw-brand"></span>
-          <span class="sw sw-text"></span>
-          <span class="sw-label">your tokens →</span>
-        </div>
-      </div>
-      <div class="theme-code">
-        <div class="tc-filename">global.css</div>
-        <div class="cl">
-          <span class="tc-sel">:root</span>
-          <span class="c-p">&#123;</span>
-        </div>
-        <div class="cl ci">
-          <span class="tc-var">--toastro-bg</span><span class="c-p">:</span>
-          <span class="tc-val">var(--bg-color)</span><span class="c-p">;</span>
-          <span class="tc-cmt">/* background */</span>
-        </div>
-        <div class="cl ci">
-          <span class="tc-var">--toastro-text</span><span class="c-p">:</span>
-          <span class="tc-val">var(--text-color)</span><span class="c-p">;</span
-          >
-          <span class="tc-cmt">/* text */</span>
-        </div>
-        <div class="cl ci">
-          <span class="tc-var">--toastro-radius</span><span class="c-p">:</span>
-          <span class="tc-val">12px</span><span class="c-p">;</span>
-          <span class="tc-cmt">/* corners */</span>
-        </div>
-        <div class="cl"><span class="c-p">&#125;</span></div>
-      </div>
-    </div>
-  </Card>
-</div>
-
-<!-- ⑧ MIT License — compact -->
-<div class="bento-cell cell-mit">
-  <Card interactive={true} reveal={true}>
-    <div class="inner inner-mit">
-      <div class="mit-free">
-        <Icon name="dollar" />
-      </div>
-      <span class="blabel">MIT License</span>
-      <strong>Free forever</strong>
-      <p>
-        Use, modify, and distribute — personal or commercial projects. No
-        strings attached.
-      </p>
-      <div class="mit-badge">Open Source</div>
-    </div>
-  </Card>
-</div>
 
 <style>
   /* ─────────────────────────────────────────

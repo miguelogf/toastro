@@ -7,7 +7,7 @@
       "@/*": ["./src/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@sections/*": ["./src/components/sections/*"],
-      "@data/*": ["./data/*"],
+      "@data/*": ["./src/data/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@utils/*": ["./src/utils/*"]
     }

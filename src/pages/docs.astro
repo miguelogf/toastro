@@ -1,9 +1,9 @@
 ---
 // src/pages/docs.astro  (or src/components/Docs.astro)
-import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
-import Badge from "../components/Badge.astro";
-import Icon from "../components/Icon.astro";
+import Layout from "@layouts/Layout.astro";
+import Button from "@ui/Button.astro";
+import Badge from "@ui/Badge.astro";
+import Icon from "@ui/Icon.astro";
 ---
 
 <Layout title="Docs — toastro">
@@ -184,7 +184,7 @@ window.showToast(&lbrace; message: "Plain message",     type: "default" &rbrace;
             <tbody>
               <tr
                 ><td><code>default</code></td><td
-                  >&nbsp;<Icon name="default" /></td
+                  >&nbsp;<Icon name="neutral" /></td
                 ><td>Neutral messages</td></tr
               >
               <tr
@@ -234,11 +234,12 @@ window.showToast(&lbrace; message: "Glass",   type: "success", variant: "glass" 
                   <td>
                     Filled background, high contrast
                     <Badge
-                      label="default"
                       variant="soft"
-                      type="default"
-                      styleOverride="margin-left: 0.25rem;"
-                    />
+                      type="neutral"
+                      style="margin-left: 0.25rem; font-size: 0.5rem;"
+                    >
+                      default
+                    </Badge>
                   </td>
                 </tr>
                 <tr
